@@ -10,12 +10,12 @@ export async function getWpData(query: string, variables = {}) {
         'Content-Type': 'application/json',
         'Accept': 'application/json',
       },
-      body: JSON.stringify({ 
-        query, 
-        variables 
+      body: JSON.stringify({
+        query,
+        variables
       }),
       // 'no-store' è perfetto per vedere le modifiche al menu istantaneamente
-      cache: 'no-store', 
+      cache: 'no-store',
     });
 
     const result = await response.json();
@@ -44,21 +44,21 @@ export async function getNavServices() {
         } 
       } 
     }`;
-    
+
   try {
     const data = await getWpData(query);
-    
+
     // Invece di filtrare per slug (che ti costringe a modificare il codice ogni volta),
     // ti consiglio di filtrare per le pagine che hanno un ordine impostato (> 0)
     // o mantenere il tuo filtro ma ordinare il risultato.
-    
+
     const servicesSlugs = [
+      'avvocato-familiarista-terracina',
       'risarcimento-danni-terracina',
       'avvocato-tributarista-terracina',
       'avvocato-societario-terracina',
       'avvocato-del-lavoro-terracina',
       'avvocato-penalista-terracina',
-      'avvocato-familiarista-terracina'
     ];
 
     if (!data?.pages?.nodes) return [];
@@ -68,6 +68,25 @@ export async function getNavServices() {
 
   } catch (error) {
     console.error("Errore nel recupero servizi nav:", error);
-    return []; 
+    return [];
+  }
+}
+
+export async function getPageContent(slug: string) {
+  const query = `
+    query GetPageBySlug($id: ID!, $idType: PageIdType!) {
+      page(id: $id, idType: $idType) {
+        title
+        content
+      }
+    }
+  `;
+
+  try {
+    const data = await getWpData(query, { id: slug, idType: 'URI' });
+    return data?.page;
+  } catch (error) {
+    console.error(`Errore nel recupero della pagina ${slug}:`, error);
+    return null;
   }
 }
