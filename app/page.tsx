@@ -21,19 +21,19 @@ export default function Home() {
       
       {/* Sezione Hero con Estetica Sofisticata */}
       <section className="relative h-screen flex items-center overflow-hidden">
-        
-        {/* Overlay con immagine generata */}
-        <div className="absolute inset-0 z-0">
-          <Image 
-            src="/images/hero-avvocato.jpg" 
-            alt="Studio Legale Avv. Anna Fusco a Terracina"
-            fill
-            className="object-cover opacity-30 brightness-50"
-            priority
-          />
-          {/* Gradient per leggibilità testo */}
-          <div className="absolute inset-0 bg-gradient-to-r from-[#120d0d] via-[#120d0d]/70 to-transparent" />
-        </div>
+  
+  {/* Overlay con immagine - Resa più chiara e visibile */}
+  <div className="absolute inset-0 z-0">
+    <Image 
+      src="/images/hero-avvocato.jpg" 
+      alt="Studio Legale Avv. Anna Fusco a Terracina"
+      fill
+      className="object-cover opacity-70 brightness-90" // Aumentata opacità (70) e luminosità (90)
+      priority
+    />
+    {/* Gradient per leggibilità testo: leggermente più morbido per mostrare più foto a destra */}
+    <div className="absolute inset-0 bg-gradient-to-r from-[#120d0d] via-[#120d0d]/40 to-transparent" />
+  </div>
 
         <div className="relative z-10 container mx-auto px-6 md:px-12">
           <div className="max-w-4xl">

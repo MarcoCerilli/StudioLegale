@@ -61,10 +61,15 @@ export async function getNavServices() {
       'avvocato-penalista-terracina',
     ];
 
-    if (!data?.pages?.nodes) return [];
+   // 1. Filtriamo le pagine che appartengono ai servizi
+    const filteredPages = data.pages.nodes.filter((page: any) => 
+      servicesSlugs.includes(page.slug)
+    );
 
-    // Filtriamo e manteniamo l'ordine restituito da GraphQL (MENU_ORDER)
-    return data.pages.nodes.filter((page: any) => servicesSlugs.includes(page.slug));
+    // 2. FORZIAMO l'ordinamento basandoci sulla posizione nell'array servicesSlugs
+    return filteredPages.sort((a: any, b: any) => {
+      return servicesSlugs.indexOf(a.slug) - servicesSlugs.indexOf(b.slug);
+    });
 
   } catch (error) {
     console.error("Errore nel recupero servizi nav:", error);

@@ -61,8 +61,8 @@ export default function ContattiPage() {
 
               <section className="pt-4 opacity-60">
                 <p className="text-md text-zinc-200 font-medium italic">PEC: annafusco@ordineavvocatiroma.org</p>
-                <p className="text-[15px] text-zinc-200 mt-2 uppercase tracking-widest font-sans">P.IVA: 09857711007</p>
-                <p className="text-[15px] text-zinc-200 mt-2 uppercase tracking-widest font-sans">Avvocato iscritto all'Ordine degli Avvocati di Roma con n. A36343.</p>
+                <p className="text-[15px] text-zinc-200 font-medium italic">P.IVA: 09857711007</p>
+                <p className="text-[15px] text-zinc-200 font-medium italic">Avvocato iscritto all'Ordine degli Avvocati di Roma con n. A36343.</p>
               </section>
             </div>
 
