@@ -62,7 +62,7 @@ export default function Home() {
               </Link>
               
               <Link 
-                href="/servizi" 
+                href="/aree-di-attivita" 
                 className="px-12 py-5 border border-[#c5a5a5]/50 hover:border-[#c5a5a5] text-white rounded-full transition-all backdrop-blur-sm text-center uppercase tracking-widest text-xs"
               >
                 Aree di Attività
