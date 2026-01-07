@@ -45,60 +45,55 @@ const certificazioni = [
     ]
   }
 ];
+
 export default function AttestatiPage() {
   return (
-    <main className="min-h-screen py-32 bg-[#faf9f6] dark:bg-[#120d0d] transition-colors duration-500">
-      <div className="container mx-auto px-6">
+    <main className="min-h-screen py-32 bg-[#120d0d] text-[#f5f0f0]">
+      <div className="container mx-auto px-6 max-w-7xl">
         
-        {/* Header Sezione con stile prestigioso */}
-        <div className="mb-20 text-center md:text-left">
-          <h1 className="text-5xl md:text-7xl font-serif text-[#4a3434] dark:text-[#f5f0f0] mb-6 tracking-tight">
-            Titoli e <span className="text-[#8b5e5e] dark:text-[#c5a5a5]">Competenze</span>
+        {/* Header Sezione */}
+        <div className="mb-24">
+          <p className="text-[#c5a5a5] text-[10px] uppercase tracking-[0.5em] mb-4">Percorso Professionale</p>
+          <h1 className="text-5xl md:text-8xl font-serif tracking-tighter leading-none mb-8">
+            Titoli e <span className="text-[#c5a5a5] italic font-light">Competenze</span>
           </h1>
-          <div className="h-1.5 w-24 bg-[#8b5e5e] dark:bg-[#c5a5a5] mx-auto md:mx-0"></div>
+          <div className="h-[1px] w-40 bg-[#c5a5a5]/30"></div>
         </div>
 
         {/* Griglia Certificazioni */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {certificazioni.map((cert, index) => (
             <div 
               key={index}
-              className="group relative p-10 rounded-[2rem] border transition-all duration-500
-                         bg-white border-[#8b5e5e]/10 shadow-[0_10px_40px_rgba(139,94,94,0.05)]
-                         dark:bg-[#1a1414] dark:border-[#c5a5a5]/10 dark:hover:border-[#c5a5a5]/30"
+              className="group relative p-8 bg-[#1a1414] border border-[#c5a5a5]/10 hover:border-[#c5a5a5]/40 transition-all duration-500 rounded-sm"
             >
-              {/* Badge Anno - Rosewood */}
-              <div className="inline-block px-3 py-1 rounded-md text-[11px] font-bold tracking-[0.15em] 
-                              bg-[#8b5e5e]/10 text-[#8b5e5e] dark:bg-[#c5a5a5]/10 dark:text-[#c5a5a5] mb-6 uppercase">
-                Sessione {cert.year}
+              {/* Anno */}
+              <div className="text-[#c5a5a5] text-[10px] font-bold tracking-widest uppercase mb-6 flex items-center gap-3">
+                <span className="w-8 h-[1px] bg-[#c5a5a5]/30"></span>
+                {cert.year}
               </div>
 
               {/* Titolo e Istituzione */}
-              <h3 className="text-2xl font-serif text-[#4a3434] dark:text-[#f5f0f0] mb-4 leading-tight group-hover:text-[#8b5e5e] dark:group-hover:text-[#c5a5a5] transition-colors">
+              <h3 className="text-xl font-serif mb-4 leading-snug group-hover:text-[#c5a5a5] transition-colors">
                 {cert.title}
               </h3>
-              <p className="text-sm text-stone-500 dark:text-zinc-400 mb-10 leading-relaxed italic">
+              <p className="text-xs text-zinc-500 mb-10 leading-relaxed font-light uppercase tracking-wider">
                 {cert.institution}
               </p>
 
-              {/* Pulsanti Dinamici - Glossy Soft */}
-              <div className="flex flex-wrap gap-3">
+              {/* Pulsanti */}
+              <div className="flex flex-wrap gap-3 mt-auto">
                 {cert.buttons.map((btn, bIndex) => (
                   <Link
                     key={bIndex}
                     href={btn.link}
                     target="_blank"
-                    className="text-[10px] font-bold tracking-widest px-5 py-2.5 rounded-full border transition-all uppercase
-                               border-[#8b5e5e]/20 text-[#8b5e5e] hover:bg-[#8b5e5e] hover:text-white
-                               dark:border-[#c5a5a5]/20 dark:text-[#c5a5a5] dark:hover:bg-[#c5a5a5] dark:hover:text-[#120d0d]"
+                    className="text-[9px] font-bold tracking-[0.2em] px-4 py-2 border border-[#c5a5a5]/20 text-[#c5a5a5] hover:bg-[#c5a5a5] hover:text-[#120d0d] transition-all uppercase"
                   >
                     {btn.label}
                   </Link>
                 ))}
               </div>
-
-              {/* Decorazione Sottile (Solo Dark) */}
-              <div className="absolute -bottom-2 -right-2 w-24 h-24 bg-[#c5a5a5]/5 blur-3xl rounded-full pointer-events-none hidden dark:block" />
             </div>
           ))}
         </div>
