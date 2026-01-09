@@ -1,55 +1,50 @@
 @import "tailwindcss";
 
 @theme {
-  /* Palette rivoluzionata: Professionalità ed Eleganza */
   --color-rosewood: #8b5e5e;
   --color-rosewood-light: #c5a5a5;
-  --color-office-dark: #120d0d;
   --color-cream: #faf9f6;
   
-  /* Font Serif per titoli legali prestigiosi */
   --font-serif: "Playfair Display", serif;
   --font-sans: "Inter", sans-serif;
 }
 
-/* Variabili di sistema */
 :root {
-  --background: #faf9f6; /* Crema chiaro per il light mode */
-  --foreground: #2d2424; /* Marrone scurissimo invece del nero */
-  
-  /* Configurazione Prose (Tailwind Typography) */
+  --background: #faf9f6; 
+  --foreground: #2d2424; 
   --tw-prose-headings: #4a3434;
   --tw-prose-links: #8b5e5e;
 }
 
-.dark {
-  --background: #120d0d; /* Deep Rosewood Dark per il dark mode */
-  --foreground: #f5f0f0;
-  
-  --tw-prose-headings: #e5d5d5;
-  --tw-prose-links: #c5a5a5;
-}
-
 @layer base {
+  html,
   body {
-    background-color: var(--background);
-    color: var(--foreground);
-    transition: background-color 0.5s ease, color 0.5s ease;
-    @apply antialiased; /* Rende i font più definiti su Debian/Linux */
+    background-color: #faf9f6;
+    color: #2d2424;
+  }
+  
+  body {
+    @apply antialiased;
   }
 
-  /* Applichiamo il font Serif a tutti i titoli automaticamente */
   h1, h2, h3, h4 {
     font-family: var(--font-serif);
     @apply tracking-tight;
   }
 }
 
-/* Utility per il contenuto WordPress */
-.content-wp p {
-  @apply mb-6 leading-relaxed;
-}
-
-.content-wp a {
-  @apply text-rosewood underline decoration-rosewood/30 hover:decoration-rosewood transition-all;
+@layer components {
+  main {
+    background-color: #faf9f6 !important;
+  }
+  
+  .bg-\[#120d0d\],
+  .bg-\[#1a1414\] {
+    background-color: #faf9f6 !important;
+  }
+  
+  .text-\[#f5f0f0\],
+  .text-\[#c5a5a5\] {
+    color: #2d2424 !important;
+  }
 }

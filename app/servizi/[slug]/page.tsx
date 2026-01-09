@@ -53,32 +53,32 @@ export default async function ServizioPage({ params }: { params: { slug: string 
       .trim();
 
     return (
-      <main className="min-h-screen py-24 md:py-32 bg-[#faf9f6] dark:bg-[#120d0d] transition-colors duration-500">
+      <main className="min-h-screen py-24 md:py-32 bg-cream">
         <div className="max-w-4xl mx-auto px-6">
           
           <header className="mb-16 md:mb-24 text-center md:text-left">
             {/* SEO: H1 è il tag più importante per i motori di ricerca */}
-            <h1 className="text-5xl md:text-7xl font-serif text-[#4a3434] dark:text-[#f5f0f0] mb-6 leading-tight">
+            <h1 className="text-5xl md:text-7xl font-serif text-[#4a3434] mb-6 leading-tight">
               {data.page.title}
             </h1>
             <div className="h-1 w-20 bg-[#8b5e5e] rounded-full opacity-80"></div>
           </header>
 
-          <article className="bg-white dark:bg-[#1a1414] p-8 md:p-16 rounded-[3rem] border border-[#8b5e5e]/10 shadow-[0_20px_60px_rgba(139,94,94,0.04)]">
+          <article className="bg-white p-8 md:p-16 rounded-[3rem] border border-[#8b5e5e]/10 shadow-[0_20px_60px_rgba(139,94,94,0.04)]">
             <div 
-              className="prose prose-stone dark:prose-invert max-w-none
-                [&_h2]:text-2xl [&_h2]:font-serif [&_h2]:text-[#4a3434] [&_h2]:dark:text-[#f5f0f0] [&_h2]:mb-6 [&_h2]:mt-10
-                [&_p]:text-lg [&_p]:leading-relaxed [&_p]:text-stone-600 [&_p]:dark:text-zinc-400 [&_p]:mb-6
+              className="prose prose-stone max-w-none
+                [&_h2]:text-2xl [&_h2]:font-serif [&_h2]:text-[#4a3434] [&_h2]:mb-6 [&_h2]:mt-10
+                [&_p]:text-lg [&_p]:leading-relaxed [&_p]:text-stone-600 [&_p]:mb-6
                 [&_ul]:list-none [&_ul]:pl-0 [&_li]:relative [&_li]:pl-8 [&_li]:mb-4 
                 [&_li::before]:content-['—'] [&_li::before]:absolute [&_li::before]:left-0 [&_li::before]:text-[#8b5e5e]/50"
               dangerouslySetInnerHTML={{ __html: sanitizedHtml }} 
             />
 
-            <div className="mt-16 pt-12 border-t border-stone-100 dark:border-white/5">
+            <div className="mt-16 pt-12 border-t border-stone-100">
               <div className="flex flex-col md:flex-row items-center justify-between gap-8">
                 <div>
-                  <h3 className="text-xl font-serif text-[#4a3434] dark:text-white mb-2">Richiedi una consulenza</h3>
-                  <p className="text-sm text-stone-500 dark:text-zinc-500 text-center md:text-left">
+                  <h3 className="text-xl font-serif text-[#4a3434] mb-2">Richiedi una consulenza</h3>
+                  <p className="text-sm text-stone-500 text-center md:text-left">
                     Analisi dettagliata della posizione giuridica presso lo studio a Terracina.
                   </p>
                 </div>
@@ -93,7 +93,7 @@ export default async function ServizioPage({ params }: { params: { slug: string 
           </article>
 
           <footer className="mt-12 text-center">
-            <p className="text-[10px] text-stone-400 dark:text-zinc-600 uppercase tracking-[0.3em]">
+            <p className="text-[10px] text-stone-400 uppercase tracking-[0.3em]">
               Studio Legale Fusco — Terracina
             </p>
           </footer>

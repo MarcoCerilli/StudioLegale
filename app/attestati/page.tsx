@@ -48,14 +48,14 @@ const certificazioni = [
 
 export default function AttestatiPage() {
   return (
-    <main className="min-h-screen py-32 bg-[#120d0d] text-[#f5f0f0]">
+   <main className="min-h-screen bg-cream text-[#2d2424] pt-32 pb-20">
       <div className="container mx-auto px-6 max-w-7xl">
         
         {/* Header Sezione */}
         <div className="mb-24">
-          <p className="text-[#c5a5a5] text-[10px] uppercase tracking-[0.5em] mb-4">Percorso Professionale</p>
+          <p className="text-[#4a3434] text-[10px] uppercase tracking-[0.5em] mb-4">Percorso Professionale</p>
           <h1 className="text-5xl md:text-8xl font-serif tracking-tighter leading-none mb-8">
-            Titoli e <span className="text-[#c5a5a5] italic font-light">Competenze</span>
+            Titoli e <span className="text-[#4a3434] italic font-light">Competenze</span>
           </h1>
           <div className="h-[1px] w-40 bg-[#c5a5a5]/30"></div>
         </div>
@@ -65,16 +65,16 @@ export default function AttestatiPage() {
           {certificazioni.map((cert, index) => (
             <div 
               key={index}
-              className="group relative p-8 bg-[#1a1414] border border-[#c5a5a5]/10 hover:border-[#c5a5a5]/40 transition-all duration-500 rounded-sm"
+              className="group relative p-8 bg-white border border-[#c5a5a5]/10 hover:border-[#c5a5a5]/40 transition-all duration-500 rounded-sm"
             >
               {/* Anno */}
-              <div className="text-[#c5a5a5] text-[10px] font-bold tracking-widest uppercase mb-6 flex items-center gap-3">
+              <div className="text-[#4a3434] text-[10px] font-bold tracking-widest uppercase mb-6 flex items-center gap-3">
                 <span className="w-8 h-[1px] bg-[#c5a5a5]/30"></span>
                 {cert.year}
               </div>
 
               {/* Titolo e Istituzione */}
-              <h3 className="text-xl font-serif mb-4 leading-snug group-hover:text-[#c5a5a5] transition-colors">
+              <h3 className="text-xl font-serif mb-4 leading-snug group-hover:text-[#4a3434] transition-colors">
                 {cert.title}
               </h3>
               <p className="text-xs text-zinc-500 mb-10 leading-relaxed font-light uppercase tracking-wider">
@@ -88,7 +88,7 @@ export default function AttestatiPage() {
                     key={bIndex}
                     href={btn.link}
                     target="_blank"
-                    className="text-[9px] font-bold tracking-[0.2em] px-4 py-2 border border-[#c5a5a5]/20 text-[#c5a5a5] hover:bg-[#c5a5a5] hover:text-[#120d0d] transition-all uppercase"
+                    className="text-[9px] font-bold tracking-[0.2em] px-4 py-2 border border-[#c5a5a5]/20 text-[#4a3434] hover:bg-[#c5a5a5] hover:text-[#120d0d] transition-all uppercase"
                   >
                     {btn.label}
                   </Link>
