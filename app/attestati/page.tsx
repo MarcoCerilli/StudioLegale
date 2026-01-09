@@ -48,14 +48,16 @@ const certificazioni = [
 
 export default function AttestatiPage() {
   return (
-   <main className="min-h-screen bg-cream text-[#2d2424] pt-32 pb-20">
+    <main className="min-h-screen bg-[#faf9f6] text-[#2d2424] pt-40 pb-24 selection:bg-[#c5a5a5]/30">
       <div className="container mx-auto px-6 max-w-7xl">
         
-        {/* Header Sezione */}
+        {/* Header Sezione - Titolo bicolore armonizzato */}
         <div className="mb-24">
-          <p className="text-[#4a3434] text-[10px] uppercase tracking-[0.5em] mb-4">Percorso Professionale</p>
-          <h1 className="text-5xl md:text-8xl font-serif tracking-tighter leading-none mb-8">
-            Titoli e <span className="text-[#4a3434] italic font-light">Competenze</span>
+          <p className="text-[#8b5e5e] text-[10px] font-bold uppercase tracking-[0.5em] mb-4">
+            Curriculum Professionale
+          </p>
+          <h1 className="text-6xl md:text-8xl font-serif tracking-tighter leading-none mb-8">
+            Titoli e <span className="text-[#8b5e5e] italic font-medium">Competenze.</span>
           </h1>
           <div className="h-[1px] w-40 bg-[#c5a5a5]/30"></div>
         </div>
@@ -65,30 +67,30 @@ export default function AttestatiPage() {
           {certificazioni.map((cert, index) => (
             <div 
               key={index}
-              className="group relative p-8 bg-white border border-[#c5a5a5]/10 hover:border-[#c5a5a5]/40 transition-all duration-500 rounded-sm"
+              className="group relative p-10 bg-white border border-[#c5a5a5]/10 hover:border-[#c5a5a5]/40 transition-all duration-500 rounded-sm shadow-[0_10px_30px_rgba(0,0,0,0.02)] hover:shadow-[0_20px_50px_rgba(74,52,52,0.05)]"
             >
-              {/* Anno */}
-              <div className="text-[#4a3434] text-[10px] font-bold tracking-widest uppercase mb-6 flex items-center gap-3">
-                <span className="w-8 h-[1px] bg-[#c5a5a5]/30"></span>
+              {/* Anno stilizzato */}
+              <div className="text-[#8b5e5e] text-[10px] font-bold tracking-widest uppercase mb-8 flex items-center gap-3">
+                <span className="w-8 h-[1px] bg-[#c5a5a5]/40"></span>
                 {cert.year}
               </div>
 
               {/* Titolo e Istituzione */}
-              <h3 className="text-xl font-serif mb-4 leading-snug group-hover:text-[#4a3434] transition-colors">
+              <h3 className="text-2xl font-serif mb-6 leading-tight text-[#2d2424] group-hover:text-[#8b5e5e] transition-colors">
                 {cert.title}
               </h3>
-              <p className="text-xs text-zinc-500 mb-10 leading-relaxed font-light uppercase tracking-wider">
+              <p className="text-[11px] text-[#4a3434]/60 mb-12 leading-relaxed font-light uppercase tracking-wider">
                 {cert.institution}
               </p>
 
-              {/* Pulsanti */}
-              <div className="flex flex-wrap gap-3 mt-auto">
+              {/* Pulsanti Minimali */}
+              <div className="flex flex-wrap gap-2 mt-auto">
                 {cert.buttons.map((btn, bIndex) => (
                   <Link
                     key={bIndex}
                     href={btn.link}
                     target="_blank"
-                    className="text-[9px] font-bold tracking-[0.2em] px-4 py-2 border border-[#c5a5a5]/20 text-[#4a3434] hover:bg-[#c5a5a5] hover:text-[#120d0d] transition-all uppercase"
+                    className="text-[10px] font-bold tracking-widest px-5 py-3 border border-[#c5a5a5]/20 text-[#4a3434] hover:bg-[#4a3434] hover:text-white hover:border-[#4a3434] transition-all duration-300 uppercase"
                   >
                     {btn.label}
                   </Link>
@@ -96,6 +98,13 @@ export default function AttestatiPage() {
               </div>
             </div>
           ))}
+        </div>
+
+        {/* Nota di chiusura SEO-friendly */}
+        <div className="mt-24 pt-12 border-t border-[#c5a5a5]/10 text-center md:text-left">
+          <p className="text-[#4a3434]/50 text-xs font-light max-w-2xl leading-relaxed">
+            Il costante aggiornamento professionale e il conseguimento di titoli specialistici presso istituzioni di rilievo come l'Ordine degli Avvocati di Roma e l'Università Roma Tre, garantiscono un'assistenza legale d'eccellenza basata sulle più recenti evoluzioni del diritto.
+          </p>
         </div>
       </div>
     </main>
