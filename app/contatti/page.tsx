@@ -14,14 +14,14 @@ const WhatsAppIcon = ({ className }: { className?: string }) => (
 );
 
 export default function ContattiPage() {
-  const mapUrl = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2994.484!2d13.245!3d41.285!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDHCsDE3JzA2LjAiTiAxM8KwMTQnNDIuMCJF!5e0!3m2!1sit!2sit!4v123456789";
+  const mapUrl =
+    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2994.484!2d13.245!3d41.285!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDHCsDE3JzA2LjAiTiAxM8KwMTQnNDIuMCJF!5e0!3m2!1sit!2sit!4v123456789";
 
   return (
     // FIX SPAZIO: pt-40 -> pt-24
     <main className="min-h-screen bg-cream text-charcoal pt-24 pb-24 selection:bg-rosewood-light/30">
       <div className="container mx-auto px-6 max-w-7xl">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-stretch">
-          
           {/* COLONNA SINISTRA */}
           <div className="flex flex-col justify-between space-y-12">
             <div className="space-y-6">
@@ -37,7 +37,9 @@ export default function ContattiPage() {
 
               <div className="space-y-10 border-l border-rosewood-light/30 pl-8 mt-12">
                 <section className="space-y-4">
-                  <p className="text-[10px] uppercase tracking-[0.4em] text-rosewood font-bold">Riferimenti Professionali</p>
+                  <p className="text-[10px] uppercase tracking-[0.4em] text-rosewood font-bold">
+                    Riferimenti Professionali
+                  </p>
                   <p className="text-xl font-serif italic text-sepia-dark leading-snug">
                     Avvocato iscritto all&apos;Ordine di Roma (n. A36343)
                   </p>
@@ -48,20 +50,30 @@ export default function ContattiPage() {
                 </section>
 
                 <section className="space-y-4">
-                  <p className="text-[10px] uppercase tracking-[0.4em] text-rosewood font-bold">Sede Legale</p>
+                  <p className="text-[10px] uppercase tracking-[0.4em] text-rosewood font-bold">
+                    Sede Legale
+                  </p>
                   <p className="text-2xl font-serif leading-relaxed">
                     Via Palermo, 16 <br />
-                    <span className="text-sepia-dark/60 text-sm font-sans tracking-widest uppercase">04019 Terracina (LT)</span>
+                    <span className="text-sepia-dark/60 text-sm font-sans tracking-widest uppercase">
+                      04019 Terracina (LT)
+                    </span>
                   </p>
                 </section>
               </div>
             </div>
 
             <div className="pt-12 flex flex-col space-y-6 border-t border-sepia-dark/10">
-              <a href="tel:+393291246316" className="text-3xl font-serif hover:text-rosewood transition-colors italic">
+              <a
+                href="tel:+393291246316"
+                className="text-3xl font-serif hover:text-rosewood transition-colors italic"
+              >
                 329 124 6316
               </a>
-              <a href="mailto:ass.legale@gmail.com" className="text-xl font-serif hover:text-rosewood transition-colors">
+              <a
+                href="mailto:ass.legale@gmail.com"
+                className="text-xl font-serif hover:text-rosewood transition-colors"
+              >
                 ass.legale@gmail.com
               </a>
             </div>
@@ -84,35 +96,48 @@ export default function ContattiPage() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {/* WhatsApp Box - Arrotondato */}
-              <a 
+              <a
                 href="https://wa.me/393291246316"
-                className="group bg-white border border-sepia-dark/5 p-8 flex flex-col justify-between transition-all duration-500 rounded-4xl hover:-translate-y-2 hover:shadow-2xl hover:border-rosewood/20"
+                className="group bg-white border border-sepia-dark/5 p-8 flex flex-col justify-between transition-all duration-500 rounded-4xl hover:-translate-y-2 hover:shadow-2xl hover:border-[#25D366]/20"
               >
                 <div className="flex justify-between items-start mb-12">
-                  <div className="p-4 bg-cream rounded-full text-charcoal group-hover:bg-[#25D366] group-hover:text-white transition-all duration-500">
+                  {/* Il cerchio è sempre verde, l'icona sempre bianca */}
+                  <div className="p-4 bg-[#25D366] rounded-full text-white shadow-lg shadow-[#25D366]/20 transition-all duration-500 group-hover:scale-110">
                     <WhatsAppIcon className="w-6 h-6" />
                   </div>
-                  <ArrowRight className="w-5 h-5 text-charcoal/20 group-hover:text-charcoal group-hover:translate-x-1 transition-all" />
+                  <ArrowRight className="w-5 h-5 text-charcoal/20 group-hover:text-[#25D366] group-hover:translate-x-1 transition-all" />
                 </div>
                 <div>
-                  <h4 className="font-serif text-xl italic mb-1 text-sepia-dark">WhatsApp Business</h4>
-                  <p className="text-[10px] uppercase tracking-widest text-charcoal/40 font-bold">Risposta rapida</p>
+                  <h4 className="font-serif text-xl italic mb-1 text-sepia-dark">
+                    WhatsApp Business
+                  </h4>
+                  <p className="text-[10px] uppercase tracking-widest text-[#25D366] font-bold">
+                    Risposta rapida
+                  </p>
                 </div>
               </a>
 
-              {/* Consulenza Box - Arrotondato */}
-              <Link 
+              {/* 2. Consulenza Box - VERSIONE LIGHT & ELEGANTE */}
+              <Link
                 href="/prenota-consulenza"
-                className="group bg-[#3d3330] p-8 flex flex-col justify-between transition-all duration-500 rounded-4xl hover:bg-rosewood hover:-translate-y-2 hover:shadow-[0_20px_50px_rgba(100,30,30,0.2)]"
+                /* Cambiato bg-[#4A423F] con un grigio seta chiarissimo bg-[#F4F1F0] */
+                className="group bg-[#F4F1F0] p-8 flex flex-col justify-between transition-all duration-500 rounded-4xl border border-charcoal/5 hover:bg-rosewood hover:-translate-y-2 hover:shadow-2xl group"
               >
                 <div className="flex justify-between items-start mb-12">
-                  <div className="p-4 bg-white/10 rounded-full text-white">
+                  {/* Icona scura che diventa bianca al passaggio */}
+                  <div className="p-4 bg-charcoal/5 rounded-full text-charcoal group-hover:bg-white/20 group-hover:text-white transition-all duration-500">
                     <ArrowRight className="w-6 h-6" />
                   </div>
                 </div>
+
                 <div>
-                  <h4 className="font-serif text-xl italic mb-1 text-white">Consulenza</h4>
-                  <p className="text-[10px] uppercase tracking-widest text-white/50 font-bold">Prenota Appuntamento</p>
+                  {/* Testo scuro che diventa bianco al passaggio */}
+                  <h4 className="font-serif text-xl italic mb-1 text-charcoal group-hover:text-white transition-colors duration-500">
+                    Consulenza
+                  </h4>
+                  <p className="text-[10px] uppercase tracking-widest text-charcoal/40 font-bold group-hover:text-white/60 transition-colors duration-500">
+                    Prenota Appuntamento
+                  </p>
                 </div>
               </Link>
             </div>
