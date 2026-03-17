@@ -16,7 +16,6 @@ export default function PrenotaPage() {
   return (
     <main className="bg-cream min-h-screen pt-28 pb-20 px-6">
       <div className="max-w-6xl mx-auto">
-        
         {/* Header Sezione */}
         <div className="text-center mb-16 space-y-4">
           <div className="inline-flex items-center gap-2 bg-rosewood/10 px-4 py-2 rounded-full mb-4">
@@ -32,16 +31,18 @@ export default function PrenotaPage() {
             </span>
           </h1>
           <p className="text-charcoal/70 max-w-2xl mx-auto text-lg font-light leading-relaxed">
-            Un colloquio conoscitivo di circa 30 minuti per analizzare i fatti, 
-            valutare la fattibilità del caso e definire insieme la strategia legale migliore.
+            Un colloquio conoscitivo di circa 30 minuti per analizzare i fatti,
+            valutare la fattibilità del caso e definire insieme la strategia
+            legale migliore.
           </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-          
           {/* Form di Prenotazione */}
           <div className="bg-white p-8 md:p-12 rounded-[3rem] shadow-2xl border border-rosewood/5">
-            <h3 className="font-serif text-3xl mb-8">Richiedi un Appuntamento</h3>
+            <h3 className="font-serif text-3xl mb-8">
+              Richiedi un Appuntamento
+            </h3>
             <form className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <input
@@ -53,11 +54,20 @@ export default function PrenotaPage() {
                   className="w-full p-4 bg-cream/30 rounded-2xl text-sm outline-none border border-transparent focus:border-rosewood/20"
                 />
               </div>
-              
-              <select className="w-full p-4 bg-cream/30 rounded-2xl text-sm outline-none border border-transparent focus:border-rosewood/20 appearance-none cursor-pointer">
-                <option value=" " disabled selected>Seleziona l&apos;area di interesse</option>
-                <option value="diritto-civile">Diritto Civile e Famiglia</option>
-                <option value="risarcimento">Risarcimento Danni / Infortunistica</option>
+
+              <select
+                defaultValue="default"
+                className="w-full p-4 bg-cream/30 rounded-2xl text-sm outline-none border border-transparent focus:border-rosewood/20 appearance-none cursor-pointer"
+              >
+                <option value="default">
+                  Seleziona l&apos;area di interesse
+                </option>
+                <option value="diritto-civile">
+                  Diritto Civile e Famiglia
+                </option>
+                <option value="risarcimento">
+                  Risarcimento Danni / Infortunistica
+                </option>
                 <option value="penale">Diritto Penale</option>
                 <option value="lavoro">Diritto del Lavoro</option>
                 <option value="altro">Altra esigenza legale</option>
@@ -77,8 +87,13 @@ export default function PrenotaPage() {
                     className="mt-1 accent-rosewood h-4 w-4"
                     required
                   />
-                  <label htmlFor="transparency" className="text-[11px] text-charcoal/70 leading-tight">
-                    Confermo la richiesta di <strong>consulenza gratuita (30 min)</strong> e acconsento al trattamento dei dati per il contatto professionale.
+                  <label
+                    htmlFor="transparency"
+                    className="text-[11px] text-charcoal/70 leading-tight"
+                  >
+                    Confermo la richiesta di{" "}
+                    <strong>consulenza gratuita (30 min)</strong> e acconsento
+                    al trattamento dei dati per il contatto professionale.
                   </label>
                 </div>
               </div>
@@ -92,25 +107,31 @@ export default function PrenotaPage() {
 
           {/* Colonna Destra: Info & WhatsApp */}
           <div className="space-y-8">
-            
             {/* Box Etica Professionale */}
             <div className="bg-charcoal p-10 rounded-[3rem] shadow-xl relative overflow-hidden">
               <Scale className="absolute -right-4 -bottom-4 w-32 h-32 text-white/5 -rotate-12" />
               <div className="relative z-10">
                 <Scale className="w-10 h-10 text-rosewood mb-6" />
-                <h3 className="font-serif text-3xl mb-4 italic text-cream">Trasparenza Totale.</h3>
+                <h3 className="font-serif text-3xl mb-4 italic text-cream">
+                  Trasparenza Totale.
+                </h3>
                 <p className="font-light text-cream/80 leading-relaxed mb-8 text-sm">
-                  La prima consulenza è finalizzata all&apos;inquadramento del problema. 
-                  Qualora si rendesse necessaria un&apos;attività stragiudiziale o giudiziale, 
-                  verrà fornito un <strong>preventivo scritto dettagliato</strong> prima di procedere.
+                  La prima consulenza è finalizzata all&apos;inquadramento del
+                  problema. Qualora si rendesse necessaria un&apos;attività
+                  stragiudiziale o giudiziale, verrà fornito un{" "}
+                  <strong>preventivo scritto dettagliato</strong> prima di
+                  procedere.
                 </p>
                 <ul className="space-y-4">
                   {[
                     "Analisi preliminare dei documenti",
                     "Valutazione dei tempi e dei costi",
-                    "Nessun obbligo di conferimento incarico"
+                    "Nessun obbligo di conferimento incarico",
                   ].map((item, i) => (
-                    <li key={i} className="flex items-center gap-3 text-sm text-cream">
+                    <li
+                      key={i}
+                      className="flex items-center gap-3 text-sm text-cream"
+                    >
                       <CheckCircle2 className="w-5 h-5 text-rosewood shrink-0" />
                       <span>{item}</span>
                     </li>
@@ -125,11 +146,14 @@ export default function PrenotaPage() {
                 <div className="w-10 h-10 bg-emerald-500/10 rounded-full flex items-center justify-center text-emerald-600">
                   <WhatsAppIcon className="w-5 h-5" />
                 </div>
-                <h3 className="font-serif text-2xl text-charcoal italic">Contatto Rapido</h3>
+                <h3 className="font-serif text-2xl text-charcoal italic">
+                  Contatto Rapido
+                </h3>
               </div>
               <p className="text-charcoal/60 mb-8 font-light text-sm leading-relaxed">
-                Preferisce un contatto immediato? Inviando un messaggio su WhatsApp può anticipare 
-                la documentazione per la sessione di consulenza.
+                Preferisce un contatto immediato? Inviando un messaggio su
+                WhatsApp può anticipare la documentazione per la sessione di
+                consulenza.
               </p>
               <a
                 href="https://wa.me/393291246316"
@@ -141,7 +165,6 @@ export default function PrenotaPage() {
                 Chatta con lo Studio
               </a>
             </div>
-
           </div>
         </div>
       </div>
