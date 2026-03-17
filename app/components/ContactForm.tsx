@@ -1,4 +1,5 @@
-'use client'
+'use client';
+
 import { useState } from 'react';
 
 export default function ContactForm() {
@@ -9,16 +10,22 @@ export default function ContactForm() {
     setStatus('loading');
 
     const formData = new FormData(e.currentTarget);
+    const data = Object.fromEntries(formData);
     
-    // NOTA: Sostituisci l'URL con il tuo endpoint REST di WordPress o una tua API Route
     try {
+      // Endpoint API di Next.js (da creare in app/api/contact/route.ts)
       const response = await fetch('/api/contact', {
         method: 'POST',
-        body: JSON.stringify(Object.fromEntries(formData)),
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
       });
 
-      if (response.ok) setStatus('success');
-      else setStatus('error');
+      if (response.ok) {
+        setStatus('success');
+      } else {
+        setStatus('error');
+      }
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (err) {
       setStatus('error');
     }
@@ -26,45 +33,79 @@ export default function ContactForm() {
 
   if (status === 'success') {
     return (
-      <div className="bg-white p-8 border border-[#c5a5a5]/20 text-center">
-        <p className="text-[#4a3434] font-serif text-xl">Messaggio inviato con successo.</p>
-        <p className="text-zinc-500 text-sm mt-2">La ricontatteremo al più presto.</p>
+      <div className="bg-cream p-10 border border-rosewood-light/30 text-center animate-in fade-in zoom-in duration-500">
+        <div className="w-16 h-16 bg-rosewood/10 rounded-full flex items-center justify-center mx-auto mb-6">
+          <svg className="w-8 h-8 text-rosewood" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+          </svg>
+        </div>
+        <p className="text-charcoal font-serif text-2xl mb-2">Messaggio inviato.</p>
+        <p className="text-sepia-dark/60 text-sm">La ricontatteremo entro 24 ore lavorative.</p>
+        <button 
+          onClick={() => setStatus('idle')}
+          className="mt-8 text-rosewood uppercase tracking-widest text-[10px] font-bold border-b border-rosewood/30 hover:border-rosewood transition-all"
+        >
+          Invia un altro messaggio
+        </button>
       </div>
     );
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4">
-      <input 
-        name="name"
-        type="text" 
-        placeholder="Il tuo nome" 
-        required
-        className="w-full bg-cream border border-[#c5a5a5]/10 rounded p-4 text-white focus:border-[#c5a5a5]/50 outline-none transition-all"
-      />
+    <form onSubmit={handleSubmit} className="space-y-5">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+        <input 
+          name="name"
+          type="text" 
+          placeholder="Nome e Cognome" 
+          required
+          className="w-full bg-cream border border-rosewood-light/20 rounded-sm p-4 text-charcoal placeholder:text-sepia-dark/40 focus:border-rosewood focus:ring-1 focus:ring-rosewood outline-none transition-all"
+        />
+        <input 
+          name="phone"
+          type="tel" 
+          placeholder="Telefono" 
+          required
+          className="w-full bg-cream border border-rosewood-light/20 rounded-sm p-4 text-charcoal placeholder:text-sepia-dark/40 focus:border-rosewood focus:ring-1 focus:ring-rosewood outline-none transition-all"
+        />
+      </div>
+      
       <input 
         name="email"
         type="email" 
-        placeholder="La tua email" 
+        placeholder="Indirizzo Email" 
         required
-        className="w-full bg-cream border border-[#c5a5a5]/10 rounded p-4 text-white focus:border-[#c5a5a5]/50 outline-none transition-all"
+        className="w-full bg-cream border border-rosewood-light/20 rounded-sm p-4 text-charcoal placeholder:text-sepia-dark/40 focus:border-rosewood focus:ring-1 focus:ring-rosewood outline-none transition-all"
       />
+      
       <textarea 
         name="message"
-        placeholder="Come posso aiutarla?" 
+        placeholder="Descriva brevemente il suo caso..." 
         required
-        rows={4}
-        className="w-full bg-cream border border-[#c5a5a5]/10 rounded p-4 text-white focus:border-[#c5a5a5]/50 outline-none transition-all resize-none"
+        rows={5}
+        className="w-full bg-cream border border-rosewood-light/20 rounded-sm p-4 text-charcoal placeholder:text-sepia-dark/40 focus:border-rosewood focus:ring-1 focus:ring-rosewood outline-none transition-all resize-none"
       ></textarea>
       
+      <div className="flex items-start gap-3 py-2">
+        <input type="checkbox" required id="privacy" className="mt-1 accent-rosewood" />
+        <label htmlFor="privacy" className="text-[10px] text-sepia-dark/60 leading-tight">
+          Acconsento al trattamento dei dati personali secondo la Privacy Policy dello Studio.
+        </label>
+      </div>
+
       <button 
         type="submit"
         disabled={status === 'loading'}
-        className="w-full bg-[#8b5e5e] text-white py-5 rounded font-bold uppercase tracking-[0.2em] text-[11px] hover:bg-[#a67c7c] transition-all disabled:opacity-50"
+        className="w-full bg-rosewood text-white py-5 rounded-sm font-bold uppercase tracking-[0.3em] text-[10px] hover:bg-sepia-dark transition-all disabled:opacity-50 shadow-md active:scale-[0.98]"
       >
-        {status === 'loading' ? 'Invio in corso...' : 'Invia Messaggio'}
+        {status === 'loading' ? 'Elaborazione in corso...' : 'Invia Richiesta di Consulenza'}
       </button>
-      {status === 'error' && <p className="text-red-400 text-xs mt-2">Si è verificato un errore. Riprova più tardi.</p>}
+
+      {status === 'error' && (
+        <div className="p-4 bg-red-50 border border-red-100 rounded text-red-600 text-[11px] text-center">
+          Si è verificato un errore. Per urgenze, la preghiamo di chiamare il <a href="tel:+393291246316" className="font-bold underline">329 124 6316</a>.
+        </div>
+      )}
     </form>
   );
 }

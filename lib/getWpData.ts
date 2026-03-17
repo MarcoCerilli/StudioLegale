@@ -1,97 +1,116 @@
-// /home/marco/progetti/studio-legale-fusco/lib/getWpData.ts
+const WP_GRAPHQL_ENDPOINT = "https://www.avvocatoannafusco.it/graphql";
 
-export async function getWpData(query: string, variables = {}) {
-  const endpoint = "https://www.avvocatoannafusco.it/graphql";
+// --- INTERFACCE ---
 
+export interface WpPageNode {
+  title: string;
+  uri: string;
+  slug: string;
+  content?: string;
+  featuredImage?: {
+    node: {
+      sourceUrl: string;
+    };
+  };
+}
+
+interface WpGraphQLResponse<T> {
+  data: T;
+  errors?: Array<{ message: string }>;
+}
+
+interface NavPagesData {
+  pages: {
+    nodes: WpPageNode[];
+  };
+}
+
+interface SinglePageData {
+  page: WpPageNode | null;
+}
+
+// --- FUNZIONI ---
+
+/**
+ * Funzione core tipizzata
+ */
+export async function getWpData<T>(query: string, variables = {}): Promise<T | null> {
   try {
-    const response = await fetch(endpoint, {
+    const response = await fetch(WP_GRAPHQL_ENDPOINT, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Accept': 'application/json',
       },
-      body: JSON.stringify({
-        query,
-        variables
-      }),
-      // 'no-store' è perfetto per vedere le modifiche al menu istantaneamente
-      cache: 'no-store',
+      body: JSON.stringify({ query, variables }),
+      next: { revalidate: 60 },
     });
 
-    const result = await response.json();
+    const json: WpGraphQLResponse<T> = await response.json();
 
-    if (result.errors) {
-      throw new Error(result.errors[0].message);
+    if (json.errors) {
+      console.error("[GraphQL Errors]:", json.errors);
+      return null;
     }
 
-    return result.data;
-  } catch (error: any) {
-    console.error("ERRORE FETCH DETTAGLIATO:", error.message);
-    throw error;
+    return json.data;
+  } catch (error) {
+    const errorMessage = error instanceof Error ? error.message : "Errore sconosciuto";
+    console.error("ERRORE NETWORK/WP:", errorMessage);
+    return null;
   }
 }
 
-export async function getNavServices() {
-  // MODIFICA: Ordiniamo per MENU_ORDER (l'ordine impostato su WP)
+/**
+ * Recupera i servizi per la navigazione con tipi espliciti
+ */
+export async function getNavServices(): Promise<WpPageNode[]> {
   const query = `
     query GetNav { 
-      pages(where: { orderby: { field: MENU_ORDER, order: ASC } }, first: 100) { 
+      pages(first: 100) { 
         nodes { 
           title 
           uri 
           slug 
-          menuOrder
         } 
       } 
     }`;
 
-  try {
-    const data = await getWpData(query);
+  const servicesSlugs = [
+    'avvocato-familiarista-terracina',
+    'risarcimento-danni-terracina',
+    'avvocato-tributarista-terracina',
+    'avvocato-societario-terracina',
+    'avvocato-del-lavoro-terracina',
+    'avvocato-penalista-terracina',
+  ];
 
-    // Invece di filtrare per slug (che ti costringe a modificare il codice ogni volta),
-    // ti consiglio di filtrare per le pagine che hanno un ordine impostato (> 0)
-    // o mantenere il tuo filtro ma ordinare il risultato.
+  const data = await getWpData<NavPagesData>(query);
+  
+  if (!data?.pages?.nodes) return [];
 
-    const servicesSlugs = [
-      'avvocato-familiarista-terracina',
-      'risarcimento-danni-terracina',
-      'avvocato-tributarista-terracina',
-      'avvocato-societario-terracina',
-      'avvocato-del-lavoro-terracina',
-      'avvocato-penalista-terracina',
-    ];
-
-   // 1. Filtriamo le pagine che appartengono ai servizi
-    const filteredPages = data.pages.nodes.filter((page: any) => 
-      servicesSlugs.includes(page.slug)
-    );
-
-    // 2. FORZIAMO l'ordinamento basandoci sulla posizione nell'array servicesSlugs
-    return filteredPages.sort((a: any, b: any) => {
-      return servicesSlugs.indexOf(a.slug) - servicesSlugs.indexOf(b.slug);
-    });
-
-  } catch (error) {
-    console.error("Errore nel recupero servizi nav:", error);
-    return [];
-  }
+  return data.pages.nodes
+    .filter((page) => servicesSlugs.includes(page.slug))
+    .sort((a, b) => servicesSlugs.indexOf(a.slug) - servicesSlugs.indexOf(b.slug));
 }
 
-export async function getPageContent(slug: string) {
+/**
+ * Recupera il contenuto di una singola pagina
+ */
+export async function getPageContent(uri: string): Promise<WpPageNode | null> {
   const query = `
-    query GetPageBySlug($id: ID!, $idType: PageIdType!) {
-      page(id: $id, idType: $idType) {
+    query GetPageByUri($uri: ID!) {
+      page(id: $uri, idType: URI) {
         title
         content
+        featuredImage {
+          node {
+            sourceUrl
+          }
+        }
       }
     }
   `;
 
-  try {
-    const data = await getWpData(query, { id: slug, idType: 'URI' });
-    return data?.page;
-  } catch (error) {
-    console.error(`Errore nel recupero della pagina ${slug}:`, error);
-    return null;
-  }
+  const data = await getWpData<SinglePageData>(query, { uri });
+  return data?.page ?? null;
 }

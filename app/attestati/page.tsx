@@ -48,18 +48,18 @@ const certificazioni = [
 
 export default function AttestatiPage() {
   return (
-    <main className="min-h-screen bg-[#faf9f6] text-[#2d2424] pt-40 pb-24 selection:bg-[#c5a5a5]/30">
+    <main className="min-h-screen bg-cream text-charcoal pt-48 pb-24 selection:bg-rosewood-light/30">
       <div className="container mx-auto px-6 max-w-7xl">
         
-        {/* Header Sezione - Titolo bicolore armonizzato */}
+        {/* Header Sezione */}
         <div className="mb-24">
-          <p className="text-[#8b5e5e] text-[10px] font-bold uppercase tracking-[0.5em] mb-4">
+          <p className="text-rosewood text-[10px] font-bold uppercase tracking-[0.5em] mb-4">
             Curriculum Professionale
           </p>
-          <h1 className="text-6xl md:text-8xl font-serif tracking-tighter leading-none mb-8">
-            Titoli e <span className="text-[#8b5e5e] italic font-medium">Competenze.</span>
+          <h1 className="text-6xl md:text-8xl font-serif tracking-tighter leading-none mb-8 text-charcoal">
+            Titoli e <span className="text-rosewood italic font-medium">Competenze.</span>
           </h1>
-          <div className="h-[1px] w-40 bg-[#c5a5a5]/30"></div>
+          <div className="h-1px w-40 bg-rosewood-light/30"></div>
         </div>
 
         {/* Griglia Certificazioni */}
@@ -67,30 +67,30 @@ export default function AttestatiPage() {
           {certificazioni.map((cert, index) => (
             <div 
               key={index}
-              className="group relative p-10 bg-white border border-[#c5a5a5]/10 hover:border-[#c5a5a5]/40 transition-all duration-500 rounded-sm shadow-[0_10px_30px_rgba(0,0,0,0.02)] hover:shadow-[0_20px_50px_rgba(74,52,52,0.05)]"
+              className="group relative flex flex-col p-10 bg-white border border-rosewood-light/10 hover:border-rosewood-light/40 transition-all duration-500 rounded-sm shadow-[0_10px_30px_rgba(0,0,0,0.02)] hover:shadow-[0_20px_50px_rgba(74,52,52,0.05)]"
             >
               {/* Anno stilizzato */}
-              <div className="text-[#8b5e5e] text-[10px] font-bold tracking-widest uppercase mb-8 flex items-center gap-3">
-                <span className="w-8 h-[1px] bg-[#c5a5a5]/40"></span>
+              <div className="text-rosewood text-[10px] font-bold tracking-widest uppercase mb-8 flex items-center gap-3">
+                <span className="w-8 h-1px bg-rosewood-light/40"></span>
                 {cert.year}
               </div>
 
               {/* Titolo e Istituzione */}
-              <h3 className="text-2xl font-serif mb-6 leading-tight text-[#2d2424] group-hover:text-[#8b5e5e] transition-colors">
+              <h3 className="text-2xl font-serif mb-6 leading-tight text-charcoal group-hover:text-rosewood transition-colors duration-300">
                 {cert.title}
               </h3>
-              <p className="text-[11px] text-[#4a3434]/60 mb-12 leading-relaxed font-light uppercase tracking-wider">
+              <p className="text-[11px] text-sepia-dark/60 mb-12 leading-relaxed font-light uppercase tracking-wider">
                 {cert.institution}
               </p>
 
-              {/* Pulsanti Minimali */}
+              {/* Pulsanti Minimali - Spinti in basso */}
               <div className="flex flex-wrap gap-2 mt-auto">
                 {cert.buttons.map((btn, bIndex) => (
                   <Link
                     key={bIndex}
                     href={btn.link}
                     target="_blank"
-                    className="text-[10px] font-bold tracking-widest px-5 py-3 border border-[#c5a5a5]/20 text-[#4a3434] hover:bg-[#4a3434] hover:text-white hover:border-[#4a3434] transition-all duration-300 uppercase"
+                    className="text-[9px] font-bold tracking-widest px-5 py-3 border border-rosewood-light/20 text-sepia-dark hover:bg-sepia-dark hover:text-white hover:border-sepia-dark transition-all duration-300 uppercase shadow-sm"
                   >
                     {btn.label}
                   </Link>
@@ -100,11 +100,17 @@ export default function AttestatiPage() {
           ))}
         </div>
 
-        {/* Nota di chiusura SEO-friendly */}
-        <div className="mt-24 pt-12 border-t border-[#c5a5a5]/10 text-center md:text-left">
-          <p className="text-[#4a3434]/50 text-xs font-light max-w-2xl leading-relaxed">
-            Il costante aggiornamento professionale e il conseguimento di titoli specialistici presso istituzioni di rilievo come l'Ordine degli Avvocati di Roma e l'Università Roma Tre, garantiscono un'assistenza legale d'eccellenza basata sulle più recenti evoluzioni del diritto.
+        {/* Nota di chiusura */}
+        <div className="mt-32 pt-12 border-t border-rosewood-light/10 flex flex-col md:flex-row justify-between items-center gap-8">
+          <p className="text-sepia-dark/50 text-xs font-light max-w-2xl leading-relaxed text-center md:text-left">
+            Il costante aggiornamento professionale presso istituzioni di rilievo come l&apos;Ordine degli Avvocati di Roma e l&apos;Università Roma Tre garantisce un&apos;assistenza legale d&apos;eccellenza basata sulle più recenti evoluzioni del diritto.
           </p>
+          <Link 
+            href="/contatti"
+            className="text-rosewood text-[10px] font-bold uppercase tracking-widest border-b border-rosewood-light/40 hover:border-rosewood transition-all"
+          >
+            Contatta lo studio per una consulenza
+          </Link>
         </div>
       </div>
     </main>

@@ -1,50 +1,59 @@
 @import "tailwindcss";
 
+/* 1. CONFIGURAZIONE TEMA (Tailwind v4) */
 @theme {
   --color-rosewood: #8b5e5e;
   --color-rosewood-light: #c5a5a5;
   --color-cream: #faf9f6;
-  
-  --font-serif: "Playfair Display", serif;
-  --font-sans: "Inter", sans-serif;
+  --color-charcoal: #2d2424;
+  --color-sepia-dark: #4a3434;
+
+  --font-serif: var(--font-serif), serif;
+  --font-sans: var(--font-sans), sans-serif;
 }
 
+/* 2. VARIABILI NATIVE E RESET */
 :root {
-  --background: #faf9f6; 
-  --foreground: #2d2424; 
-  --tw-prose-headings: #4a3434;
-  --tw-prose-links: #8b5e5e;
+  --background: var(--color-cream);
+  --foreground: var(--color-charcoal);
+  --tw-prose-headings: var(--color-sepia-dark);
+  --tw-prose-links: var(--color-rosewood);
 }
 
+/* 3. STILI DI BASE */
 @layer base {
-  html,
-  body {
-    background-color: #faf9f6;
-    color: #2d2424;
-  }
-  
-  body {
+  html, body {
+    background-color: var(--background);
+    color: var(--foreground);
     @apply antialiased;
   }
 
   h1, h2, h3, h4 {
     font-family: var(--font-serif);
+    color: var(--tw-prose-headings);
     @apply tracking-tight;
+  }
+
+  a {
+    color: var(--tw-prose-links);
+    @apply transition-colors duration-200 hover:opacity-80;
   }
 }
 
+/* 4. OVERRIDE PER TEMPLATE E TURBOPACK */
 @layer components {
   main {
-    background-color: #faf9f6 !important;
+    background-color: var(--color-cream);
   }
-  
-  .bg-\[#120d0d\],
-  .bg-\[#1a1414\] {
-    background-color: #faf9f6 !important;
+
+  /* Risoluzione contrasto per elementi scuri forzati */
+  [class*="bg-[#120d0d]"], 
+  [class*="bg-[#1a1414]"] {
+    background-color: var(--color-cream) !important;
   }
-  
-  .text-\[#f5f0f0\],
-  .text-\[#c5a5a5\] {
-    color: #2d2424 !important;
+
+  [class*="text-[#f5f0f0]"], 
+  [class*="text-[#c5a5a5]"] {
+    color: var(--color-charcoal) !important;
   }
 }

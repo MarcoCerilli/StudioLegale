@@ -66,57 +66,57 @@ const services = [
 
 export default function AreeDiAttivitaPage() {
   return (
-    <main className="min-h-screen bg-[#faf9f6] text-[#2d2424] pt-40 pb-20 selection:bg-[#c5a5a5]/30">
+    <main className="min-h-screen bg-cream text-charcoal pt-40 pb-20 selection:bg-rosewood-light/30">
       <div className="container mx-auto px-6 md:px-12">
         
         {/* Header Sezione */}
         <div className="max-w-4xl mb-24">
-          <span className="text-[#8b5e5e] text-[10px] uppercase tracking-[0.5em] mb-4 block font-bold">
+          <span className="text-rosewood text-[10px] uppercase tracking-[0.5em] mb-4 block font-bold">
             Competenze Forensi
           </span>
-          <h1 className="text-6xl md:text-8xl font-serif tracking-tighter mb-8 text-[#2d2424]">
-            Aree di <span className="text-[#8b5e5e] italic font-light">Intervento</span>
+          <h1 className="text-6xl md:text-8xl font-serif tracking-tighter mb-8 text-charcoal">
+            Aree di <span className="text-rosewood italic font-light">Intervento</span>
           </h1>
-          <div className="h-1 w-24 bg-[#c5a5a5]/40" />
+          <div className="h-1 w-24 bg-rosewood-light/40" />
         </div>
 
         {/* Grid Servizi */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
           {services.map((s, index) => (
             <Link key={s.slug} href={`/aree-di-attivita/${s.slug}`} className="group block h-full">
-              <div className="h-full bg-white p-12 border border-[#c5a5a5]/20 transition-all duration-700 relative overflow-hidden flex flex-col justify-between hover:shadow-[0_20px_50px_rgba(74,52,52,0.1)] group-hover:-translate-y-2">
+              <div className="h-full bg-white p-12 border border-rosewood-light/20 transition-all duration-700 relative overflow-hidden flex flex-col justify-between hover:shadow-[0_20px_50px_rgba(74,52,52,0.1)] group-hover:-translate-y-2">
                 
-                {/* Background Decorativo Hover */}
-                <div className="absolute top-0 right-0 w-32 h-32 bg-[#faf9f6] rounded-bl-full translate-x-32 -translate-y-32 group-hover:translate-x-16 group-hover:-translate-y-16 transition-transform duration-700 ease-out -z-0" />
+                {/* Decorazione Hover */}
+                <div className="absolute top-0 right-0 w-32 h-32 bg-cream rounded-bl-full translate-x-32 -translate-y-32 group-hover:translate-x-16 group-hover:-translate-y-16 transition-transform duration-700 ease-out z-0" />
 
                 <div className="relative z-10">
                   {/* Icona */}
-                  <div className="text-[#8b5e5e] mb-10 transform group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-500">
+                  <div className="text-rosewood mb-10 transform group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-500">
                     {s.icon}
                   </div>
 
-                  <h3 className="text-2xl font-serif mb-5 uppercase tracking-tight text-[#2d2424] group-hover:text-[#8b5e5e] transition-colors duration-300">
+                  <h3 className="text-2xl font-serif mb-5 uppercase tracking-tight text-charcoal group-hover:text-rosewood transition-colors duration-300">
                     {s.title}
                   </h3>
                   
-                  <p className="text-[#4a3434]/70 text-[15px] leading-relaxed mb-10 font-light">
+                  <p className="text-sepia-dark/70 text-[15px] leading-relaxed mb-10 font-light">
                     {s.description}
                   </p>
                 </div>
 
-                {/* Pulsante "Vedi Dettagli" Animato */}
-                <div className="relative z-10 flex items-center gap-4 text-[#8b5e5e] text-[11px] font-bold uppercase tracking-[0.3em] transition-all duration-300 group-hover:gap-6">
-                  <span className="group-hover:text-[#4a3434]">Vedi dettagli</span>
+                {/* Footer Card */}
+                <div className="relative z-10 flex items-center gap-4 text-rosewood text-[11px] font-bold uppercase tracking-[0.3em] transition-all duration-300 group-hover:gap-6">
+                  <span className="group-hover:text-charcoal transition-colors">Vedi dettagli</span>
                   <div className="relative flex items-center">
-                    <div className="h-[1px] w-8 bg-[#c5a5a5] group-hover:w-16 group-hover:bg-[#8b5e5e] transition-all duration-500" />
+                    <div className="h-px w-8 bg-rosewood-light group-hover:w-16 group-hover:bg-rosewood transition-all duration-500" />
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" className="w-3 h-3 absolute -right-4 opacity-0 group-hover:opacity-100 group-hover:-right-1 transition-all duration-500">
                       <path d="M9 5l7 7-7 7" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                     </svg>
                   </div>
                 </div>
 
-                {/* Numero decorativo in background */}
-                <span className="absolute bottom-6 right-8 text-8xl font-serif text-[#2d2424]/[0.03] pointer-events-none group-hover:text-[#8b5e5e]/10 transition-colors duration-700">
+                {/* Numero decorativo */}
+                <span className="absolute bottom-6 right-8 text-8xl font-serif text-charcoal/3 pointer-events-none group-hover:text-rosewood/10 transition-colors duration-700">
                   0{index + 1}
                 </span>
               </div>
