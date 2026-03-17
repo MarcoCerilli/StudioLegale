@@ -34,7 +34,6 @@ export default function Navbar({ services }: { services: Service[] }) {
     >
       <div className="flex justify-between items-center px-6 md:px-12 max-w-7xl mx-auto relative">
         {/* LOGO E TITOLO */}
-        {/* LOGO E TITOLO */}
         <Link
           href="/"
           className="flex items-center gap-5 group z-1001"

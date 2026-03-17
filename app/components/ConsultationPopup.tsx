@@ -6,60 +6,59 @@ export default function ConsultationPopup() {
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
-    // Mostra la popup dopo 5 secondi
     const timer = setTimeout(() => {
-      const hasSeenPopup = sessionStorage.getItem('hasSeenPopup');
-      if (!hasSeenPopup) {
-        setIsOpen(true);
-      }
-    }, 5000);
-
+      setIsOpen(true);
+    }, 3000); 
     return () => clearTimeout(timer);
   }, []);
 
   const closePopup = () => {
     setIsOpen(false);
-    sessionStorage.setItem('hasSeenPopup', 'true');
   };
 
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-100 flex items-center justify-center px-6 bg-charcoal/60 backdrop-blur-sm transition-all">
-      <div className="relative w-full max-w-lg bg-cream p-8 md:p-12 border border-rosewood-light/30 shadow-2xl scale-in-center">
-        <button 
-          onClick={closePopup}
-          className="absolute top-4 right-4 text-rosewood hover:text-charcoal transition-colors"
-        >
-          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M6 18L18 6M6 6l12 12" />
+    <div className="fixed inset-0 z-9999 flex items-center justify-center px-6 bg-charcoal/40 backdrop-blur-md transition-all duration-500">
+      <div className="relative w-full max-w-lg bg-cream p-8 md:p-12 border border-rosewood/10 shadow-[0_30px_100px_rgba(0,0,0,0.3)] rounded-[2.5rem] animate-in fade-in zoom-in duration-500 text-center">
+        
+        <button onClick={closePopup} className="absolute top-6 right-6 text-rosewood/40 hover:text-rosewood p-2 transition-colors">
+          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
           </svg>
         </button>
 
-        <div className="text-center">
-          <span className="text-rosewood text-[10px] font-bold uppercase tracking-[0.4em] mb-4 block">
-            Esclusivo Online
+        <div className="inline-flex items-center gap-2 bg-rosewood/10 px-4 py-1.5 rounded-full mb-6">
+          <span className="text-rosewood text-[9px] font-extrabold uppercase tracking-[0.2em]">
+            Prima Consulenza Gratuita
           </span>
-          <h2 className="text-3xl md:text-4xl font-serif text-charcoal mb-6 leading-tight">
-            Prima Consulenza <br /> <span className="italic">Gratuita.</span>
-          </h2>
-          <p className="text-sepia-dark/70 text-sm leading-relaxed mb-8">
-            Lo Studio Legale Fusco offre un primo colloquio orientativo gratuito per valutare la fattibilità del suo caso. Prenoti ora il suo appuntamento a Terracina.
-          </p>
-          
+        </div>
+
+        <h2 className="text-3xl md:text-4xl font-serif text-charcoal mb-6 leading-tight tracking-tight">
+          Valutazione Preliminare <br /> <span className="text-rosewood italic font-light">di 30 minuti.</span>
+        </h2>
+
+        <p className="text-charcoal/60 text-sm leading-relaxed mb-6 font-light">
+          Un colloquio orientativo dedicato all&apos;inquadramento tecnico del suo caso e alla verifica delle strategie difensive applicabili.
+        </p>
+
+        {/* Specifica richiesta dalla cliente */}
+        <div className="bg-charcoal/5 rounded-2xl p-4 mb-8">
+            <p className="text-[10px] text-sepia-dark/60 leading-relaxed italic">
+              *incontro è finalizzato all&apos;analisi di fattibilità e non costituisce parere legale esaustivo.
+            </p>
+        </div>
+        
+        <div className="flex flex-col gap-4">
           <Link 
-            href="/contatti#prenota" 
+            href="/prenota-consulenza" 
             onClick={closePopup}
-            className="block w-full py-4 bg-rosewood text-white text-[10px] uppercase tracking-[0.3em] font-bold hover:bg-sepia-dark transition-all shadow-lg"
+            className="block w-full py-5 bg-[#3d3330] text-white text-[10px] uppercase tracking-[0.3em] font-bold rounded-full hover:bg-rosewood transition-all shadow-xl active:scale-95"
           >
-            Prenota Ora
+            Prenota il tuo spazio
           </Link>
-          
-          <button 
-            onClick={closePopup}
-            className="mt-6 text-[9px] uppercase tracking-widest text-sepia-dark/40 hover:text-rosewood transition-colors"
-          >
-            Magari più tardi
+          <button onClick={closePopup} className="text-[9px] uppercase tracking-widest text-sepia-dark/40 hover:text-rosewood transition-colors font-medium">
+            Continua a navigare
           </button>
         </div>
       </div>

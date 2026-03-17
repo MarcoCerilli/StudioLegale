@@ -7,8 +7,8 @@ export default function AttestatiPage() {
       institution: "Certificazione Internazionale di Alfabetizzazione Digitale (Accredia)",
       year: "2025",
       buttons: [
-        { label: "EIPASS STANDARD", link: "/attestati/INSERISCI_NOME_FILE.png" },
-        { label: "7 MODULI USER", link: "/attestati/INSERISCI_NOME_FILE.png" },
+        { label: "EIPASS STANDARD", link: "/attestati/attestato-09.png" },
+        { label: "7 MODULI USER", link: "/attestati/attestato-08.png" },
       ],
     },
     {
@@ -24,17 +24,27 @@ export default function AttestatiPage() {
       institution: "Certificazione professionale Namirial – Idoneità e Cyber Security",
       year: "2024-2025",
       buttons: [
-        { label: "IDONEITÀ 2024", link: "/attestati/INSERISCI_NOME_FILE.png" },
-        { label: "CYBER SECURITY 2025", link: "/attestati/INSERISCI_NOME_FILE.png" },
+        { label: "IDONEITÀ 2024", link: "/attestati/attestato-01.png" },
+        { label: "CYBER SECURITY 2025", link: "/attestati/attestato-02.png" },
       ],
     },
     {
       title: "Master e Corsi in Diritto Condominiale",
-      institution: "Impugnazione delibere, recupero crediti e gestione morosità",
+      institution: "Specializzazione Didaxo: Impugnazione delibere, morosità e parti comuni",
       year: "2017",
       buttons: [
-        { label: "IMPUGNAZIONE", link: "/attestati/INSERISCI_NOME_FILE.png" },
-        { label: "RECUPERO CREDITI", link: "/attestati/INSERISCI_NOME_FILE.png" },
+        { 
+          label: "IMPUGNAZIONE", 
+          link: "/attestati/attestato-10.png" 
+        },
+        { 
+          label: "RECUPERO CREDITI", 
+          link: "/attestati/attestato-12.png" 
+        },
+        { 
+          label: "GESTIONE PARTI COMUNI", 
+          link: "/attestati/attestato-11.png" 
+        },
       ],
     },
     {
@@ -70,7 +80,7 @@ export default function AttestatiPage() {
       institution: "Istituzioni di Diritto Privato e Commerciale – LUMSA Università",
       year: "2015",
       buttons: [
-        { label: "VEDI NOMINA", link: "/attestati/INSERISCI_NOME_FILE.png" },
+        { label: "VEDI NOMINA", link: "/attestati/attestato-04.png" },
       ],
     },
     {
@@ -78,7 +88,7 @@ export default function AttestatiPage() {
       institution: "Iscrizione nell'elenco ufficiale dell'Ordine degli Avvocati di Roma",
       year: "2010",
       buttons: [
-        { label: "VEDI ISCRIZIONE", link: "/attestati/INSERISCI_NOME_FILE.png" },
+        { label: "VEDI ISCRIZIONE", link: "/attestati/attestato-03.png" },
       ],
     },
     {
@@ -86,7 +96,7 @@ export default function AttestatiPage() {
       institution: "Idoneità conseguita presso l'Ordine degli Avvocati di Roma",
       year: "2009-2010",
       buttons: [
-        { label: "VEDI ATTESTATO", link: "/attestati/INSERISCI_NOME_FILE.png" },
+        { label: "VEDI ATTESTATO", link: "/attestati/attestato-07.png" },
       ],
     },
     {
@@ -94,7 +104,7 @@ export default function AttestatiPage() {
       institution: "Università Roma Tre – Facoltà di Giurisprudenza",
       year: "2006",
       buttons: [
-        { label: "VEDI ATTESTATO", link: "/attestati/INSERISCI_NOME_FILE.png" },
+        { label: "VEDI ATTESTATO", link: "/attestati/attestato-06.png" },
       ],
     },
   ];
