@@ -8,8 +8,8 @@ export const dettagliServizi = {
       "Separazioni e divorzi",
       "Affidamento minori",
       "Successioni e donazioni",
-      "Contrattualistica civile"
-    ]
+      "Contrattualistica civile",
+    ],
   },
   "diritto-penale": {
     title: "Diritto Penale",
@@ -19,8 +19,8 @@ export const dettagliServizi = {
       "Reati contro la persona",
       "Reati patrimoniali",
       "Difesa processuale",
-      "Assistenza in fase di indagine"
-    ]
+      "Assistenza in fase di indagine",
+    ],
   },
   "diritto-del-lavoro": {
     title: "Diritto del Lavoro",
@@ -30,8 +30,8 @@ export const dettagliServizi = {
       "Impugnazione licenziamenti",
       "Recupero crediti da lavoro",
       "Mobbing e demansionamento",
-      "Contratti di collaborazione"
-    ]
+      "Contratti di collaborazione",
+    ],
   },
   "diritto-societario": {
     title: "Diritto Societario",
@@ -41,8 +41,8 @@ export const dettagliServizi = {
       "Costituzione di società",
       "Governance societaria",
       "Fusioni e acquisizioni",
-      "Gestione crisi d'impresa"
-    ]
+      "Gestione crisi d'impresa",
+    ],
   },
   "diritto-amministrativo": {
     title: "Diritto Amministrativo",
@@ -52,29 +52,31 @@ export const dettagliServizi = {
       "Ricorsi al TAR",
       "Appalti e concessioni",
       "Edilizia e urbanistica",
-      "Pubblico impiego"
-    ]
+      "Pubblico impiego",
+    ],
   },
   "risarcimento-danni": {
     title: "Risarcimento Danni",
-    desc: "Tutela completa per ottenere il giusto ristoro. In ambito di infortunistica e malasanità, lo Studio valuta il caso senza costi iniziali per l'assistito.",
-    focus: "Pagamento del compenso professionale solo a risultato ottenuto.",
+    desc: "Tutela completa per ottenere il giusto ristoro. Lo Studio garantisce la massima tutela senza barriere d'ingresso economiche, gestendo il caso con professionalità e trasparenza.",
+    focus:
+      "Infortunistica e Malasanità: zero anticipi e compenso solo a risultato.",
     punti: [
-      "Infortunistica stradale",
-      "Mala Sanità / Errore Medico",
-      "Fondo Garanzia Vittime Strada",
-      "Infortuni sul lavoro"
-    ]
+      "Infortunistica Stradale: gestione completa sinistri e Fondo di Garanzia Vittime della Strada (Senza costi per l'assistito).",
+      "Responsabilità Medica: tutela per errori medici con valutazione gratuita e compenso dovuto esclusivamente a risultato ottenuto.",
+      "Infortuni sul Lavoro: assistenza legale per il riconoscimento del danno biologico e differenziale.",
+      "Analisi clinica preliminare: supporto di medici legali convenzionati per la quantificazione certa del danno.",
+    ],
   },
   "immigrazione-e-cittadinanza": {
     title: "Immigrazione e Cittadinanza",
     desc: "Assistenza legale per l'ottenimento e il rinnovo di titoli di soggiorno, cittadinanza e ricongiungimenti familiari, con aggiornamento costante sulle normative vigenti.",
-    focus: "Tutela dei diritti dei cittadini stranieri e gestione pratica dei visti.",
+    focus:
+      "Tutela dei diritti dei cittadini stranieri e gestione pratica dei visti.",
     punti: [
       "Permesso di soggiorno e Rinnovi",
       "Ricongiungimento familiare",
       "Pratiche per Cittadinanza Italiana",
-      "Ricorsi contro espulsioni e visti negati"
-    ]
-  }
+      "Ricorsi contro espulsioni e visti negati",
+    ],
+  },
 };
