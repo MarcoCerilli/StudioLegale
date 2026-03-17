@@ -11,14 +11,7 @@ export default function AttestatiPage() {
         { label: "7 MODULI USER", link: "/attestati/attestato-08.png" },
       ],
     },
-    {
-      title: "Patrocinio davanti alle Magistrature Superiori",
-      institution: "Abilitazione all'esercizio innanzi alla Corte di Cassazione",
-      year: "2024",
-      buttons: [
-        { label: "VEDI ABILITAZIONE", link: "/attestati/INSERISCI_NOME_FILE.png" },
-      ],
-    },
+
     {
       title: "Operatore RAO (Firma Digitale e SPID)",
       institution: "Certificazione professionale Namirial – Idoneità e Cyber Security",
@@ -52,29 +45,12 @@ export default function AttestatiPage() {
       institution: "Formazione specialistica su PAT e notifiche presso Tribunali e Corti d'Appello",
       year: "2015-2017",
       buttons: [
-        { label: "PAT 2015", link: "/attestati/INSERISCI_NOME_FILE.png" },
+        { label: "PAT 2015", link: "/attestati/attestato-05.png" },
         { label: "NOTIFICHE I", link: "/attestati/attestato-14.png" },
         { label: "NOTIFICHE II", link: "/attestati/attestato-13.png" },
       ],
     },
-    {
-      title: "Conciliazione e Mediazione Civile",
-      institution: "Mediatore Professionista ex D.Lgs. 28/2010 – Formazione accreditata",
-      year: "2011-2013",
-      buttons: [
-        { label: "MEDIATORE 2011", link: "/attestati/INSERISCI_NOME_FILE.png" },
-        { label: "AGGIORNAMENTO", link: "/attestati/INSERISCI_NOME_FILE.png" },
-      ],
-    },
-    {
-      title: "Diritto di Famiglia e Minorile",
-      institution: "Formazione specialistica sui diritti e la tutela dei minori",
-      year: "2012",
-      buttons: [
-        { label: "CORSO 2012", link: "/attestati/INSERISCI_NOME_FILE.png" },
-        { label: "ATTESTATO", link: "/attestati/INSERISCI_NOME_FILE.png" },
-      ],
-    },
+  
     {
       title: "Nomina a Cultore della Materia",
       institution: "Istituzioni di Diritto Privato e Commerciale – LUMSA Università",
