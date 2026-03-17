@@ -4,7 +4,8 @@ export default function AttestatiPage() {
   const certificazioni = [
     {
       title: "Competenze Digitali – EIPASS Standard",
-      institution: "Certificazione Internazionale di Alfabetizzazione Digitale (Accredia)",
+      institution:
+        "Certificazione Internazionale di Alfabetizzazione Digitale (Accredia)",
       year: "2025",
       buttons: [
         { label: "EIPASS STANDARD", link: "/attestati/attestato-09.png" },
@@ -14,7 +15,8 @@ export default function AttestatiPage() {
 
     {
       title: "Operatore RAO (Firma Digitale e SPID)",
-      institution: "Certificazione professionale Namirial – Idoneità e Cyber Security",
+      institution:
+        "Certificazione professionale Namirial – Idoneità e Cyber Security",
       year: "2024-2025",
       buttons: [
         { label: "IDONEITÀ 2024", link: "/attestati/attestato-01.png" },
@@ -23,26 +25,28 @@ export default function AttestatiPage() {
     },
     {
       title: "Master e Corsi in Diritto Condominiale",
-      institution: "Specializzazione Didaxo: Impugnazione delibere, morosità e parti comuni",
+      institution:
+        "Specializzazione Didaxo: Impugnazione delibere, morosità e parti comuni",
       year: "2017",
       buttons: [
-        { 
-          label: "IMPUGNAZIONE", 
-          link: "/attestati/attestato-10.png" 
+        {
+          label: "IMPUGNAZIONE",
+          link: "/attestati/attestato-10.png",
         },
-        { 
-          label: "RECUPERO CREDITI", 
-          link: "/attestati/attestato-12.png" 
+        {
+          label: "RECUPERO CREDITI",
+          link: "/attestati/attestato-12.png",
         },
-        { 
-          label: "GESTIONE PARTI COMUNI", 
-          link: "/attestati/attestato-11.png" 
+        {
+          label: "GESTIONE PARTI COMUNI",
+          link: "/attestati/attestato-11.png",
         },
       ],
     },
     {
       title: "Processo Amministrativo e Notifiche Telematiche",
-      institution: "Formazione specialistica su PAT e notifiche presso Tribunali e Corti d'Appello",
+      institution:
+        "Formazione specialistica su PAT e notifiche presso Tribunali e Corti d'Appello",
       year: "2015-2017",
       buttons: [
         { label: "PAT 2015", link: "/attestati/attestato-05.png" },
@@ -50,18 +54,18 @@ export default function AttestatiPage() {
         { label: "NOTIFICHE II", link: "/attestati/attestato-13.png" },
       ],
     },
-  
+
     {
       title: "Nomina a Cultore della Materia",
-      institution: "Istituzioni di Diritto Privato e Commerciale – LUMSA Università",
+      institution:
+        "Istituzioni di Diritto Privato e Commerciale – LUMSA Università",
       year: "2015",
-      buttons: [
-        { label: "VEDI NOMINA", link: "/attestati/attestato-04.png" },
-      ],
+      buttons: [{ label: "VEDI NOMINA", link: "/attestati/attestato-04.png" }],
     },
     {
       title: "Difensori d'Ufficio Tribunale Minorenni",
-      institution: "Iscrizione nell'elenco ufficiale dell'Ordine degli Avvocati di Roma",
+      institution:
+        "Iscrizione nell'elenco ufficiale dell'Ordine degli Avvocati di Roma",
       year: "2010",
       buttons: [
         { label: "VEDI ISCRIZIONE", link: "/attestati/attestato-03.png" },
@@ -81,6 +85,23 @@ export default function AttestatiPage() {
       year: "2006",
       buttons: [
         { label: "VEDI ATTESTATO", link: "/attestati/attestato-06.png" },
+      ],
+    },
+    {
+      title: "Notificazioni Civili e Riforma Cartabia",
+      institution:
+        "Movimento Forense - Aggiornamento correttivo D.Lgs. 164/2024",
+      year: "2024",
+      buttons: [
+        { label: "VEDI AGGIORNAMENTO", link: "/attestati/attestato-17.png" },
+      ],
+    },
+    {
+      title: "Tutela dei Consumatori",
+      institution: "Asso-Consum - Corso di perfezionamento D.Lgs. 206/2005",
+      year: "2016",
+      buttons: [
+        { label: "VEDI ATTESTATO", link: "/attestati/attestato-18.png" },
       ],
     },
   ];
