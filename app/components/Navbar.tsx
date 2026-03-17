@@ -105,13 +105,6 @@ export default function Navbar({ services }: { services: Service[] }) {
           >
             Chi Sono
           </Link>
-          <Link
-            href="/attestati"
-            className="text-cream hover:text-rosewood-light transition-colors"
-            onClick={closeMenu}
-          >
-            Attestati
-          </Link>
 
           {/* DROP-DOWN AREE DI ATTIVITÀ */}
           <div className="relative group text-center md:text-left">
@@ -140,6 +133,13 @@ export default function Navbar({ services }: { services: Service[] }) {
               </div>
             </div>
           </div>
+          <Link
+            href="/attestati"
+            className="text-cream hover:text-rosewood-light transition-colors"
+            onClick={closeMenu}
+          >
+            Attestati
+          </Link>
 
           <Link
             href="/contatti"
