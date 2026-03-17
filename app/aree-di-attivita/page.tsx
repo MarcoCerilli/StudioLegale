@@ -66,7 +66,8 @@ const services = [
 
 export default function AreeDiAttivitaPage() {
   return (
-    <main className="min-h-screen bg-cream text-charcoal pt-40 pb-20 selection:bg-rosewood-light/30">
+    // FIX SPAZIO: pt-40 -> pt-20 (o pt-16) per avvicinare il contenuto alla Navbar
+    <main className="min-h-screen bg-cream text-charcoal pt-20 pb-20 selection:bg-rosewood-light/30">
       <div className="container mx-auto px-6 md:px-12">
         
         {/* Header Sezione */}
@@ -84,14 +85,16 @@ export default function AreeDiAttivitaPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
           {services.map((s, index) => (
             <Link key={s.slug} href={`/aree-di-attivita/${s.slug}`} className="group block h-full">
-              <div className="h-full bg-white p-12 border border-rosewood-light/20 transition-all duration-700 relative overflow-hidden flex flex-col justify-between hover:shadow-[0_20px_50px_rgba(74,52,52,0.1)] group-hover:-translate-y-2">
+              {/* SOFT DESIGN: Aggiunto rounded-3xl per coerenza con la sidebar */}
+              <div className="h-full bg-white p-12 border border-rosewood-light/10 round
+              ed-[2rem] transition-all duration-700 relative overflow-hidden flex flex-col justify-between hover:shadow-[0_40px_80px_rgba(74,52,52,0.08)] group-hover:-translate-y-2">
                 
                 {/* Decorazione Hover */}
                 <div className="absolute top-0 right-0 w-32 h-32 bg-cream rounded-bl-full translate-x-32 -translate-y-32 group-hover:translate-x-16 group-hover:-translate-y-16 transition-transform duration-700 ease-out z-0" />
 
                 <div className="relative z-10">
-                  {/* Icona */}
-                  <div className="text-rosewood mb-10 transform group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-500">
+                  {/* Icona - Stroke più sottile per eleganza */}
+                  <div className="text-rosewood mb-10 transform group-hover:scale-110 transition-transform duration-500">
                     {s.icon}
                   </div>
 
@@ -99,24 +102,21 @@ export default function AreeDiAttivitaPage() {
                     {s.title}
                   </h3>
                   
-                  <p className="text-sepia-dark/70 text-[15px] leading-relaxed mb-10 font-light">
+                  <p className="text-sepia-dark/60 text-[15px] leading-relaxed mb-10 font-light">
                     {s.description}
                   </p>
                 </div>
 
                 {/* Footer Card */}
                 <div className="relative z-10 flex items-center gap-4 text-rosewood text-[11px] font-bold uppercase tracking-[0.3em] transition-all duration-300 group-hover:gap-6">
-                  <span className="group-hover:text-charcoal transition-colors">Vedi dettagli</span>
+                  <span className="group-hover:text-charcoal transition-colors">Dettagli</span>
                   <div className="relative flex items-center">
-                    <div className="h-px w-8 bg-rosewood-light group-hover:w-16 group-hover:bg-rosewood transition-all duration-500" />
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" className="w-3 h-3 absolute -right-4 opacity-0 group-hover:opacity-100 group-hover:-right-1 transition-all duration-500">
-                      <path d="M9 5l7 7-7 7" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
+                    <div className="h-px w-8 bg-rosewood-light group-hover:w-12 group-hover:bg-rosewood transition-all duration-500" />
                   </div>
                 </div>
 
-                {/* Numero decorativo */}
-                <span className="absolute bottom-6 right-8 text-8xl font-serif text-charcoal/3 pointer-events-none group-hover:text-rosewood/10 transition-colors duration-700">
+                {/* Numero decorativo - Ancora più discreto */}
+                <span className="absolute bottom-6 right-8 text-8xl font-serif text-charcoal/30 pointer-events-none group-hover:text-rosewood/5 transition-colors duration-700">
                   0{index + 1}
                 </span>
               </div>

@@ -114,3 +114,24 @@ export async function getPageContent(uri: string): Promise<WpPageNode | null> {
   const data = await getWpData<SinglePageData>(query, { uri });
   return data?.page ?? null;
 }
+
+
+/**
+ * Recupera una lista di media filtrata per una ricerca
+ */
+export async function getAttestatiMedia(search: string): Promise<string | null> {
+  const query = `
+    query GetAttestati($search: String!) {
+      mediaItems(where: { search: $search }, first: 5) {
+        nodes {
+          sourceUrl
+          title
+        }
+      }
+    }
+  `;
+
+  const data = await getWpData<{ mediaItems: { nodes: { sourceUrl: string; title: string }[] } }>(query, { search });
+  // Restituisce il primo risultato utile
+  return data?.mediaItems?.nodes[0]?.sourceUrl ?? null;
+}

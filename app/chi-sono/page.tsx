@@ -3,18 +3,20 @@ import Link from 'next/link';
 
 export default function ChiSonoPage() {
   return (
-    <main className="min-h-screen bg-cream text-charcoal pt-48 pb-20 selection:bg-rosewood-light/30">
+    // FIX SPAZIO: pt-48 -> pt-24
+    <main className="min-h-screen bg-cream text-charcoal pt-24 pb-20 selection:bg-rosewood-light/30">
 
       <div className="container mx-auto px-6 max-w-7xl">
         
         {/* Sezione Introduttiva / Hero Personale */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-32">
           
-          <div className="relative aspect-4/5 w-full max-w-md mx-auto lg:mx-0 border border-rosewood-light/30 p-4 bg-white shadow-sm">
+          {/* Foto con angoli leggermente addolciti */}
+          <div className="relative aspect-4/5 w-full max-w-md mx-auto lg:mx-0 border border-rosewood-light/30 p-4 bg-white shadow-sm rounded-2xl">
             {/* Elemento decorativo dietro la foto */}
-            <div className="absolute inset-0 border border-rosewood-light/20 translate-x-6 translate-y-6 -z-10" />
+            <div className="absolute inset-0 border border-rosewood-light/20 translate-x-6 translate-y-6 -z-10 rounded-2xl" />
             
-            <div className="relative w-full h-full bg-charcoal overflow-hidden">
+            <div className="relative w-full h-full bg-charcoal overflow-hidden rounded-xl">
                <Image 
                  src="/images/profilo.webp" 
                  alt="Avv. Anna Fusco - Studio Legale Terracina"
@@ -61,14 +63,14 @@ export default function ChiSonoPage() {
           </div>
         </div>
 
-        {/* Sezione Valori */}
+        {/* Sezione Valori - Card Morbide */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-32">
           {[
             { title: "Esperienza", desc: "Oltre 15 anni di attività forense e consulenza specializzata in ambito civile e penale." },
             { title: "Metodo", desc: "Approccio multidisciplinare orientato alla risoluzione rapida ed efficace delle controversie." },
             { title: "Trasparenza", desc: "Rapporto fiduciario diretto con il cliente e preventivi chiari sin dal primo incontro." }
           ].map((item, i) => (
-            <div key={i} className="p-10 bg-white border border-rosewood-light/10 hover:border-rosewood-light transition-all duration-500 group shadow-sm">
+            <div key={i} className="p-10 bg-white border border-rosewood-light/10 hover:border-rosewood transition-all duration-500 group shadow-[0_10px_30px_rgba(0,0,0,0.02)] rounded-4xl">
               <h3 className="text-sm font-serif text-charcoal mb-4 uppercase tracking-widest group-hover:text-rosewood transition-colors font-bold">
                 {item.title}
               </h3>
@@ -78,14 +80,14 @@ export default function ChiSonoPage() {
           ))}
         </div>
 
-        {/* CTA Finale */}
+        {/* CTA Finale - Pulsante Arrotondato (rounded-full) */}
         <div className="text-center py-24 border-t border-rosewood-light/20">
           <h2 className="text-3xl md:text-5xl font-serif mb-12 italic text-charcoal max-w-4xl mx-auto leading-tight">
             &quot;Ogni controversia nasce da una storia, e ogni storia merita una tutela dedicata.&quot;
           </h2>
           <Link 
             href="/contatti" 
-            className="inline-block bg-rosewood text-white px-12 py-5 rounded-sm font-bold uppercase tracking-[0.3em] text-[10px] hover:bg-sepia-dark hover:scale-105 transition-all shadow-xl active:scale-95"
+            className="inline-block bg-[#3d3330] text-white px-12 py-5 rounded-full font-bold uppercase tracking-[0.3em] text-[10px] hover:bg-rosewood hover:scale-105 transition-all shadow-xl active:scale-95"
           >
             Fissa un colloquio in studio
           </Link>

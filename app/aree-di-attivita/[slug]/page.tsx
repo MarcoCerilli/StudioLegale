@@ -1,27 +1,27 @@
-import Link from 'next/link';
-import { Metadata } from 'next';
+import Link from "next/link";
+import { Metadata } from "next";
+import { Phone, MapPin } from "lucide-react"; // Importiamo icone pulite
 
 type Props = {
   params: Promise<{ slug: string }>;
 };
 
-// Generazione dinamica dei Metadata per ogni area legale
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const title = slug.replace(/-/g, ' ');
-  
+  const title = slug.replace(/-/g, " ");
   return {
     title: `Avvocato ${title.charAt(0).toUpperCase() + title.slice(1)} Terracina | Studio Legale Fusco`,
-    description: `Assistenza legale specialistica in ${title} a Terracina, Latina e Roma. Affidati all'esperienza dell'Avv. Anna Fusco per la tutela dei tuoi diritti.`,
+    description: `Assistenza legale specialistica in ${title} a Terracina.`,
   };
 }
 
 export default async function ServizioSingolo({ params }: Props) {
   const { slug } = await params;
-  const title = slug.replace(/-/g, ' ');
+  const title = slug.replace(/-/g, " ");
 
   return (
-    <main className="min-h-screen bg-cream text-charcoal pt-48 pb-20 px-6 selection:bg-rosewood-light/30">
+    // CAMBIATO: pt-48 -> pt-24 (o pt-28 se vuoi un filo di respiro in più)
+    <main className="min-h-screen bg-cream text-charcoal pt-24 pb-20 px-6 selection:bg-rosewood-light/30">
       <div className="container mx-auto max-w-5xl">
         
         {/* Navigazione Superiore */}
@@ -32,10 +32,10 @@ export default async function ServizioSingolo({ params }: Props) {
         </nav>
 
         <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif capitalize tracking-tight text-charcoal leading-tight">
-          {title}<span className="text-rosewood-light">.</span>
+          {title}
+          <span className="text-rosewood-light">.</span>
         </h1>
-        
-        {/* Linea di accento dinamica */}
+
         <div className="h-px w-24 bg-rosewood-light mt-8 mb-16" />
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-16 items-start">
@@ -43,54 +43,80 @@ export default async function ServizioSingolo({ params }: Props) {
           {/* Colonna Testo Principale */}
           <div className="lg:col-span-2 space-y-10 border-l border-rosewood-light/20 pl-8 md:pl-12">
             <p className="text-sepia-dark text-xl md:text-2xl font-serif italic leading-relaxed">
-              &quot;L&apos;approccio dello Studio Legale Fusco alla materia del <span className="text-rosewood font-medium uppercase tracking-tight not-italic">{title}</span> si fonda su un aggiornamento costante e una strategia mirata al caso concreto.&quot;
+              &quot;L&apos;approccio dello Studio Legale Fusco alla materia del{" "}
+              <span className="text-rosewood font-medium uppercase tracking-tight not-italic">
+                {title}
+              </span>{" "}
+              si fonda su un aggiornamento costante.&quot;
             </p>
-            
+
             <article className="space-y-6 text-sepia-dark/80 text-lg font-light leading-relaxed">
               <p>
-                Lo Studio Legale dell&apos;<strong>Avv. Anna Fusco</strong> a Terracina offre assistenza specialistica completa in questo ambito, garantendo una difesa tecnica solida e trasparente.
+                Lo Studio Legale dell&apos;<strong>Avv. Anna Fusco</strong> a
+                Terracina offre assistenza specialistica completa.
               </p>
               <p>
-                Il nostro metodo di lavoro si articola attraverso un&apos;analisi meticolosa della giurisprudenza più recente, supportando il cliente sia nella fase di consulenza stragiudiziale (per prevenire il contenzioso) sia nella fase giudiziale dinanzi ai Tribunali di <strong>Latina</strong>, <strong>Roma</strong> e su tutto il territorio nazionale.
+                Il nostro metodo si articola attraverso un&apos;analisi
+                meticolosa della giurisprudenza più recente.
               </p>
               <p className="font-serif italic text-rosewood">
-                La tutela del cliente è per noi una missione umana, prima che professionale.
+                La tutela del cliente è per noi una missione umana.
               </p>
             </article>
 
-            {/* Pulsante Torna Indietro */}
             <div className="pt-10 border-t border-rosewood-light/10">
-              <Link 
-                href="/aree-di-attivita" 
+              <Link
+                href="/aree-di-attivita"
                 className="inline-flex items-center gap-4 text-rosewood text-[11px] uppercase tracking-[0.3em] font-bold group"
               >
-                <span className="h-[px] w-8 bg-rosewood-light transition-all duration-500 group-hover:w-16 group-hover:bg-rosewood"></span>
+                <span className="h-px w-8 bg-rosewood-light transition-all duration-500 group-hover:w-16 group-hover:bg-rosewood"></span>
                 Tutte le aree di attività
               </Link>
             </div>
           </div>
 
-          {/* Sidebar CTA */}
-          <aside className="lg:col-span-1 sticky top-40">
-            <div className="bg-white border border-rosewood-light/20 p-10 shadow-[0_20px_50px_rgba(74,52,52,0.05)] text-center lg:text-left">
-              <h4 className="font-serif text-2xl mb-6 text-charcoal">Consulenza Diretta</h4>
-              <p className="text-sm text-sepia-dark/70 mb-8 leading-relaxed">
-                Hai bisogno di assistenza legale per <strong>{title}</strong>? <br />
-                Prenota un colloquio conoscitivo presso lo studio di <strong>Terracina</strong>.
-              </p>
-              <Link 
-                href="/contatti"
-                className="block w-full py-5 bg-sepia-dark text-white text-center text-[10px] uppercase tracking-[0.2em] font-bold hover:bg-rosewood transition-all shadow-lg active:scale-95"
-              >
-                Richiedi un Appuntamento
-              </Link>
-              <div className="mt-6 flex flex-col gap-2 text-[9px] uppercase tracking-widest text-sepia-dark/40">
-                <span>📍 Via Palermo, 16 — Terracina</span>
-                <span>📞 +39 329 124 6316</span>
+          {/* Sidebar CTA - MODERN SOFT DESIGN */}
+          <aside className="lg:col-span-1 sticky top-32">
+            <div className="bg-white p-8 md:p-10 shadow-[0_30px_70px_rgba(0,0,0,0.04)] border border-gray-50 rounded-[2.5rem]">
+              <div className="flex flex-col items-center text-center">
+                <h4 className="font-serif text-3xl text-charcoal mb-6 tracking-tight">
+                  Consulenza Diretta
+                </h4>
+
+                <div className="space-y-4 mb-10 text-gray-400 font-light leading-relaxed">
+                  <p className="text-base">
+                    Hai bisogno di assistenza legale per <br />
+                    <span className="text-rosewood font-medium italic lowercase">
+                      {title}
+                    </span>?
+                  </p>
+                  <p className="text-sm">
+                    Prenota un colloquio conoscitivo presso <br />
+                    lo studio di <span className="text-charcoal font-medium">Terracina</span>.
+                  </p>
+                </div>
+
+                {/* Pulsante Ottimizzato: w-full + padding bilanciato */}
+                <Link
+                  href="/contatti"
+                  className="w-full py-5 px-6 bg-[#3d3330] text-white text-[10px] uppercase tracking-[0.2em] font-extrabold rounded-full shadow-[0_12px_24px_rgba(61,51,48,0.2)] transition-all duration-500 hover:bg-rosewood hover:-translate-y-1.5 active:scale-95 text-center"
+                >
+                  Richiedi un Appuntamento
+                </Link>
+
+                <div className="mt-12 pt-8 border-t border-gray-50 w-full space-y-4">
+                  <div className="flex items-center justify-center gap-3 text-[9px] uppercase tracking-[0.2em] text-gray-300 font-medium">
+                    <MapPin className="w-3.5 h-3.5 text-rosewood/40" />
+                    <span>Via Palermo, 16 — Terracina</span>
+                  </div>
+                  <div className="flex items-center justify-center gap-3 text-[9px] uppercase tracking-[0.2em] text-gray-300 font-medium">
+                    <Phone className="w-3.5 h-3.5 text-rosewood/40" />
+                    <span>+39 329 124 6316</span>
+                  </div>
+                </div>
               </div>
             </div>
           </aside>
-
         </div>
       </div>
     </main>

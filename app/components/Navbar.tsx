@@ -151,10 +151,11 @@ export default function Navbar({ services }: { services: Service[] }) {
           </Link>
 
           {/* CTA BUTTON */}
+          {/* CTA BUTTON AGGIORNATO */}
           <Link
-            href="/contatti"
+            href="/prenota-consulenza" // Cambiato qui
             className="mt-6 md:mt-0 bg-rosewood text-white px-8 py-4 md:px-5 md:py-2.5 rounded-full text-xs md:text-[9px] font-bold 
-            hover:bg-rosewood-light hover:text-charcoal transition-all shadow-lg active:scale-95 text-center"
+  hover:bg-rosewood-light hover:text-charcoal transition-all shadow-lg active:scale-95 text-center uppercase tracking-widest"
             onClick={closeMenu}
           >
             Prenota Consulenza
