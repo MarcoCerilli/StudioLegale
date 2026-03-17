@@ -53,8 +53,8 @@ export default function AttestatiPage() {
       year: "2015-2017",
       buttons: [
         { label: "PAT 2015", link: "/attestati/INSERISCI_NOME_FILE.png" },
-        { label: "NOTIFICHE I", link: "/attestati/INSERISCI_NOME_FILE.png" },
-        { label: "NOTIFICHE II", link: "/attestati/INSERISCI_NOME_FILE.png" },
+        { label: "NOTIFICHE I", link: "/attestati/attestato-14.png" },
+        { label: "NOTIFICHE II", link: "/attestati/attestato-13.png" },
       ],
     },
     {

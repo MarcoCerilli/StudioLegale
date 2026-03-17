@@ -1,127 +1,98 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Metadata } from "next";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Gavel, Users, ShieldCheck, Scale } from "lucide-react";
 
-// RIFERIMENTI SEO RIPRISTINATI E PROTETTI
 export const metadata: Metadata = {
   title: "Avvocato Anna Fusco | Studio Legale a Terracina | Civile e Penale",
   description:
     "L'Avvocato Anna Fusco offre consulenza legale d'eccellenza a Terracina. Specializzata in diritto civile, penale e risarcimento danni. Difesa tecnica e valore umano.",
-  keywords: [
-    "Avvocato Terracina",
-    "Anna Fusco",
-    "Studio Legale Terracina",
-    "Risarcimento Danni",
-    "Diritto Civile",
-    "Diritto Penale",
-  ],
 };
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-white text-charcoal selection:bg-rosewood/20">
-      {/* HERO SECTION */}
-      <section className="relative h-screen min-h-175 flex items-center overflow-hidden bg-[#1a1515]">
+    <main className="min-h-screen bg-cream text-charcoal selection:bg-rosewood/20">
+      
+      {/* 1. HERO SECTION */}
+      <section className="relative h-[85vh] min-h-162.5 flex items-center overflow-hidden bg-charcoal">
         <div className="absolute inset-0 z-0">
           <Image
             src="/images/hero-avvocato.jpg"
             alt="Studio Legale Avvocato Anna Fusco Terracina"
             fill
-            className="object-cover opacity-40 grayscale-20 brightness-[0.6]"
+            className="object-cover opacity-60 brightness-110"
             priority
-            quality={100}
+            unoptimized
           />
-          <div className="absolute inset-0 bg-linear-to-r from-[#1a1515] via-[#1a1515]/60 to-transparent" />
+          <div className="absolute inset-0 bg-linear-to-r from-charcoal via-charcoal/40 to-transparent" />
         </div>
 
         <div className="relative z-10 container mx-auto px-6 md:px-12 lg:px-24">
           <div className="max-w-4xl">
             <div className="flex items-center gap-4 mb-8">
-              <div className="h-px w-8 bg-rosewood" />
-              <span className="text-white/60 text-[10px] tracking-[0.5em] uppercase font-medium">
-                Studio Legale Anna Fusco — Terracina
+              <div className="h-px w-12 bg-rosewood" />
+              <span className="text-white/60 text-[10px] tracking-[0.5em] uppercase font-bold">
+                Eccellenza Legale — Terracina
               </span>
             </div>
 
-            <h1 className="text-6xl md:text-8xl lg:text-[110px] font-serif mb-10 leading-[0.9] tracking-tighter text-white">
+            <h1 className="text-6xl md:text-8xl lg:text-[100px] font-serif mb-10 leading-[0.9] tracking-tighter text-white">
               Difesa tecnica, <br />
-              <span className="text-cream italic font-light opacity-90">
+              <span className="text-rosewood-light italic font-light">
                 valore umano.
               </span>
             </h1>
 
-            <p className="text-lg md:text-xl text-white/70 mb-12 max-w-2xl leading-relaxed font-light">
+            <p className="text-lg md:text-xl text-white/70 mb-12 max-w-xl leading-relaxed font-light">
               Assistenza legale specialistica fondata sul rigore accademico e
-              sulla tutela dinamica dei diritti. Eccellenza nel{" "}
-              <strong>Diritto Civile</strong> e <strong>Penale</strong>.
+              sulla tutela dinamica dei diritti.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-6">
-              {/* BUTTON 1: MORBIDO E IMPORTANTE */}
               <Link
                 href="/contatti"
-                className="flex items-center justify-center gap-3 px-12 py-5 bg-rosewood text-white font-bold transition-all hover:bg-white hover:text-rosewood shadow-[0_20px_40px_rgba(169,76,76,0.3)] rounded-full group"
+                className="flex items-center justify-center gap-3 px-12 py-5 bg-rosewood text-white font-bold transition-all hover:bg-white hover:text-rosewood rounded-full group shadow-xl"
               >
-                <span className="uppercase tracking-[0.2em] text-[10px]">
-                  Prenota Analisi Gratuita
-                </span>
+                <span className="uppercase tracking-[0.2em] text-[10px]">Prenota Analisi</span>
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </Link>
-
-              {/* BUTTON 2: MORBIDO E MINIMAL */}
-              <Link
-                href="/aree-di-attivita"
-                className="flex items-center justify-center px-12 py-5 border border-white/20 hover:border-white/60 text-white transition-all text-center uppercase tracking-[0.2em] text-[10px] rounded-full bg-white/5 backdrop-blur-sm"
-              >
-                Esplora Competenze
               </Link>
             </div>
           </div>
         </div>
-
-        <div className="absolute bottom-12 left-12 hidden lg:block">
-          <div className="flex flex-col items-center gap-6">
-            <p className="text-white/20 text-[9px] uppercase tracking-[0.6em] [writing-mode:vertical-lr] font-medium">
-              Legal Excellence
-            </p>
-            <div className="h-12 w-px bg-white/10" />
-          </div>
-        </div>
       </section>
 
-      {/* SEZIONE VALORI - DESIGN AMMORBIDITO */}
-      <section className="py-32 bg-white">
+      {/* 2. SEZIONE VALORI - CARD CHE SI ALZANO */}
+      <section className="py-24 md:py-32 bg-cream">
         <div className="container mx-auto px-6 max-w-6xl">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               {
                 num: "01",
                 title: "Ascolto Attivo",
-                desc: "Ogni caso inizia da una storia. Comprendiamo le vostre necessità per trasformarle in una strategia legale vincente.",
+                desc: "Comprendiamo le vostre necessità per trasformarle in una strategia legale vincente.",
               },
               {
                 num: "02",
                 title: "Strategia Tecnica",
-                desc: "Analisi meticolosa dei precedenti giurisprudenziali per garantire la massima efficacia difensiva tra Latina e Roma.",
+                desc: "Analisi meticolosa dei precedenti giurisprudenziali per garantire la massima efficacia.",
               },
               {
                 num: "03",
                 title: "Etica Forense",
-                desc: "Trasparenza totale sui costi e sulle probabilità di successo, nel pieno rispetto del codice deontologico.",
+                desc: "Trasparenza totale sui costi e sulle probabilità di successo in ogni fase.",
               },
             ].map((val, idx) => (
               <div 
                 key={idx} 
-                className="p-10 bg-cream/10 rounded-[2.5rem] border border-rosewood/5 hover:bg-white hover:shadow-xl hover:-translate-y-1 transition-all duration-500 group"
+                className="bg-white p-10 rounded-4xl border border-rosewood/5 shadow-sm hover:shadow-2xl hover:-translate-y-4 transition-all duration-500 group"
               >
-                <span className="text-rosewood text-xs font-serif italic block mb-6">
+                <span className="text-rosewood text-xl font-serif italic mb-6 block group-hover:scale-110 transition-transform origin-left">
                   {val.num}.
                 </span>
-                <h3 className="text-sm font-bold uppercase tracking-[0.3em] text-charcoal mb-4">
+                <h3 className="text-sm font-bold uppercase tracking-[0.3em] text-charcoal mb-4 group-hover:text-rosewood transition-colors">
                   {val.title}
                 </h3>
-                <p className="text-charcoal/60 text-[15px] leading-relaxed font-light">
+                <p className="text-charcoal/60 text-[15px] leading-relaxed font-light italic">
                   {val.desc}
                 </p>
               </div>
@@ -129,6 +100,68 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* 3. SEZIONE COMPETENZE - COMPATTA CON TESTI CHIARI */}
+      <section className="px-6 pb-24">
+        <div className="max-w-7xl mx-auto bg-rosewood text-white rounded-[3.5rem] p-10 md:p-16 shadow-2xl">
+          <div className="grid lg:grid-cols-3 gap-12 items-center">
+            
+            {/* Header Colonna Sinistra */}
+            <div className="lg:col-span-1">
+              <h2 className="text-4xl md:text-5xl font-serif mb-6 italic leading-tight text-white">
+                Aree di <br /> Intervento
+              </h2>
+              <p className="text-white/80 font-light mb-8 leading-relaxed text-sm md:text-base">
+                Supporto legale integrato tra diritto civile e penale, con particolare attenzione al valore umano.
+              </p>
+              <Link
+                href="/aree-di-attivita"
+                className="inline-block text-white uppercase tracking-widest text-[10px] font-bold border-b border-white/40 pb-2 hover:border-white transition-all"
+              >
+                Vedi tutte le aree
+              </Link>
+            </div>
+
+            {/* Griglia Competenze Destra - Testi forzati White */}
+            <div className="lg:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {[
+                { title: "Diritto Civile", icon: <Users className="w-6 h-6" /> },
+                { title: "Penale & Difesa", icon: <ShieldCheck className="w-6 h-6" /> },
+                { title: "Risarcimento Danni", icon: <Scale className="w-6 h-6" /> },
+                { title: "Famiglia & Minori", icon: <Gavel className="w-6 h-6" /> },
+              ].map((area, i) => (
+                <div
+                  key={i}
+                  className="flex items-center gap-6 bg-white/5 p-8 rounded-4xl hover:bg-white/10 transition-all duration-300 group border border-white/5"
+                >
+                  <div className="text-rosewood-light group-hover:text-white transition-colors">
+                    {area.icon}
+                  </div>
+                  <h4 className="text-lg font-serif italic text-white">
+                    {area.title}
+                  </h4>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 4. VISION / CITAZIONE */}
+      <section className="py-24 bg-cream">
+        <div className="container mx-auto px-6 text-center">
+          <div className="max-w-3xl mx-auto">
+            <blockquote className="text-2xl md:text-4xl font-serif italic text-charcoal mb-8 leading-snug">
+              “La giustizia non è solo un verdetto, è il percorso umano che
+              facciamo insieme.”
+            </blockquote>
+            <cite className="not-italic uppercase tracking-[0.5em] text-[10px] font-bold text-charcoal/40">
+              Avv. Anna Fusco
+            </cite>
+          </div>
+        </div>
+      </section>
+
     </main>
   );
 }

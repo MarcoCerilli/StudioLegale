@@ -6,7 +6,6 @@ import {
   Gavel,
   ShieldAlert,
   Globe2,
-  MessageCircle,
 } from "lucide-react"; // Aggiunto MessageCircle
 import { dettagliServizi } from "@/lib/data";
 import { notFound } from "next/navigation";
@@ -148,7 +147,7 @@ export default async function ServizioSingolo({ params }: Props) {
                     href="https://wa.me/393291246316"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-center gap-3 py-5 px-6 bg-[#25D366] text-white rounded-full font-bold text-[10px] uppercase tracking-[0.1em] transition-all duration-500 hover:shadow-[0_10px_20px_rgba(37,211,102,0.3)] hover:-translate-y-1 group"
+                    className="flex items-center justify-center gap-3 py-5 px-6 bg-[#25D366] text-white rounded-full font-bold text-[10px] uppercase tracking-widest transition-all duration-500 hover:shadow-[0_10px_20px_rgba(37,211,102,0.3)] hover:-translate-y-1 group"
                   >
                     <svg
                       viewBox="0 0 24 24"
@@ -169,20 +168,4 @@ export default async function ServizioSingolo({ params }: Props) {
   );
 }
 
-function ArrowRight({ className }: { className?: string }) {
-  return (
-    <svg
-      className={className}
-      fill="none"
-      viewBox="0 0 24 24"
-      stroke="currentColor"
-    >
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth={2}
-        d="M14 5l7 7m0 0l-7 7m7-7H3"
-      />
-    </svg>
-  );
-}
+
