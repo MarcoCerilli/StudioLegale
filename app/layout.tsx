@@ -58,7 +58,7 @@ export default async function RootLayout({
       <body className="bg-cream text-charcoal antialiased min-h-screen flex flex-col overflow-x-hidden">
         <Navbar services={services} />
         {/* Il tag main grow assicura che il footer stia sempre in fondo */}
-        <main className="grow w-full">
+        <main className="grow w-full pt-20 md:pt-28">
           {children}
         </main>
         <ConsultationPopup />
