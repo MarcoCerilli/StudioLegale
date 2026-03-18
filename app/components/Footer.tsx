@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { MapPin, Phone, ShieldCheck, Share2 } from "lucide-react";
+// Aggiunte icone Mail e AtSign
+import { MapPin, Phone, ShieldCheck, Share2, Mail, AtSign } from "lucide-react";
 import ProfessionalQr from "./ProfessionalQr";
 
 export default function Footer() {
@@ -23,7 +24,7 @@ export default function Footer() {
           </p>
         </div>
 
-        {/* Colonna 2: Contatti - Contrastati per accessibilità */}
+        {/* Colonna 2: Contatti - Icone aggiunte alle email */}
         <div className="md:border-x md:border-white/10 md:px-10 flex flex-col justify-center">
           <address className="not-italic space-y-4">
             <div className="flex items-center gap-3 text-[12px] text-cream">
@@ -31,29 +32,35 @@ export default function Footer() {
               <span>Via Palermo, 16, <strong className="text-white font-semibold">Terracina (LT)</strong></span>
             </div>
             
-            <div className="flex flex-col space-y-1.5 ml-7">
-              <a href="mailto:ass.legale@gmail.com" className="text-[11px] text-cream/80 hover:text-white underline decoration-rosewood-light/30 underline-offset-4 transition-all">
-                ass.legale@gmail.com
-              </a>
-              <a href="mailto:annafusco@ordineavvocatiroma.org" className="text-[11px] text-cream/80 hover:text-white underline decoration-rosewood-light/30 underline-offset-4 transition-all">
-                PEC: annafusco@ordineavvocatiroma.org
-              </a>
+            <div className="space-y-2.5">
+              <div className="flex items-center gap-3">
+                <Mail className="w-4 h-4 text-rosewood-light shrink-0" />
+                <a href="mailto:ass.legale@gmail.com" className="text-[11px] text-cream/80 hover:text-white underline decoration-rosewood-light/30 underline-offset-4 transition-all">
+                  ass.legale@gmail.com
+                </a>
+              </div>
+              
+              <div className="flex items-center gap-3">
+                <AtSign className="w-4 h-4 text-rosewood-light shrink-0" />
+                <a href="mailto:annafusco@ordineavvocatiroma.org" className="text-[11px] text-cream/80 hover:text-white underline decoration-rosewood-light/30 underline-offset-4 transition-all">
+                  PEC: annafusco@ordineavvocatiroma.org
+                </a>
+              </div>
             </div>
 
-            <a href="tel:+393291246316" className="flex items-center gap-3 text-[15px] text-white font-bold hover:text-rosewood-light transition-all">
-              <Phone className="w-4 h-4 text-rosewood-light" />
+            <a href="tel:+393291246316" className="flex items-center gap-3 text-[15px] text-white font-bold hover:text-rosewood-light transition-all pt-1">
+              <Phone className="w-4 h-4 text-rosewood-light shrink-0" />
               329 124 6316
             </a>
           </address>
         </div>
 
-        {/* Colonna 3: QR + Azione - Con Link alla nuova rotta /qr */}
+        {/* Colonna 3: QR + Azione */}
         <div className="flex flex-row md:justify-end items-center gap-6">
           <div className="flex flex-col items-center gap-2">
             <div className="shrink-0 opacity-90 hover:opacity-100 transition-opacity">
               <ProfessionalQr />
             </div>
-            {/* Link alla rotta dedicata per condivisione */}
             <Link 
               href="/qr" 
               className="flex items-center gap-1.5 text-[7px] uppercase tracking-[0.2em] text-rosewood-light/60 hover:text-white transition-colors font-bold"
