@@ -1,24 +1,32 @@
+// route.ts
 import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 
 export async function POST(request: Request) {
-  const { name, email, phone, message, location, area } = await request.json();
-
-  // Configurazione Trasporto Aruba
-  const transporter = nodemailer.createTransport({
-    service: "gmail",
-    auth: {
-      user: "ass.legale@gmail.com", // Inseriscilo direttamente qui per sicurezza o usa process.env.EMAIL_USER
-      pass: process.env.EMAIL_PASS, // La tua password 'elkc gszu gsll wuyd'
-    },
-  });
-
+  console.log("INFO: Richiesta ricevuta al server"); // <--- AGGIUNGI QUESTO LOG
   try {
+    const { name, email, phone, message, location, area } = await request.json();
+    console.log("INFO: Dati ricevuti:", { name, email, phone, message, location, area });
+
+    // CONFIGURAZIONE OTTIMIZZATA PER GMAIL
+    const transporter = nodemailer.createTransport({
+      host: "smtp.gmail.com",
+      port: 465,
+      secure: true, // true per porta 465
+      auth: {
+        user: "ass.legale@gmail.com",
+        pass: process.env.EMAIL_PASS, // Assicurati che non ci siano spazi nella variabile d'ambiente
+      },
+    });
+
+    // VERIFICA CONNESSIONE (OPZIONALE MA UTILE PER DEBUG)
+    // await transporter.verify(); 
+
     await transporter.sendMail({
-      from: "ass.legale@gmail.com", // Deve essere lo stesso dell'auth user
-      to: "ass.legale@gmail.com", // La mail arriva alla cliente
-      replyTo: email,
-      subject: `Nuovo contatto da ${location} - ${name}`,
+      from: `"Sito Web - Studio Fusco" <ass.legale@gmail.com>`, 
+      to: "ass.legale@gmail.com", 
+      replyTo: email, // Permette di rispondere direttamente al cliente
+      subject: `🔴 Nuovo contatto: ${name} - ${location}`,
       text: message,
       html: `
   <div style="background-color: #fdfaf5; padding: 40px 20px; font-family: 'serif', 'Georgia', 'Times New Roman', serif;">
@@ -82,8 +90,21 @@ export async function POST(request: Request) {
       { message: "Email inviata con successo" },
       { status: 200 },
     );
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  } catch (error) {
-    return NextResponse.json({ error: "Errore nell'invio" }, { status: 500 });
+ } catch (error: unknown) {
+    // Logghiamo l'errore sul server per il debug
+    if (error instanceof Error) {
+      console.error("Errore invio email:", error.message);
+      return NextResponse.json(
+        { error: `Errore nell'invio: ${error.message}` },
+        { status: 500 }
+      );
+    }
+
+    // Caso generico se l'errore non è un'istanza di Error
+    console.error("Errore sconosciuto:", error);
+    return NextResponse.json(
+      { error: "Si è verificato un errore imprevisto." },
+      { status: 500 }
+    );
   }
 }

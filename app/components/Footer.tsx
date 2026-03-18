@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { MapPin, Mail, Phone, ShieldCheck, Share2 } from "lucide-react";
+import { MapPin, Phone, ShieldCheck, Share2 } from "lucide-react";
 import ProfessionalQr from "./ProfessionalQr";
 
 export default function Footer() {
@@ -15,7 +15,7 @@ export default function Footer() {
               Studio Legale Fusco
             </h3>
           </div>
-          <p className="text-[11px] leading-relaxed text-cream/90 font-light italic max-w-[240px]">
+          <p className="text-[11px] leading-relaxed text-cream/90 font-light italic max-w-60">
             Consulenza legale fondata sulla precisione tecnica e sulla comprensione umana.
           </p>
           <p className="text-[9px] uppercase tracking-widest text-rosewood-light/60 font-medium">
