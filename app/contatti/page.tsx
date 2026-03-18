@@ -1,6 +1,7 @@
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 
+
 // Componente Icona WhatsApp Ufficiale
 const WhatsAppIcon = ({ className }: { className?: string }) => (
   <svg
@@ -62,7 +63,6 @@ export default function ContattiPage() {
                 </section>
               </div>
             </div>
-
             <div className="pt-12 flex flex-col space-y-6 border-t border-sepia-dark/10">
               <a
                 href="tel:+393291246316"
