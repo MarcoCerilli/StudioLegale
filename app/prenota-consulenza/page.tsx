@@ -1,4 +1,7 @@
-import { ArrowRight, Scale, CheckCircle2, Clock } from "lucide-react";
+"use client";
+
+import { Scale, CheckCircle2, Clock } from "lucide-react";
+import ContactForm from "../components/ContactForm";
 
 const WhatsAppIcon = ({ className }: { className?: string }) => (
   <svg
@@ -36,81 +39,15 @@ export default function PrenotaPage() {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-16 items-start">
-          {/* Form di Prenotazione */}
+          {/* Form di Prenotazione - ORA RICHIAMA IL COMPONENTE LOGICO */}
           <div className="bg-white p-6 md:p-12 rounded-4xl md:rounded-[3rem] shadow-2xl border border-rosewood/5 order-2 lg:order-1">
-            <h3 className="font-serif text-2xl md:text-3xl mb-6 md:mb-8">
+            <h3 className="font-serif text-2xl md:text-3xl mb-6 md:mb-8 text-charcoal">
               Richiedi un Appuntamento
             </h3>
-            <form className="space-y-4 md:space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
-                <input
-                  placeholder="Nome e Cognome"
-                  className="w-full p-4 bg-cream/30 rounded-2xl text-sm outline-none border border-transparent focus:border-rosewood/20 transition-all"
-                />
-                <input
-                  placeholder="Telefono"
-                  className="w-full p-4 bg-cream/30 rounded-2xl text-sm outline-none border border-transparent focus:border-rosewood/20 transition-all"
-                />
-              </div>
-
-              <select
-                defaultValue="default"
-                className="w-full p-4 bg-cream/30 rounded-2xl text-sm outline-none border border-transparent focus:border-rosewood/20 appearance-none cursor-pointer"
-              >
-                <option value="default" disabled>
-                  Seleziona l&apos;area di interesse
-                </option>
-
-                {/* Mappatura dinamica basata sui tuoi dettagliServizi */}
-                <option value="diritto-civile-e-famiglia">
-                  Diritto Civile e Famiglia
-                </option>
-                <option value="diritto-penale">Diritto Penale</option>
-                <option value="diritto-del-lavoro">Diritto del Lavoro</option>
-                <option value="diritto-societario">Diritto Societario</option>
-                <option value="diritto-amministrativo">
-                  Diritto Amministrativo
-                </option>
-                <option value="risarcimento-danni">
-                  Risarcimento Danni (Infortunistica/Malasanità)
-                </option>
-                <option value="immigrazione-e-cittadinanza">
-                  Immigrazione e Cittadinanza
-                </option>
-
-                <option value="altro">Altra esigenza legale</option>
-              </select>
-
-              <textarea
-                rows={4}
-                className="w-full p-4 bg-cream/30 rounded-2xl text-sm outline-none border border-transparent focus:border-rosewood/20 resize-none transition-all"
-                placeholder="Descriva brevemente il motivo della richiesta..."
-              ></textarea>
-
-              <div className="p-4 md:p-6 bg-rosewood/5 rounded-2xl">
-                <div className="flex items-start gap-3">
-                  <input
-                    type="checkbox"
-                    id="transparency"
-                    className="mt-1 accent-rosewood h-4 w-4 shrink-0"
-                    required
-                  />
-                  <label
-                    htmlFor="transparency"
-                    className="text-[10px] md:text-[11px] text-charcoal/70 leading-tight"
-                  >
-                    Confermo la richiesta di{" "}
-                    <strong>consulenza gratuita (30 min)</strong> e acconsento
-                    al trattamento dei dati.
-                  </label>
-                </div>
-              </div>
-
-              <button className="w-full bg-charcoal text-white font-bold py-5 rounded-full hover:bg-rosewood transition-all shadow-xl uppercase tracking-widest text-[9px] md:text-[10px] flex items-center justify-center gap-3 active:scale-95">
-                Prenota la mia Consulenza
-                <ArrowRight className="w-4 h-4" />
-              </button>
-            </form>
+            
+            {/* COMPONENTE CON LOGICA Nodemailer */}
+            <ContactForm />
+            
           </div>
 
           {/* Colonna Destra: Info & WhatsApp */}
