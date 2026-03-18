@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { MapPin, Mail, Phone, ShieldCheck } from "lucide-react";
+import { MapPin, Mail, Phone, ShieldCheck, Share2 } from "lucide-react";
 import ProfessionalQr from "./ProfessionalQr";
 
 export default function Footer() {
@@ -7,7 +7,7 @@ export default function Footer() {
     <footer className="bg-sepia-dark text-cream py-10 px-6 border-t border-rosewood-light/20">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10 items-stretch">
         
-        {/* Colonna 1: Brand - Testi più chiari per accessibilità */}
+        {/* Colonna 1: Brand */}
         <div className="space-y-4">
           <div className="flex items-center gap-2">
             <ShieldCheck className="text-rosewood-light w-4 h-4" />
@@ -23,7 +23,7 @@ export default function Footer() {
           </p>
         </div>
 
-        {/* Colonna 2: Contatti - Contrastati per WCAG */}
+        {/* Colonna 2: Contatti - Contrastati per accessibilità */}
         <div className="md:border-x md:border-white/10 md:px-10 flex flex-col justify-center">
           <address className="not-italic space-y-4">
             <div className="flex items-center gap-3 text-[12px] text-cream">
@@ -47,11 +47,20 @@ export default function Footer() {
           </address>
         </div>
 
-        {/* Colonna 3: QR + Azione - Accorpati a destra */}
+        {/* Colonna 3: QR + Azione - Con Link alla nuova rotta /qr */}
         <div className="flex flex-row md:justify-end items-center gap-6">
-          {/* QR Code spostato qui accanto alla CTA */}
-          <div className="shrink-0 opacity-90 hover:opacity-100 transition-opacity">
-            <ProfessionalQr />
+          <div className="flex flex-col items-center gap-2">
+            <div className="shrink-0 opacity-90 hover:opacity-100 transition-opacity">
+              <ProfessionalQr />
+            </div>
+            {/* Link alla rotta dedicata per condivisione */}
+            <Link 
+              href="/qr" 
+              className="flex items-center gap-1.5 text-[7px] uppercase tracking-[0.2em] text-rosewood-light/60 hover:text-white transition-colors font-bold"
+            >
+              <Share2 className="w-2.5 h-2.5" />
+              Condividi QR
+            </Link>
           </div>
 
           <div className="flex flex-col justify-between items-end h-full py-1">
@@ -75,7 +84,7 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* Copyright - Leggermente più visibile */}
+      {/* Copyright */}
       <div className="max-w-7xl mx-auto mt-10 pt-5 border-t border-white/10 flex justify-between text-[8px] uppercase tracking-[0.3em] text-cream/40">
         <p>© 2026 Avv. Anna Fusco | Studio Legale</p>
         <p className="hidden md:block">Iscrizione Albo Roma N. A36343</p>
