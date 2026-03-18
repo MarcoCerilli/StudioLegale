@@ -13,7 +13,7 @@ const WhatsAppIcon = ({ className }: { className?: string }) => (
 
 export default function PrenotaPage() {
   return (
-    <main className="bg-cream min-h-screen pt-32 md:pt-48 pb-10 md:pb-20 px-4 md:px-6 overflow-x-hidden">
+    <main className="bg-cream min-h-screen pt-20 md:pt-24 pb-10 md:pb-20 px-4 md:px-6 overflow-x-hidden">
       <div className="max-w-6xl mx-auto">
         {/* Header Sezione */}
         <div className="text-center mb-10 md:mb-16 space-y-4">
