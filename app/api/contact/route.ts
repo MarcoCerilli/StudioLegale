@@ -32,6 +32,7 @@ export async function POST(request: Request) {
     });
 
     return NextResponse.json({ message: "Email inviata con successo" }, { status: 200 });
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   } catch (error) {
     return NextResponse.json({ error: "Errore nell'invio" }, { status: 500 });
   }
