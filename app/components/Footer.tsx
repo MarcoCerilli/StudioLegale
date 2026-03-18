@@ -76,7 +76,7 @@ export default function Footer() {
                 Consulenza
               </h3>
               <Link
-                href="/contatti"
+                href="/prenota-consulenza"
                 className="inline-block border-2 border-rosewood-light/40 bg-rosewood-light/5 px-5 py-2 text-[10px] uppercase tracking-[0.2em] text-white font-bold hover:bg-rosewood-light hover:text-sepia-dark transition-all shadow-sm"
               >
                 Prenota Colloquio

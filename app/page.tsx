@@ -48,7 +48,7 @@ export default function Home() {
 
             <div className="flex flex-col sm:flex-row gap-4 md:gap-6">
               <Link
-                href="/contatti"
+                href="/prenota-consulenza"
                 className="flex items-center justify-center gap-3 px-8 py-4 md:px-10 md:py-5 bg-white text-charcoal font-bold transition-all hover:bg-neutral-200 rounded-full group shadow-xl"
               >
                 <span className="uppercase tracking-[0.2em] text-[10px]">Prenota Consulenza</span>
