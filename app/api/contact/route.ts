@@ -5,10 +5,7 @@ export async function POST(request: Request) {
   console.log("--- [DEBUG] Inizio procedura POST /api/contact ---");
 
   try {
-    // Estraiamo i campi corretti che arrivano dal frontend
     const { firstName, lastName, email, phone, message, area } = await request.json();
-    
-    // Creiamo il nome completo per l'oggetto della mail
     const fullName = `${firstName} ${lastName}`;
     
     console.log("--- [DEBUG] Dati ricevuti:", { fullName, email, area });
@@ -28,70 +25,65 @@ export async function POST(request: Request) {
       },
     });
 
-    console.log("--- [DEBUG] Tentativo di invio mail in corso...");
+    console.log("--- [DEBUG] Tentativo di invio mail (Admin + Cliente)...");
 
-    const info = await transporter.sendMail({
+    // Definiamo le due email
+    const mailToStudio = {
       from: `"Sito Web Studio Fusco" <ass.legale@gmail.com>`,
       to: "ass.legale@gmail.com",
       replyTo: email,
-      subject: `🔴 Nuova richiesta consulenza - ${fullName}`,
+      subject: `⚖️ Nuova richiesta consulenza - ${fullName}`,
       html: `
-        <div style="background-color: #fdfaf5; padding: 40px 20px; font-family: 'serif', 'Georgia', 'Times New Roman', serif;">
+        <div style="background-color: #fdfaf5; padding: 40px 20px; font-family: serif;">
           <div style="max-width: 600px; margin: 0 auto; background-color: #ffffff; border: 1px solid #e5d5c5; border-radius: 8px; overflow: hidden;">
             <div style="background-color: #800020; padding: 30px; text-align: center;">
-              <h1 style="color: #ffffff; margin: 0; font-size: 22px; letter-spacing: 2px; text-transform: uppercase;">
-                Nuova Richiesta Consulenza
-              </h1>
-              <p style="color: #e5d5c5; margin: 10px 0 0 0; font-size: 14px; font-style: italic;">
-                Ricevuta da portale web ufficiale
-              </p>
+              <h1 style="color: #ffffff; margin: 0; font-size: 22px; text-transform: uppercase;">Nuova Richiesta</h1>
             </div>
-            <div style="padding: 40px; color: #333333; line-height: 1.6;">
-              <p style="font-size: 16px; border-bottom: 1px solid #eee; padding-bottom: 10px; margin-bottom: 25px;">
-                Gentile Avvocato, ha ricevuto una nuova richiesta di contatto:
-              </p>
-              <table style="width: 100%; border-collapse: collapse;">
-                <tr>
-                  <td style="padding: 10px 0; font-weight: bold; color: #800020; width: 35%;">Nominativo:</td>
-                  <td style="padding: 10px 0; color: #444;">${fullName}</td>
-                </tr>
-                <tr>
-                  <td style="padding: 10px 0; font-weight: bold; color: #800020;">Area Legale:</td>
-                  <td style="padding: 10px 0; color: #444; text-transform: capitalize;">${area?.replace(/-/g, " ")}</td>
-                </tr>
-                <tr>
-                  <td style="padding: 10px 0; font-weight: bold; color: #800020;">Telefono:</td>
-                  <td style="padding: 10px 0;"><a href="tel:${phone}" style="color: #800020; text-decoration: none; font-weight: bold;">${phone}</a></td>
-                </tr>
-                <tr>
-                  <td style="padding: 10px 0; font-weight: bold; color: #800020;">Email:</td>
-                  <td style="padding: 10px 0;"><a href="mailto:${email}" style="color: #800020; text-decoration: none;">${email}</a></td>
-                </tr>
-              </table>
-              <div style="margin-top: 30px; padding: 20px; background-color: #fdfaf5; border-left: 4px solid #800020; font-style: italic;">
-                <p style="margin: 0; font-weight: bold; color: #800020; margin-bottom: 5px;">Messaggio dell'utente:</p>
-                <p style="margin: 0; color: #555; white-space: pre-wrap;">"${message}"</p>
+            <div style="padding: 40px; color: #333;">
+              <p><strong>Nominativo:</strong> ${fullName}</p>
+              <p><strong>Area Legale:</strong> ${area?.replace(/-/g, " ")}</p>
+              <p><strong>Telefono:</strong> ${phone}</p>
+              <p><strong>Email:</strong> ${email}</p>
+              <div style="margin-top: 20px; padding: 15px; background-color: #fdfaf5; border-left: 4px solid #800020;">
+                <p><strong>Messaggio:</strong><br/>"${message}"</p>
               </div>
-            </div>
-            <div style="background-color: #f9f6f2; padding: 20px; text-align: center; border-top: 1px solid #eee;">
-              <p style="margin: 0; font-size: 12px; color: #999;">
-                Operatività territoriale: <strong>Terracina | Latina | Roma</strong>
-              </p>
             </div>
           </div>
         </div>
       `,
-    });
+    };
 
-    console.log("--- [DEBUG] EMAIL INVIATA CON SUCCESSO:", info.messageId);
+    const mailToClient = {
+      from: `"Studio Legale Fusco" <ass.legale@gmail.com>`,
+      to: email, // L'email dell'utente
+      subject: "Conferma ricezione richiesta di consulenza - Studio Legale Fusco",
+      html: `
+        <div style="font-family: serif; padding: 30px; color: #333; background-color: #fdfaf5;">
+          <h2 style="color: #800020;">Gentile ${firstName},</h2>
+          <p>Le confermiamo di aver ricevuto correttamente la Sua richiesta di contatto per l'area <strong>${area?.replace(/-/g, " ")}</strong>.</p>
+          <p>Un professionista dello Studio analizzerà i dettagli forniti e La ricontatterà ai recapiti indicati entro 24 ore lavorative.</p>
+          <hr style="border: 0; border-top: 1px solid #e5d5c5; margin: 20px 0;">
+          <p style="font-size: 12px; color: #666;">
+            <strong>Studio Legale Fusco</strong><br>
+            Terracina | Latina | Roma
+          </p>
+        </div>
+      `,
+    };
 
-    return NextResponse.json({ message: "Email inviata con successo" }, { status: 200 });
+    // Eseguiamo entrambi gli invii
+    await Promise.all([
+      transporter.sendMail(mailToStudio),
+      transporter.sendMail(mailToClient)
+    ]);
+
+    console.log("--- [DEBUG] ENTRAMBE LE EMAIL INVIATE CON SUCCESSO ---");
+    return NextResponse.json({ message: "Email inviate con successo" }, { status: 200 });
 
   } catch (error: unknown) {
-    console.error("--- [DEBUG] ERRORE CATTURATO:");
+    console.error("--- [DEBUG] ERRORE:");
     if (error instanceof Error) {
-      console.error("Messaggio:", error.message);
-      return NextResponse.json({ error: `Errore nell'invio: ${error.message}` }, { status: 500 });
+      return NextResponse.json({ error: error.message }, { status: 500 });
     }
     return NextResponse.json({ error: "Errore imprevisto" }, { status: 500 });
   }
