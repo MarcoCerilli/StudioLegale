@@ -22,21 +22,33 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   title: {
-    default: "Avvocato Anna Fusco | Studio Legale Terracina, Latina e Roma",
+    default: "Studio Legale Avvocato Anna Fusco | Terracina, Latina e Roma",
     template: "%s | Avvocato Anna Fusco",
   },
   description:
-    "Studio Legale Avvocato Anna Fusco. Assistenza legale specializzata a Terracina, Latina e Roma. Esperienza in diritto civile e consulenza professionale nel Lazio.",
+    "Studio Legale Avvocato Anna Fusco a Terracina. Specializzata in Diritto Civile, Penale e del Lavoro a Latina, Roma e provincia. Consulenza legale professionale nel Lazio.",
   metadataBase: new URL("https://avvocatoannafusco.it"),
   keywords: [
     "avvocato terracina",
     "studio legale terracina",
-    "avvocato anna fusco",
-    "studio legale latina",
+    "miglior avvocato latina",
+    "avvocato civile terracina",
+    "consulenza legale latina",
     "avvocato roma",
+    "studio legale provincia latina",
     "assistenza legale lazio",
+    "avvocato penalista terracina" // Aggiungi specializzazioni locali
   ],
   alternates: { canonical: "/" },
+  // Aggiungi OpenGraph per quando condividi il sito su WhatsApp/Facebook
+  openGraph: {
+    title: "Avvocato Anna Fusco | Studio Legale Terracina e Latina",
+    description: "Assistenza legale specializzata a Terracina, Latina e Roma.",
+    url: "https://avvocatoannafusco.it",
+    siteName: "Studio Legale Fusco",
+    locale: "it_IT",
+    type: "website",
+  },
 };
 
 export default async function RootLayout({
@@ -50,11 +62,12 @@ export default async function RootLayout({
   }));
 
   // Dati Strutturati per Local SEO
-  const jsonLd = {
+ const jsonLd = {
     "@context": "https://schema.org",
     "@type": "LegalService",
     "name": "Studio Legale Avvocato Anna Fusco",
-    "image": "https://avvocatoannafusco.it/logo.png", 
+    "description": "Studio Legale specializzato a Terracina, Latina e Roma.",
+    "image": "https://avvocatoannafusco.it/logo-fusco.png", 
     "telephone": "+39 329 124 6316",
     "url": "https://avvocatoannafusco.it",
     "address": {
@@ -65,18 +78,19 @@ export default async function RootLayout({
       "postalCode": "04019",
       "addressCountry": "IT",
     },
+    // QUESTO DICE A GOOGLE DOVE OPERI
+    "areaServed": [
+      { "@type": "City", "name": "Terracina" },
+      { "@type": "City", "name": "Latina" },
+      { "@type": "City", "name": "Roma" },
+      { "@type": "AdministrativeArea", "name": "Lazio" }
+    ],
     "geo": {
       "@type": "GeoCoordinates",
       "latitude": 41.2858, 
       "longitude": 13.2431,
     },
-    "openingHoursSpecification": {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-      "opens": "09:00",
-      "closes": "18:00",
-    },
-    "priceRange": "$$",
+    "priceRange": "€€",
   };
 
   return (
