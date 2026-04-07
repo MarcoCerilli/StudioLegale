@@ -2,6 +2,7 @@
 
 import { Scale, CheckCircle2, Clock } from "lucide-react";
 import ContactForm from "../components/ContactForm";
+import { useEffect } from "react";
 
 const WhatsAppIcon = ({ className }: { className?: string }) => (
   <svg
@@ -15,9 +16,34 @@ const WhatsAppIcon = ({ className }: { className?: string }) => (
 );
 
 export default function PrenotaPage() {
+  useEffect(() => {
+    // Usa window.scrollTo(0,0) all'avvio
+    if (typeof window !== "undefined") {
+      window.scrollTo({ top: 0, behavior: "instant" });
+    }
+
+    // Funzione che controlla se il click è avvenuto sul link "Prenota" della Navbar
+    const handleGlobalClick = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+
+      // Controlla se l'elemento cliccato (o il suo genitore) porta a questa pagina
+      const link = target.closest('a');
+      const href = link?.getAttribute("href");
+      if (href && href.includes("prenota-consulenza")) {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    };
+
+    // Ascolta i click su tutta la pagina (inclusa la Navbar)
+    window.addEventListener("click", handleGlobalClick);
+
+    // Pulisce l'evento quando si cambia pagina
+    return () => window.removeEventListener("click", handleGlobalClick);
+  }, []);
+
   return (
     <main className="bg-cream min-h-screen pt-20 md:pt-24 pb-10 md:pb-20 px-4 md:px-6 overflow-x-hidden">
-      <div className="max-w-6xl mx-auto">
+      <div id="top" className="max-w-6xl mx-auto">
         {/* Header Sezione */}
         <div className="text-center mb-10 md:mb-16 space-y-4">
           <div className="inline-flex items-center gap-2 bg-rosewood/10 px-4 py-2 rounded-full mb-2">
@@ -44,10 +70,9 @@ export default function PrenotaPage() {
             <h3 className="font-serif text-2xl md:text-3xl mb-6 md:mb-8 text-charcoal">
               Richiedi un Appuntamento
             </h3>
-            
+
             {/* COMPONENTE CON LOGICA Nodemailer */}
             <ContactForm />
-            
           </div>
 
           {/* Colonna Destra: Info & WhatsApp */}

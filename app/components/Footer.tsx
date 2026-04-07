@@ -7,7 +7,6 @@ export default function Footer() {
   return (
     <footer className="bg-sepia-dark text-cream py-10 px-6 border-t border-rosewood-light/20">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10 items-stretch">
-        
         {/* Colonna 1: Brand */}
         <div className="space-y-4">
           <div className="flex items-center gap-2">
@@ -17,7 +16,8 @@ export default function Footer() {
             </h3>
           </div>
           <p className="text-[11px] leading-relaxed text-cream/90 font-light italic max-w-60">
-            Consulenza legale fondata sulla precisione tecnica e sulla comprensione umana.
+            Consulenza legale fondata sulla precisione tecnica e sulla
+            comprensione umana.
           </p>
           <p className="text-[9px] uppercase tracking-widest text-rosewood-light/60 font-medium">
             P. IVA: 09857711007
@@ -29,26 +29,40 @@ export default function Footer() {
           <address className="not-italic space-y-4">
             <div className="flex items-center gap-3 text-[12px] text-cream">
               <MapPin className="w-4 h-4 text-rosewood-light shrink-0" />
-              <span>Via Palermo, 16, <strong className="text-white font-semibold">Terracina (LT)</strong></span>
+              <span>
+                Via Palermo, 16,{" "}
+                <strong className="text-white font-semibold">
+                  Terracina (LT)
+                </strong>
+              </span>
             </div>
-            
+
             <div className="space-y-2.5">
               <div className="flex items-center gap-3">
                 <Mail className="w-4 h-4 text-rosewood-light shrink-0" />
-                <a href="mailto:ass.legale@gmail.com" className="text-[11px] text-cream/80 hover:text-white underline decoration-rosewood-light/30 underline-offset-4 transition-all">
+                <a
+                  href="mailto:ass.legale@gmail.com"
+                  className="text-[11px] text-cream/80 hover:text-white underline decoration-rosewood-light/30 underline-offset-4 transition-all"
+                >
                   ass.legale@gmail.com
                 </a>
               </div>
-              
+
               <div className="flex items-center gap-3">
                 <AtSign className="w-4 h-4 text-rosewood-light shrink-0" />
-                <a href="mailto:annafusco@ordineavvocatiroma.org" className="text-[11px] text-cream/80 hover:text-white underline decoration-rosewood-light/30 underline-offset-4 transition-all">
+                <a
+                  href="mailto:annafusco@ordineavvocatiroma.org"
+                  className="text-[11px] text-cream/80 hover:text-white underline decoration-rosewood-light/30 underline-offset-4 transition-all"
+                >
                   PEC: annafusco@ordineavvocatiroma.org
                 </a>
               </div>
             </div>
 
-            <a href="tel:+393291246316" className="flex items-center gap-3 text-[15px] text-white font-bold hover:text-rosewood-light transition-all pt-1">
+            <a
+              href="tel:+393291246316"
+              className="flex items-center gap-3 text-[15px] text-white font-bold hover:text-rosewood-light transition-all pt-1"
+            >
               <Phone className="w-4 h-4 text-rosewood-light shrink-0" />
               329 124 6316
             </a>
@@ -61,8 +75,8 @@ export default function Footer() {
             <div className="shrink-0 opacity-90 hover:opacity-100 transition-opacity">
               <ProfessionalQr />
             </div>
-            <Link 
-              href="/qr" 
+            <Link
+              href="/qr"
               className="flex items-center gap-1.5 text-[7px] uppercase tracking-[0.2em] text-rosewood-light/60 hover:text-white transition-colors font-bold"
             >
               <Share2 className="w-2.5 h-2.5" />
@@ -76,7 +90,7 @@ export default function Footer() {
                 Consulenza
               </h3>
               <Link
-                href="/prenota-consulenza"
+                href="/prenota-consulenza" // Aggiungi l'ancora qui
                 className="inline-block border-2 border-rosewood-light/40 bg-rosewood-light/5 px-5 py-2 text-[10px] uppercase tracking-[0.2em] text-white font-bold hover:bg-rosewood-light hover:text-sepia-dark transition-all shadow-sm"
               >
                 Prenota Colloquio
@@ -84,8 +98,18 @@ export default function Footer() {
             </div>
 
             <nav className="flex gap-5 mt-6">
-              <Link href="/chi-sono" className="text-[10px] uppercase tracking-widest text-cream/70 hover:text-white font-medium">Profilo</Link>
-              <Link href="/aree-di-attivita" className="text-[10px] uppercase tracking-widest text-cream/70 hover:text-white font-medium">Attività</Link>
+              <Link
+                href="/chi-sono"
+                className="text-[10px] uppercase tracking-widest text-cream/70 hover:text-white font-medium"
+              >
+                Profilo
+              </Link>
+              <Link
+                href="/aree-di-attivita"
+                className="text-[10px] uppercase tracking-widest text-cream/70 hover:text-white font-medium"
+              >
+                Attività
+              </Link>
             </nav>
           </div>
         </div>
