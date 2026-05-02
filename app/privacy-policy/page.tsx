@@ -14,7 +14,7 @@ export default function PrivacyPolicy() {
                 <p>
                     Il Titolare del trattamento è l&apos;<strong>Avvocato Anna Fusco</strong>, con studio professionale in Via Palermo 16, 04019 Terracina (LT).<br />
                     <strong>Email:</strong> ass.legale@gmail.com<br />
-                    <strong>PEC:</strong> 
+                    <strong>PEC:annafusco@ordineavvocatiroma.org</strong> 
                 </p>
             </section>
 
