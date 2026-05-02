@@ -10,6 +10,8 @@ import ConsultationPopup from "./components/ConsultationPopup";
 // 1. IMPORTA I DATI LOCALI
 import { dettagliServizi } from "@/lib/data";
 
+import CookieBanner from "./components/CookieBanner";
+
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -109,6 +111,7 @@ export default async function RootLayout({
         <Navbar services={services} />
         {/* Il tag main grow assicura che il footer stia sempre in fondo */}
         <main className="grow w-full pt-20 md:pt-28">{children}</main>
+        <CookieBanner />
         <ConsultationPopup />
         <Footer />
       </body>
