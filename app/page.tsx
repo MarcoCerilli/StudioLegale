@@ -4,9 +4,9 @@ import { Metadata } from "next";
 import { ArrowRight, Gavel, Users, ShieldCheck, Scale } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Avvocato Anna Fusco | Studio Legale a Terracina | Civile e Penale",
+  title: "Studio Legale Avvocato Anna Fusco | Terracina, Latina e Roma",
   description:
-    "L'Avvocato Anna Fusco offre consulenza legale d'eccellenza a Terracina. Specializzata in diritto civile, penale e risarcimento danni.",
+    "Studio Legale dell'Avvocato Anna Fusco a Terracina. Assistenza in Diritto Civile, Penale, del Lavoro, Famiglia e Risarcimento Danni a Latina e Roma. Contattaci.",
 };
 
 export default function Home() {
