@@ -11,6 +11,7 @@ import ConsultationPopup from "./components/ConsultationPopup";
 import { dettagliServizi } from "@/lib/data";
 
 import CookieBanner from "./components/CookieBanner";
+import { GoogleAnalytics } from '@next/third-parties/google';
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 const playfair = Playfair_Display({
@@ -81,6 +82,13 @@ export const metadata: Metadata = {
     locale: "it_IT",
     type: "website",
   },
+  icons: {
+    icon: [
+      { url: "/favicon.ico" },
+      { url: "/favicon-96x96.png", sizes: "96x96", type: "image/png" },
+    ],
+    apple: "/apple-touch-icon.png",
+  },
 };
 
 export default async function RootLayout({
@@ -144,6 +152,7 @@ export default async function RootLayout({
         <CookieBanner />
         <ConsultationPopup />
         <Footer />
+        <GoogleAnalytics gaId="G-XXXXXXXXXX" />
       </body>
     </html>
   );

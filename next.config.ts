@@ -34,29 +34,7 @@ const nextConfig: NextConfig = {
     ];
   },
 
-  // 2. GESTIONE CACHE (Tua configurazione per refresh forzato)
-  async headers() {
-    return [
-      {
-        source: '/:path*',
-        headers: [
-          {
-            key: 'Cache-Control',
-            // Impedisce il salvataggio locale e forza il controllo sul server
-            value: 'no-store, no-cache, must-revalidate, proxy-revalidate',
-          },
-          {
-            key: 'Pragma',
-            value: 'no-cache',
-          },
-          {
-            key: 'Expires',
-            value: '0',
-          },
-        ],
-      },
-    ];
-  },
+  // rimosso il blocco headers che impediva il caching (nocivo per SEO)
 
   // 3. ID BUILD UNIVOCO
   generateBuildId: async () => {
