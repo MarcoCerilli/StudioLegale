@@ -28,11 +28,11 @@ export default function ChiSonoPage() {
           </div>
 
           <div>
-            <span className="text-rosewood font-bold uppercase tracking-[0.3em] text-[10px] mb-4 block">
-              Profilo Professionale
-            </span>
+            <h2 className="text-rosewood font-bold uppercase tracking-[0.3em] text-[10px] mb-4 block m-0 p-0">
+              Studio Legale Fusco - Avvocato Terracina
+            </h2>
             <h1 className="text-6xl md:text-8xl font-serif mb-8 text-charcoal tracking-tighter">
-              Avv. Anna Fusco
+              Avvocato Anna Fusco
             </h1>
             
             {/* Iscrizione Ordine - Stile Citation */}
@@ -47,17 +47,17 @@ export default function ChiSonoPage() {
 
             <div className="space-y-6 text-sepia-dark/80 text-lg leading-relaxed font-light">
               <p>
-                Con oltre 15 anni di esperienza maturata tra Roma e Terracina, la mia missione è offrire 
-                un&apos;assistenza legale fondata sulla precisione tecnica e sulla comprensione umana.
+                Con oltre 15 anni di esperienza maturata tra Roma e Terracina, come <strong>Avvocato a Terracina</strong> la mia missione è offrire 
+                un&apos;assistenza legale fondata sulla precisione tecnica e sulla comprensione umana. Lo <strong>Studio Legale Fusco</strong> si impegna a garantire la migliore tutela dei diritti.
               </p>
               <p>
                 Dopo la laurea conseguita presso la LUMSA di Roma e un Master di II livello in 
                 Giurista d’Impresa presso l&apos;Università Roma Tre, ho scelto di dedicare la mia attività alla tutela 
-                di privati e imprese, specializzandomi in settori cruciali del diritto civile e tributario.
+                di privati e imprese, specializzandomi in settori cruciali del diritto civile e tributario, posizionandomi tra gli <strong>avvocati a Terracina</strong> di riferimento.
               </p>
               <p>
-                Il mio studio a Terracina rappresenta un punto di riferimento per chi cerca una difesa 
-                determinata ma sempre improntata all&apos;etica e alla massima trasparenza professionale.
+                Il mio <strong>studio legale a Terracina</strong> rappresenta un punto di riferimento per chi cerca una difesa 
+                determinata ma sempre improntata all&apos;etica e alla massima trasparenza professionale, costantemente garantita dall&apos;<strong>Avvocato Fusco Terracina</strong>.
               </p>
             </div>
           </div>

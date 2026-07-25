@@ -31,9 +31,9 @@ export default function Home() {
           <div className="max-w-4xl">
             <div className="flex items-center gap-3 md:gap-4 mb-6 md:mb-8">
               <div className="h-px w-8 md:w-12 bg-white" />
-              <span className="text-white/80 text-[9px] md:text-[10px] tracking-[0.3em] md:tracking-[0.5em] uppercase font-bold">
-                Eccellenza Legale — Terracina
-              </span>
+              <h2 className="text-white/80 text-[9px] md:text-[10px] tracking-[0.3em] md:tracking-[0.5em] uppercase font-bold m-0 p-0">
+                Studio Legale Terracina — Avvocati Terracina
+              </h2>
             </div>
 
             {/* TITOLO OTTIMIZZATO: text-4xl su mobile */}
@@ -43,7 +43,7 @@ export default function Home() {
             </h1>
 
             <p className="text-base md:text-xl text-white/90 mb-10 md:mb-12 max-w-xl leading-relaxed font-light">
-              Assistenza legale specialistica fondata sul rigore accademico e sulla tutela dinamica dei diritti.
+              Lo <strong>Studio Legale Fusco</strong>, fondato dall&apos;<strong>Avvocato Fusco a Terracina</strong>, offre assistenza legale specialistica, fondata sul rigore accademico e sulla tutela dinamica dei diritti.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 md:gap-6">
@@ -100,7 +100,7 @@ export default function Home() {
           <div className="grid lg:grid-cols-3 gap-10 md:gap-12 items-center">
             <div className="lg:col-span-1 text-center lg:text-left">
               <h2 className="text-3xl md:text-5xl font-serif mb-4 md:mb-6 italic leading-tight text-white">
-                Aree di <br className="hidden md:block" /> Intervento
+                Aree di Intervento <br className="hidden md:block" /> dello Studio Legale a Terracina
               </h2>
               <p className="text-white/80 font-light mb-8 leading-relaxed text-sm md:text-base">
                 Supporto legale integrato tra diritto civile e penale.

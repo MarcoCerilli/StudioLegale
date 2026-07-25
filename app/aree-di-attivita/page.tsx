@@ -119,12 +119,12 @@ export default function AreeDiAttivitaPage() {
       <div className="container mx-auto px-6 md:px-12">
         {/* Header Sezione */}
         <div className="max-w-4xl mb-24">
-          <span className="text-rosewood text-[10px] uppercase tracking-[0.5em] mb-4 block font-bold">
-            Competenze Forensi
-          </span>
+          <h2 className="text-rosewood text-[10px] uppercase tracking-[0.5em] mb-4 block font-bold m-0 p-0">
+            Studio Legale Terracina - Competenze Forensi
+          </h2>
           <h1 className="text-6xl md:text-8xl font-serif tracking-tighter mb-8 text-charcoal">
-            Aree di{" "}
-            <span className="text-rosewood italic font-light">Intervento</span>
+            Aree di Intervento <br />
+            <span className="text-rosewood italic font-light text-4xl md:text-6xl">Avvocato Fusco Terracina</span>
           </h1>
           <div className="h-1 w-24 bg-rosewood-light/40" />
         </div>
