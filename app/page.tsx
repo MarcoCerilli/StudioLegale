@@ -22,7 +22,6 @@ export default function Home() {
             fill
             className="object-cover opacity-70"
             priority
-            unoptimized
           />
           <div className="absolute inset-0 bg-linear-to-r from-black/80 via-black/40 to-transparent md:from-black/70" />
         </div>

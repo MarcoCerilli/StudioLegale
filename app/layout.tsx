@@ -152,7 +152,9 @@ export default async function RootLayout({
         <CookieBanner />
         <ConsultationPopup />
         <Footer />
-        <GoogleAnalytics gaId="G-XXXXXXXXXX" />
+        {process.env.NEXT_PUBLIC_GA_ID && process.env.NEXT_PUBLIC_GA_ID !== "G-XXXXXXXXXX" && (
+          <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID} />
+        )}
       </body>
     </html>
   );
