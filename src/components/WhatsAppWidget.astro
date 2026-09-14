@@ -2,12 +2,12 @@
 // WhatsAppWidget.astro - Chat interna interattiva con opzione WhatsApp
 ---
 
-<div class="fixed bottom-[calc(5.75rem+env(safe-area-inset-bottom,0px))] right-4 sm:bottom-6 sm:right-6 md:bottom-8 md:right-8 z-50 flex flex-col items-end pointer-events-none">
+<div class="fixed bottom-[calc(4.75rem+env(safe-area-inset-bottom,0px))] right-4 sm:bottom-6 sm:right-6 md:bottom-8 md:right-8 z-50 flex flex-col items-end pointer-events-none">
   
   {/* Finestra Chat Interna */}
   <div 
     id="wa-widget" 
-    class="bg-white rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.25)] border border-rosewood/15 w-[calc(100vw-2rem)] max-w-90 sm:w-[380px] mb-4 overflow-hidden transform scale-95 opacity-0 pointer-events-none transition-all duration-300 origin-bottom-right flex-col max-h-[min(500px,calc(100dvh-10rem))] hidden"
+    class="bg-white rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.25)] border border-rosewood/15 w-[calc(100vw-2rem)] max-w-90 sm:w-[380px] mb-4 overflow-hidden transform scale-95 opacity-0 pointer-events-none transition-all duration-300 origin-bottom-right flex-col max-h-[min(500px,calc(100dvh-8.5rem))] hidden"
   >
     {/* Header Chat */}
     <div class="bg-[#128C7E] p-4 text-white relative shrink-0 flex items-center justify-between shadow-md">
