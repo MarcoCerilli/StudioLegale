@@ -1,11 +1,11 @@
 ---
-import { Phone, Briefcase, Calendar } from "lucide-astro";
+import { Phone, Briefcase, Calendar } from "@lucide/astro";
 ---
 
 <!-- NavFooter: Barra di navigazione rapida inferiore per dispositivi mobili (ottimizzata per iOS Safari e PageSpeed) -->
 <nav 
   id="navfooter"
-  class="md:hidden fixed bottom-[max(0.75rem,env(safe-area-inset-bottom,12px))] left-1/2 -translate-x-1/2 z-40 w-[94%] max-w-[360px] rounded-full bg-[#faf8f5]/96 backdrop-blur-xl border border-rosewood/25 shadow-[0_12px_40px_rgba(0,0,0,0.38)] px-1.5 py-1.5 flex items-center justify-between text-charcoal transition-transform duration-300"
+  class="md:hidden fixed bottom-[max(0.75rem,env(safe-area-inset-bottom,12px))] left-1/2 -translate-x-1/2 z-40 w-[94%] max-w-90 rounded-full bg-[#faf8f5]/96 backdrop-blur-xl border border-rosewood/25 shadow-[0_12px_40px_rgba(0,0,0,0.38)] px-1.5 py-1.5 flex items-center justify-between text-charcoal transition-transform duration-300"
   aria-label="Navigazione rapida inferiore"
 >
   <a 
@@ -51,12 +51,3 @@ import { Phone, Briefcase, Calendar } from "lucide-astro";
     <span class="text-[9px] tracking-wider uppercase font-bold">Prenota</span>
   </button>
 </nav>
-
-<script>
-  const navfooterChatBtn = document.getElementById('navfooter-chat-btn');
-  const waTrigger = document.getElementById('wa-trigger');
-
-  navfooterChatBtn?.addEventListener('click', () => {
-    waTrigger?.click();
-  });
-</script>
