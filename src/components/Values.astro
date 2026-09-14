@@ -1,0 +1,28 @@
+---
+const values = [
+  { num: "01", title: "Ascolto Attivo", desc: "Comprendiamo le vostre necessità per trasformarle in una strategia legale vincente." },
+  { num: "02", title: "Strategia Tecnica", desc: "Analisi meticolosa dei precedenti giurisprudenziali per garantire la massima efficacia." },
+  { num: "03", title: "Etica Forense", desc: "Trasparenza totale sui costi e sulle probabilità di successo in ogni fase." },
+];
+---
+
+<section id="valori" class="py-16 md:py-20 bg-cream">
+  <div class="container mx-auto px-6 max-w-6xl">
+    <h2 class="sr-only">I Nostri Valori Fondamentali</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+      {values.map((val) => (
+        <div class="bg-white p-6 sm:p-8 rounded-3xl border border-rosewood/5 shadow-xs hover:shadow-xl transition-all duration-500">
+          <span class="text-rosewood text-xl font-serif italic mb-3 md:mb-4 block">
+            {val.num}.
+          </span>
+          <h3 class="text-xs md:text-sm font-bold uppercase tracking-[0.3em] text-charcoal mb-3">
+            {val.title}
+          </h3>
+          <p class="text-charcoal/60 text-[14px] md:text-[15px] leading-relaxed font-light italic">
+            {val.desc}
+          </p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

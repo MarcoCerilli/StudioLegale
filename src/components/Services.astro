@@ -1,0 +1,302 @@
+---
+import { CheckCircle2, ShieldAlert } from "lucide-astro";
+
+type Servizio = {
+  title: string;
+  tag?: string;
+  desc: string;
+  focus: string;
+  punti: string[];
+  icon: string;
+};
+
+const dettagliServizi: Record<string, Servizio> = {
+  "diritto-civile-e-famiglia": {
+    title: "Diritto Civile e Famiglia",
+    desc: "Gestiamo con estrema sensibilità le dinamiche familiari, dalle separazioni alla tutela dei minori, garantendo un supporto legale che mette al centro la dignità della persona.",
+    focus: "Tutela della persona e mediazione nei conflitti familiari.",
+    punti: [
+      "Separazioni e divorzi",
+      "Affidamento minori",
+      "Successioni e donazioni",
+      "Contrattualistica civile",
+    ],
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="w-12 h-12"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2m8-10a4 4 0 100-8 4 4 0 000 8zm14-2h-6m3-3v6" /></svg>`,
+  },
+  "diritto-penale": {
+    title: "Diritto Penale",
+    desc: "Difesa tecnica d'eccellenza in ogni fase del procedimento, garantendo la massima tutela dei diritti fondamentali e una strategia difensiva rigorosa.",
+    focus: "Garanzia di una difesa solida e rigorosa analisi del caso.",
+    punti: [
+      "Reati contro la persona",
+      "Reati patrimoniali",
+      "Difesa processuale",
+      "Assistenza in fase di indagine",
+    ],
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="w-12 h-12"><path d="M3 6l3 12h12l3-12m-9 6v6m-4-6l1 6m7-6l-1 6M5 20h14M12 3v3" /></svg>`,
+  },
+  "immigrazione-e-cittadinanza": {
+    title: "Immigrazione",
+    tag: "Verifica Requisiti",
+    desc: "Assistenza legale per l'ottenimento e il rinnovo di titoli di soggiorno, cittadinanza e ricongiungimenti familiari, con aggiornamento costante sulle normative vigenti.",
+    focus: "Tutela dei diritti dei cittadini stranieri e gestione pratica dei visti.",
+    punti: [
+      "Permesso di soggiorno e Rinnovi",
+      "Ricongiungimento familiare",
+      "Pratiche per Cittadinanza Italiana",
+      "Ricorsi contro espulsioni e visti negati",
+    ],
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="w-12 h-12"><path d="M12 21l-2-2m2 2l2-2m-2 2V12m0 0l-4-4m4 4l4-4M3 7h18" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="7" r="4" /></svg>`,
+  },
+  "risarcimento-danni": {
+    title: "Risarcimento Danni",
+    tag: "A Risultato",
+    desc: "Tutela completa per ottenere il giusto ristoro. Lo Studio garantisce la massima tutela senza barriere d'ingresso economiche, gestendo il caso con professionalità e trasparenza.",
+    focus: "Infortunistica e Malasanità: zero anticipi e compenso solo a risultato.",
+    punti: [
+      "Infortunistica Stradale: gestione completa sinistri (Senza costi per l'assistito).",
+      "Responsabilità Medica: tutela per errori medici con valutazione gratuita.",
+      "Infortuni sul Lavoro: assistenza legale per il riconoscimento del danno.",
+      "Analisi clinica preliminare: supporto di medici legali convenzionati.",
+    ],
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="w-12 h-12"><path d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.407 2.67 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.407-2.67-1M12 16v-1m4-12H8a2 2 0 00-2 2v14a2 2 0 002 2h8a2 2 0 002-2V5a2 2 0 00-2-2z" /></svg>`,
+  },
+  "diritto-del-lavoro": {
+    title: "Diritto del Lavoro",
+    desc: "Tutela dei diritti dei lavoratori e consulenza aziendale su licenziamenti e contrattualistica, con particolare attenzione alle tutele sindacali.",
+    focus: "Equilibrio e correttezza nelle relazioni lavorative.",
+    punti: [
+      "Impugnazione licenziamenti",
+      "Recupero crediti da lavoro",
+      "Mobbing e demansionamento",
+      "Contratti di collaborazione",
+    ],
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="w-12 h-12"><path d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>`,
+  },
+  "diritto-amministrativo": {
+    title: "Amministrativo",
+    desc: "Rapporti con la Pubblica Amministrazione e gestione dei ricorsi presso i tribunali amministrativi (TAR) per la tutela di cittadini e imprese.",
+    focus: "Protezione del cittadino e dell'impresa nei rapporti con la PA.",
+    punti: [
+      "Ricorsi al TAR",
+      "Appalti e concessioni",
+      "Edilizia e urbanistica",
+      "Pubblico impiego",
+    ],
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="w-12 h-12"><path d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z" /></svg>`,
+  }
+};
+
+const servicesList = Object.entries(dettagliServizi);
+---
+
+<section id="servizi" class="py-16 md:py-20 bg-cream">
+  <div class="container mx-auto px-6 md:px-12">
+    <div class="max-w-4xl mb-12 md:mb-16 text-center mx-auto">
+      <p class="text-rosewood text-[10px] uppercase tracking-[0.4em] mb-3 block font-bold m-0 p-0">
+        Competenze Forensi
+      </p>
+      <h2 class="text-4xl md:text-6xl font-serif tracking-tight mb-4 text-charcoal">
+        Aree di Intervento
+      </h2>
+      <div class="h-0.5 w-16 bg-rosewood-light/40 mx-auto"></div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+      {servicesList.map(([slug, s], index) => (
+        <button 
+          data-service-id={slug}
+          class="service-card group bg-white p-6 sm:p-8 border border-rosewood-light/10 rounded-3xl transition-all duration-700 relative overflow-hidden flex flex-col justify-between hover:shadow-[0_30px_60px_rgba(74,52,52,0.08)] hover:-translate-y-2 text-left w-full h-full cursor-pointer focus:outline-none focus:ring-4 focus:ring-rosewood/20"
+          aria-label={`Scopri di più su ${s.title}`}
+        >
+          {s.tag && (
+            <div class="absolute top-6 right-6 bg-rosewood text-white text-[8px] font-bold uppercase tracking-widest px-3 py-1.5 rounded-full z-20 shadow-lg">
+              {s.tag}
+            </div>
+          )}
+
+          <div class="absolute top-0 right-0 w-32 h-32 bg-cream rounded-bl-full translate-x-32 -translate-y-32 group-hover:translate-x-16 group-hover:-translate-y-16 transition-transform duration-700 ease-out z-0"></div>
+
+          <div class="relative z-10 flex-grow">
+            <div class="text-rosewood mb-8 transform group-hover:scale-110 transition-transform duration-500" set:html={s.icon} />
+
+            <h3 class="text-2xl font-serif mb-4 uppercase tracking-tight text-charcoal group-hover:text-rosewood transition-colors duration-300">
+              {s.title}
+            </h3>
+
+            <p class="text-sepia-dark/80 text-[15px] leading-relaxed mb-6 font-light line-clamp-3">
+              {s.desc}
+            </p>
+          </div>
+          
+          <div class="relative z-10 mt-auto pt-4 border-t border-rosewood-light/10 flex items-center justify-between">
+             <span class="text-[10px] uppercase tracking-widest text-rosewood font-bold group-hover:text-rosewood-light transition-colors">Scopri di più</span>
+             <svg class="w-4 h-4 text-rosewood group-hover:translate-x-2 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+             </svg>
+          </div>
+
+          <span class="absolute top-8 right-8 text-7xl font-serif text-charcoal/5 pointer-events-none group-hover:text-rosewood/15 transition-colors duration-700 z-0">
+            0{index + 1}
+          </span>
+        </button>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- Modals per ogni servizio -->
+{servicesList.map(([slug, s]) => (
+  <dialog id={`modal-${slug}`} class="service-modal backdrop:bg-charcoal/80 backdrop:backdrop-blur-sm bg-transparent w-full h-full max-w-none max-h-none m-0 p-0 fixed inset-0 z-50">
+    <div class="w-full h-full overflow-y-auto flex items-center justify-center p-2.5 sm:p-4 md:p-8">
+      <div class="bg-cream w-full max-w-4xl rounded-[2rem] shadow-2xl relative overflow-hidden flex flex-col max-h-full">
+        
+        {/* Pulsante chiusura */}
+        <button 
+          class="close-modal absolute top-6 right-6 w-12 h-12 bg-white rounded-full flex items-center justify-center text-rosewood shadow-md hover:bg-rosewood hover:text-white transition-colors z-20 focus:outline-none focus:ring-4 focus:ring-rosewood/20"
+          data-target={`modal-${slug}`}
+          aria-label="Chiudi finestra"
+        >
+          <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+
+        <div class="p-4 md:p-6 overflow-y-auto w-full">
+          {/* Titolo e Icona */}
+          <div class="mb-4 flex flex-col md:flex-row items-start md:items-center gap-3 md:gap-4">
+            <div class="w-8 h-8 md:w-10 md:h-10 text-rosewood/40 shrink-0" set:html={s.icon} />
+            <div>
+              <h3 class="text-2xl md:text-3xl font-serif tracking-tight text-charcoal mb-1">
+                {s.title}<span class="text-rosewood">.</span>
+              </h3>
+              <p class="text-base md:text-lg font-serif italic text-sepia-dark leading-tight">
+                "{s.desc}"
+              </p>
+            </div>
+          </div>
+
+          <div class="h-px w-full bg-rosewood/10 mb-4 md:mb-6"></div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+            {/* Focus */}
+            <div class="bg-charcoal p-4 md:p-5 rounded-2xl text-cream relative overflow-hidden flex flex-col justify-center">
+              <span class="text-rosewood-light text-[9px] uppercase tracking-[0.2em] font-bold block mb-2">
+                Focus dello Studio
+              </span>
+              <p class="text-base md:text-lg font-serif italic leading-snug relative z-10">
+                {s.focus}
+              </p>
+            </div>
+
+            {/* Punti */}
+            <div class="flex flex-col justify-center">
+               <h4 class="text-[10px] uppercase tracking-[0.2em] font-bold text-charcoal/40 mb-3">
+                Competenze Specifiche
+              </h4>
+              <ul class="space-y-2">
+                {s.punti.map(punto => (
+                  <li class="flex items-start gap-2">
+                    <CheckCircle2 class="w-4 h-4 text-rosewood shrink-0 mt-0.5" />
+                    <span class="text-charcoal/80 text-sm font-medium leading-tight">{punto}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          <div class="mt-4 md:mt-6 flex flex-col sm:flex-row items-center gap-3 bg-rosewood/5 p-3 md:p-4 rounded-xl border border-rosewood/10">
+              <ShieldAlert class="w-6 h-6 text-rosewood opacity-50 shrink-0 hidden sm:block" />
+              <div>
+                <h5 class="text-[9px] font-bold uppercase tracking-widest text-charcoal mb-0.5">
+                  Etica Professionale
+                </h5>
+                <p class="text-charcoal/70 text-xs leading-tight">
+                  Lo Studio garantisce massima trasparenza sui costi e valutazione onesta della procedibilità, nel rispetto del codice deontologico.
+                </p>
+              </div>
+          </div>
+          
+          <div class="mt-4 md:mt-6 text-center pt-4 md:pt-5 border-t border-rosewood-light/20">
+             <button 
+               type="button" 
+               data-open-chat
+               data-chat-msg={`Salve, desidero richiedere una consulenza sul servizio: ${s.title}`}
+               class="trigger-wa inline-flex items-center justify-center gap-2 py-2.5 px-6 bg-[#25D366] text-white rounded-full font-bold text-xs uppercase tracking-widest transition-all duration-300 hover:bg-[#1ebe5d] hover:scale-105 hover:shadow-[0_10px_20px_rgba(37,211,102,0.35)] cursor-pointer min-h-11"
+             >
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="w-4 h-4 shrink-0" viewBox="0 0 16 16" aria-hidden="true">
+                  <path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232"/>
+                </svg>
+                <span>Richiedi Consulenza Veloce</span>
+             </button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </dialog>
+))}
+
+<script>
+  // Logica per i Modali
+  const cards = document.querySelectorAll('.service-card');
+  const closeBtns = document.querySelectorAll('.close-modal');
+  const modals = document.querySelectorAll('.service-modal');
+
+  cards.forEach(card => {
+    card.addEventListener('click', () => {
+      const id = card.getAttribute('data-service-id');
+      const modal = document.getElementById(`modal-${id}`) as HTMLDialogElement;
+      if (modal) {
+        modal.showModal();
+        document.body.style.overflow = 'hidden'; // Blocca lo scroll dietro
+      }
+    });
+  });
+
+  closeBtns.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const targetId = btn.getAttribute('data-target');
+      if (!targetId) return;
+      const modal = document.getElementById(targetId) as HTMLDialogElement;
+      if (modal) {
+        modal.close();
+        document.body.style.overflow = '';
+      }
+    });
+  });
+
+  // Chiudi cliccando fuori dal modale
+  modals.forEach(modal => {
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        (modal as HTMLDialogElement).close();
+        document.body.style.overflow = '';
+      }
+    });
+  });
+
+  // Apri modale se specificato nell'URL (es: #servizio-diritto-penale)
+  window.addEventListener('load', () => {
+    if (window.location.hash.startsWith('#servizio-')) {
+      const slug = window.location.hash.replace('#servizio-', '');
+      const modal = document.getElementById(`modal-${slug}`) as HTMLDialogElement;
+      if (modal) {
+        modal.showModal();
+        document.body.style.overflow = 'hidden';
+      }
+    }
+  });
+
+  window.addEventListener('hashchange', () => {
+     if (window.location.hash.startsWith('#servizio-')) {
+      const slug = window.location.hash.replace('#servizio-', '');
+      const modal = document.getElementById(`modal-${slug}`) as HTMLDialogElement;
+      if (modal) {
+        modal.showModal();
+        document.body.style.overflow = 'hidden';
+      }
+    }
+  });
+</script>

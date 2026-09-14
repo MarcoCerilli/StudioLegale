@@ -1,0 +1,102 @@
+---
+import '../styles/global.css';
+import WhatsAppWidget from '../components/WhatsAppWidget.astro';
+import NavFooter from '../components/NavFooter.astro';
+
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+
+// Meta vars
+const siteUrl = "https://avvocatoannafusco.it";
+const logoUrl = `${siteUrl}/logo.png`;
+const ogImageUrl = `${siteUrl}/og-image.jpg`;
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "LegalService",
+  "name": "Studio Legale Avvocato Anna Fusco",
+  "description": description,
+  "image": logoUrl, 
+  "telephone": "+39 329 124 6316",
+  "url": siteUrl,
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Via Palermo 16",
+    "addressLocality": "Terracina",
+    "addressRegion": "LT",
+    "postalCode": "04019",
+    "addressCountry": "IT",
+  },
+  "areaServed": [
+    { "@type": "City", "name": "Terracina" },
+    { "@type": "City", "name": "Latina" },
+    { "@type": "City", "name": "Roma" },
+    { "@type": "AdministrativeArea", "name": "Lazio" }
+  ],
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 41.2858, 
+    "longitude": 13.2431,
+  },
+  "priceRange": "€€",
+};
+---
+
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#faf9f6" />
+    
+    <!-- Icone e Manifest -->
+    <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png" />
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" />
+    <link rel="icon" type="image/png" sizes="144x144" href="/favicon-144x144.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192x192.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    
+    <meta name="generator" content={Astro.generator} />
+    
+    <!-- SEO di base -->
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="keywords" content="avvocato anna fusco, studio legale fusco, avvocato terracina, studio legale terracina, avvocato latina, studio legale latina, avvocato lazio, diritto civile terracina, diritto penale terracina, diritto di famiglia terracina, divorzio terracina, risarcimento danni terracina, infortunistica stradale" />
+    <link rel="canonical" href={siteUrl} />
+    
+    <!-- Open Graph / Facebook / WhatsApp -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={siteUrl} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:site_name" content="Studio Legale Fusco" />
+    <meta property="og:locale" content="it_IT" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={siteUrl} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={ogImageUrl} />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    
+    <!-- Dati Strutturati -->
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)}></script>
+  </head>
+  <body class="selection:bg-rosewood-light/30 overflow-x-hidden">
+    <slot />
+    
+    <WhatsAppWidget />
+    <NavFooter />
+  </body>
+</html>

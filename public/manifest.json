@@ -1,0 +1,21 @@
+{
+  "name": "Studio Legale Avvocato Anna Fusco",
+  "short_name": "Studio Fusco",
+  "description": "Studio Legale dell'Avvocato Anna Fusco a Terracina. Assistenza in Diritto Civile, Penale, del Lavoro, Famiglia e Risarcimento Danni.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#faf9f6",
+  "theme_color": "#8b5e5e",
+  "icons": [
+    {
+      "src": "/favicon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

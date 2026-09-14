@@ -1,0 +1,223 @@
+---
+import { Award, ShieldCheck, FileCheck, ChevronDown } from "lucide-astro";
+
+const certificazioni = [
+    {
+      title: "Competenze Digitali – EIPASS Standard",
+      institution: "Certificazione Internazionale di Alfabetizzazione Digitale (Accredia)",
+      year: "2025",
+      buttons: [
+        { label: "EIPASS STANDARD", link: "/attestati/attestato-09.png" },
+        { label: "7 MODULI USER", link: "/attestati/attestato-08.png" },
+      ],
+    },
+    {
+      title: "Operatore RAO (Firma Digitale e SPID)",
+      institution: "Certificazione professionale Namirial – Idoneità e Cyber Security",
+      year: "2024-2025",
+      buttons: [
+        { label: "IDONEITÀ 2024", link: "/attestati/attestato-01.png" },
+        { label: "CYBER SECURITY 2025", link: "/attestati/attestato-02.png" },
+      ],
+    },
+    {
+      title: "Master e Corsi in Diritto Condominiale",
+      institution: "Specializzazione Didaxo: Impugnazione delibere, morosità e parti comuni",
+      year: "2017",
+      buttons: [
+        { label: "IMPUGNAZIONE", link: "/attestati/attestato-10.png" },
+        { label: "RECUPERO CREDITI", link: "/attestati/attestato-12.png" },
+        { label: "GESTIONE PARTI COMUNI", link: "/attestati/attestato-11.png" },
+      ],
+    },
+    {
+      title: "Processo Amministrativo e Notifiche Telematiche",
+      institution: "Formazione specialistica su PAT e notifiche presso Tribunali e Corti d'Appello",
+      year: "2015-2017",
+      buttons: [
+        { label: "PAT 2015", link: "/attestati/attestato-05.png" },
+        { label: "NOTIFICHE I", link: "/attestati/attestato-14.png" },
+        { label: "NOTIFICHE II", link: "/attestati/attestato-13.png" },
+      ],
+    },
+    {
+      title: "Nomina a Cultore della Materia",
+      institution: "Istituzioni di Diritto Privato e Commerciale – LUMSA Università",
+      year: "2015",
+      buttons: [{ label: "VEDI NOMINA", link: "/attestati/attestato-04.png" }],
+    },
+    {
+      title: "Difensori d'Ufficio Tribunale Minorenni",
+      institution: "Iscrizione nell'elenco ufficiale dell'Ordine degli Avvocati di Roma",
+      year: "2010",
+      buttons: [{ label: "VEDI ISCRIZIONE", link: "/attestati/attestato-03.png" }],
+    },
+    {
+      title: "Corso di Abilitazione alla Difesa d'Ufficio",
+      institution: "Idoneità conseguita presso l'Ordine degli Avvocati di Roma",
+      year: "2009-2010",
+      buttons: [{ label: "VEDI ATTESTATO", link: "/attestati/attestato-07.png" }],
+    },
+    {
+      title: "Corso Pratico per Curatore Fallimentare",
+      institution: "Università Roma Tre – Facoltà di Giurisprudenza",
+      year: "2006",
+      buttons: [{ label: "VEDI ATTESTATO", link: "/attestati/attestato-06.png" }],
+    },
+    {
+      title: "Notificazioni Civili e Riforma Cartabia",
+      institution: "Movimento Forense - Aggiornamento correttivo D.Lgs. 164/2024",
+      year: "2024",
+      buttons: [{ label: "VEDI AGGIORNAMENTO", link: "/attestati/attestato-17.png" }],
+    },
+    {
+      title: "Tutela dei Consumatori",
+      institution: "Asso-Consum - Corso di perfezionamento D.Lgs. 206/2005",
+      year: "2016",
+      buttons: [{ label: "VEDI ATTESTATO", link: "/attestati/attestato-18.png" }],
+    },
+];
+---
+
+<section id="attestati" class="py-16 md:py-20 bg-cream text-charcoal border-t border-rosewood-light/10">
+  <div class="container mx-auto px-6 max-w-7xl">
+    
+    {/* Header + Box Inerenti di sintesi autorevole (Elimina il vuoto visivo a destra) */}
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center mb-10 md:mb-12">
+      
+      {/* Colonna Sinistra: Titolo e Descrizione */}
+      <div class="lg:col-span-5 text-center md:text-left">
+        <p class="text-rosewood text-[10px] font-bold uppercase tracking-[0.4em] mb-3">
+          Curriculum Professionale
+        </p>
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-serif tracking-tight leading-tight mb-4 text-charcoal">
+          Titoli e <span class="text-rosewood italic font-medium">Competenze.</span>
+        </h2>
+        <div class="h-0.5 w-16 bg-rosewood-light/30 mx-auto md:mx-0 mb-4"></div>
+        <p class="text-xs sm:text-sm text-charcoal/75 leading-relaxed font-light">
+          Il costante rigore accademico e l'accreditamento continuativo presso il Consiglio Nazionale Forense assicurano una difesa tecnica solida, aggiornata alle recenti evoluzioni del diritto e alla transizione digitale.
+        </p>
+      </div>
+
+      {/* Colonna Destra: 3 Pilastri Formativi e di Abilitazione */}
+      <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-3 gap-3.5 sm:gap-4">
+        
+        {/* Pilastro 1 */}
+        <div class="bg-white p-5 rounded-2xl border border-rosewood-light/15 shadow-xs hover:shadow-md transition-all">
+          <div class="w-8 h-8 rounded-xl bg-rosewood/10 text-rosewood flex items-center justify-center mb-3">
+            <Award class="w-4 h-4" />
+          </div>
+          <span class="text-[9px] uppercase tracking-wider font-bold text-rosewood block mb-1">
+            Iscrizione Albo
+          </span>
+          <h3 class="font-serif font-bold text-sm text-charcoal mb-1">
+            Ordine di Roma
+          </h3>
+          <p class="text-[11px] text-charcoal/70 leading-snug font-light">
+            Tessera N. A36343. Oltre 15 anni di patrocinio e tutela tra Roma e Terracina.
+          </p>
+        </div>
+
+        {/* Pilastro 2 */}
+        <div class="bg-white p-5 rounded-2xl border border-rosewood-light/15 shadow-xs hover:shadow-md transition-all">
+          <div class="w-8 h-8 rounded-xl bg-rosewood/10 text-rosewood flex items-center justify-center mb-3">
+            <ShieldCheck class="w-4 h-4" />
+          </div>
+          <span class="text-[9px] uppercase tracking-wider font-bold text-rosewood block mb-1">
+            Formazione CNF
+          </span>
+          <h3 class="font-serif font-bold text-sm text-charcoal mb-1">
+            Riforma Cartabia
+          </h3>
+          <p class="text-[11px] text-charcoal/70 leading-snug font-light">
+            Aggiornamento correttivo D.Lgs. 164/2024, notifiche civili e contenzioso PAT.
+          </p>
+        </div>
+
+        {/* Pilastro 3 */}
+        <div class="bg-white p-5 rounded-2xl border border-rosewood-light/15 shadow-xs hover:shadow-md transition-all">
+          <div class="w-8 h-8 rounded-xl bg-rosewood/10 text-rosewood flex items-center justify-center mb-3">
+            <FileCheck class="w-4 h-4" />
+          </div>
+          <span class="text-[9px] uppercase tracking-wider font-bold text-rosewood block mb-1">
+            Legal Tech
+          </span>
+          <h3 class="font-serif font-bold text-sm text-charcoal mb-1">
+            EIPASS & RAO
+          </h3>
+          <p class="text-[11px] text-charcoal/70 leading-snug font-light">
+            Certificazione Digitale Standard e abilitazione Namirial per Cyber Security e SPID.
+          </p>
+        </div>
+
+      </div>
+    </div>
+
+    {/* SEZIONE ESPANDIBILE CON TUTTI GLI ATTESTATI */}
+    <details class="group">
+      <summary class="cursor-pointer list-none flex items-center justify-center md:justify-start gap-4 text-[11px] font-bold uppercase tracking-widest text-rosewood hover:text-rosewood-light transition-colors">
+        <span class="border border-rosewood/30 bg-white hover:bg-cream px-6 py-3 rounded-full group-open:bg-rosewood group-open:text-white transition-all shadow-xs flex items-center gap-2.5">
+          <span class="group-open:hidden">Mostra tutti gli attestati ({certificazioni.length})</span>
+          <span class="hidden group-open:inline">Nascondi attestati</span>
+          <ChevronDown class="w-3.5 h-3.5 group-open:rotate-180 transition-transform duration-300" />
+        </span>
+      </summary>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mt-8 md:mt-10 animate-fade-in-up">
+        {certificazioni.map((cert) => (
+          <div class="relative flex flex-col p-6 sm:p-8 bg-white border border-rosewood-light/10 hover:border-rosewood/30 transition-all duration-500 rounded-3xl shadow-xs hover:shadow-[0_20px_40px_rgba(74,52,52,0.08)] hover:-translate-y-1">
+            <div class="text-rosewood text-[10px] font-bold tracking-widest uppercase mb-4 flex items-center gap-3">
+              <span class="w-6 h-px bg-rosewood-light/40"></span>
+              {cert.year}
+            </div>
+            <h3 class="text-xl sm:text-2xl font-serif mb-3 leading-tight text-charcoal hover:text-rosewood transition-colors duration-300">
+              {cert.title}
+            </h3>
+            <p class="text-[11px] text-sepia-dark/60 mb-6 leading-relaxed font-light uppercase tracking-wider">
+              {cert.institution}
+            </p>
+            <div class="flex flex-wrap gap-2.5 mt-auto">
+              {cert.buttons.map((btn) => (
+                <a
+                  href={btn.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`Visualizza ${btn.label} - ${cert.title}`}
+                  class="text-[9px] font-extrabold tracking-widest px-5 py-3 border border-gray-100 text-sepia-dark rounded-full hover:bg-[#3d3330] hover:text-white hover:border-[#3d3330] transition-all duration-300 uppercase shadow-sm focus-visible:outline-2 focus-visible:outline-rosewood"
+                >
+                  {btn.label}
+                </a>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+      
+      {/* Footer Attestati */}
+      <div class="mt-16 pt-8 border-t border-rosewood-light/10 flex flex-col md:flex-row justify-between items-center gap-8">
+        <p class="text-sepia-dark/50 text-xs font-light max-w-2xl leading-relaxed text-center md:text-left">
+          Il costante aggiornamento professionale garantisce un'assistenza legale d'eccellenza basata sulle più recenti evoluzioni del diritto.
+        </p>
+      </div>
+    </details>
+  </div>
+</section>
+
+<style>
+  details > summary::-webkit-details-marker {
+    display: none;
+  }
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  .animate-fade-in-up {
+    animation: fadeInUp 0.5s ease-out forwards;
+  }
+</style>

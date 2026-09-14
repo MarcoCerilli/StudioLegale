@@ -1,0 +1,157 @@
+---
+const navLinks = [
+  { href: "#chi-sono", label: "Profilo" },
+  { href: "#servizi", label: "Attività" },
+  { href: "#attestati", label: "Attestati" },
+];
+---
+
+<nav 
+  id="navbar" 
+  class="fixed top-2.5 sm:top-4 left-1/2 -translate-x-1/2 w-[94%] max-w-5xl z-50 transition-all duration-300 rounded-full bg-sepia-dark/95 backdrop-blur-md border border-rosewood-light/30 shadow-[0_10px_35px_rgba(0,0,0,0.4)] py-2.5 sm:py-2.5 px-4 sm:px-6"
+  aria-label="Navigazione principale"
+>
+  <div class="flex justify-between items-center w-full">
+    {/* LOGO PIÙ GRANDE DA MOBILE */}
+    <a 
+      href="#home" 
+      class="flex items-center gap-3 z-50 group min-h-11 focus-visible:outline-2 focus-visible:outline-cream focus-visible:rounded-full" 
+      id="nav-logo"
+      aria-label="Studio Legale Fusco - Torna all'inizio"
+    >
+      <div class="w-11 h-11 sm:w-10 sm:h-10 bg-white rounded-full flex items-center justify-center p-1.5 shadow-md shrink-0 group-hover:scale-105 transition-transform duration-300">
+        <img 
+          src="/logo.png" 
+          alt="" 
+          aria-hidden="true"
+          class="w-full h-full object-contain" 
+        />
+      </div>
+      <div class="flex flex-col">
+        <span class="font-serif font-bold text-sm sm:text-sm tracking-widest text-cream uppercase leading-none">Studio Fusco</span>
+        <span class="text-[9px] sm:text-[9px] tracking-[0.25em] text-rosewood-light uppercase mt-1">Terracina</span>
+      </div>
+    </a>
+
+    {/* HAMBURGER BUTTON PIÙ COMODO (Mobile) */}
+    <button
+      id="menu-btn"
+      class="md:hidden z-50 text-cream min-w-11 min-h-11 w-11 h-11 flex flex-col justify-center items-center rounded-full hover:bg-white/10 active:scale-95 transition-all focus-visible:outline-2 focus-visible:outline-cream cursor-pointer"
+      aria-label="Apri menu di navigazione"
+      aria-expanded="false"
+      aria-controls="mobile-menu"
+    >
+      <span id="bar-1" class="block h-0.5 w-5 bg-current transition-all duration-300 transform origin-center"></span>
+      <span id="bar-2" class="block h-0.5 w-5 bg-current transition-all duration-300 my-1.5"></span>
+      <span id="bar-3" class="block h-0.5 w-5 bg-current transition-all duration-300 transform origin-center"></span>
+    </button>
+
+    {/* DESKTOP NAV LINKS */}
+    <div class="hidden md:flex items-center gap-1 lg:gap-2 uppercase tracking-[0.14em] text-xs font-semibold">
+      {navLinks.map((link) => (
+        <a 
+          href={link.href} 
+          class="nav-link text-cream/90 hover:text-white px-3.5 py-2 rounded-full hover:bg-white/10 transition-all duration-200 min-h-[44px] flex items-center focus-visible:outline-2 focus-visible:outline-cream"
+        >
+          {link.label}
+        </a>
+      ))}
+      
+      <button 
+        type="button"
+        data-open-chat
+        data-chat-msg="Salve, vorrei prenotare un colloquio informativo."
+        class="cursor-pointer ml-2 bg-rosewood border border-rosewood/40 text-white px-5 py-2.5 rounded-full shadow-md hover:bg-cream hover:text-sepia-dark hover:border-cream transition-all duration-300 active:scale-95 text-[10px] tracking-widest font-bold min-h-[44px] flex items-center focus-visible:outline-2 focus-visible:outline-cream uppercase"
+      >
+        Prenota
+      </button>
+    </div>
+
+    {/* MOBILE OVERLAY (Sfondo chiaro) */}
+    <div 
+      id="mobile-menu" 
+      class="md:hidden absolute top-full left-0 right-0 mt-2 bg-[#fdfbf7]/98 backdrop-blur-2xl border border-rosewood-light/30 shadow-[0_15px_45px_rgba(0,0,0,0.3)] rounded-3xl py-5 px-5 flex flex-col items-center gap-1.5 transition-all duration-300 ease-in-out opacity-0 pointer-events-none -translate-y-2 uppercase tracking-[0.14em] text-xs font-semibold"
+    >
+      {navLinks.map((link) => (
+        <a 
+          href={link.href} 
+          class="nav-link text-charcoal hover:text-rosewood w-full text-center py-3 min-h-11 flex items-center justify-center rounded-xl hover:bg-rosewood/5 active:bg-rosewood/10 transition-colors"
+        >
+          {link.label}
+        </a>
+      ))}
+      
+      <div class="w-full h-px bg-rosewood-light/20 my-1"></div>
+
+      <button 
+        type="button"
+        data-open-chat
+        data-chat-msg="Salve, vorrei prenotare un colloquio informativo."
+        class="cursor-pointer w-full text-center bg-rosewood border-2 border-rosewood text-white px-6 py-3.5 rounded-full shadow-md hover:bg-cream hover:text-sepia-dark hover:border-sepia-dark transition-all duration-300 active:scale-95 text-[10px] tracking-widest font-bold min-h-12 flex items-center justify-center uppercase"
+      >
+        Prenota Colloquio
+      </button>
+    </div>
+  </div>
+</nav>
+
+<script>
+  const navbar = document.getElementById('navbar');
+  const menuBtn = document.getElementById('menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const bar1 = document.getElementById('bar-1');
+  const bar2 = document.getElementById('bar-2');
+  const bar3 = document.getElementById('bar-3');
+  const navLinks = document.querySelectorAll('.nav-link');
+  
+  let isOpen = false;
+
+  // Handle mobile menu toggle
+  const toggleMenu = () => {
+    isOpen = !isOpen;
+    menuBtn?.setAttribute('aria-expanded', String(isOpen));
+    menuBtn?.setAttribute('aria-label', isOpen ? 'Chiudi menu di navigazione' : 'Apri menu di navigazione');
+
+    if (isOpen) {
+      mobileMenu?.classList.remove('opacity-0', 'pointer-events-none', '-translate-y-2');
+      mobileMenu?.classList.add('opacity-100', 'pointer-events-auto', 'translate-y-0');
+      bar1?.classList.add('rotate-45', 'translate-y-1.5');
+      bar2?.classList.add('opacity-0');
+      bar3?.classList.add('-rotate-45', '-translate-y-1.5');
+    } else {
+      mobileMenu?.classList.add('opacity-0', 'pointer-events-none', '-translate-y-2');
+      mobileMenu?.classList.remove('opacity-100', 'pointer-events-auto', 'translate-y-0');
+      bar1?.classList.remove('rotate-45', 'translate-y-1.5');
+      bar2?.classList.remove('opacity-0');
+      bar3?.classList.remove('-rotate-45', '-translate-y-1.5');
+    }
+  };
+
+  menuBtn?.addEventListener('click', toggleMenu);
+  
+  // Close menu on link click
+  navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      if (isOpen) toggleMenu();
+    });
+  });
+  
+  document.getElementById('nav-logo')?.addEventListener('click', () => {
+    if (isOpen) toggleMenu();
+  });
+
+  // Close on ESC key
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && isOpen) {
+      toggleMenu();
+    }
+  });
+
+  // Close mobile menu when chat is triggered
+  document.addEventListener('click', (e) => {
+    const trigger = (e.target as HTMLElement).closest('[data-open-chat]');
+    if (trigger && isOpen) {
+      toggleMenu();
+    }
+  });
+</script>

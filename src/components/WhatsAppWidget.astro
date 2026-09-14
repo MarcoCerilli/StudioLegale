@@ -1,0 +1,294 @@
+---
+// WhatsAppWidget.astro - Chat interna interattiva con opzione WhatsApp
+---
+
+<div class="fixed bottom-20 right-4 sm:bottom-6 sm:right-6 md:bottom-8 md:right-8 z-40 flex flex-col items-end pointer-events-none">
+  
+  {/* Finestra Chat Interna */}
+  <div 
+    id="wa-widget" 
+    class="bg-white rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.25)] border border-rosewood/15 w-[calc(100vw-2rem)] max-w-90 sm:w-[380px] mb-4 overflow-hidden transform scale-95 opacity-0 pointer-events-none transition-all duration-300 origin-bottom-right flex-col max-h-[520px] hidden"
+  >
+    {/* Header Chat */}
+    <div class="bg-[#128C7E] p-4 text-white relative shrink-0 flex items-center justify-between shadow-md">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center p-1 shadow-inner shrink-0 relative">
+          <img src="/logo.png" alt="Studio Legale Fusco" class="w-full h-full object-contain" />
+          <div class="absolute bottom-0 right-0 w-3 h-3 bg-green-400 border-2 border-white rounded-full"></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-sm tracking-wide leading-tight">Studio Legale Fusco</h4>
+          <p class="text-white/85 text-[11px] flex items-center gap-1.5 mt-0.5">
+            <span class="w-1.5 h-1.5 rounded-full bg-green-300 animate-pulse"></span>
+            Assistenza diretta • Online
+          </p>
+        </div>
+      </div>
+      <button 
+        id="close-wa-widget"
+        class="text-white/80 hover:text-white p-1.5 rounded-full hover:bg-white/10 transition-colors focus:outline-none"
+        aria-label="Chiudi chat"
+      >
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+    
+    {/* Area Messaggi */}
+    <div id="chat-stream" class="p-4 flex-1 overflow-y-auto bg-[#efeae2] space-y-3 relative text-sm min-h-65 max-h-85">
+      <div class="text-center">
+        <span class="text-[10px] bg-white/70 text-gray-500 px-3 py-1 rounded-full uppercase tracking-wider font-semibold shadow-xs">
+          Oggi
+        </span>
+      </div>
+
+      {/* Messaggio iniziale dello studio */}
+      <div class="flex flex-col items-start space-y-1">
+        <div class="bg-white text-charcoal rounded-2xl rounded-tl-xs p-3 shadow-xs max-w-[90%] border-l-4 border-[#128C7E]">
+          <p class="leading-relaxed">
+            Gentile visitatore, benvenuto allo <strong>Studio Legale Fusco</strong>. 👋
+          </p>
+          <p class="mt-1.5 text-xs text-gray-600">
+            Come possiamo esserti utili oggi? Seleziona un'opzione o scrivi un messaggio:
+          </p>
+          <span class="text-[9px] text-gray-400 block text-right mt-1">Adesso</span>
+        </div>
+      </div>
+
+      {/* Pulsanti Rapidi Interni */}
+      <div id="quick-options" class="space-y-1.5 pt-1">
+        <button 
+          data-text="Richiesta Consulenza Legale"
+          data-reply="Certamente! Trattiamo diritto civile, penale, lavoro, famiglia e risarcimento danni a Terracina e nel Lazio. Di quale materia si tratta? Puoi descriverci brevemente il caso qui sotto."
+          class="quick-btn w-full text-left px-3.5 py-2.5 rounded-xl bg-white/90 hover:bg-[#128C7E] hover:text-white border border-gray-200 transition-all text-xs font-medium text-charcoal shadow-xs flex items-center justify-between group"
+        >
+          <span>⚖️ Richiesta Consulenza Legale</span>
+          <span class="text-gray-400 group-hover:text-white text-[11px]">›</span>
+        </button>
+
+        <button 
+          data-text="Fissa un Appuntamento in Studio"
+          data-reply="Lo Studio riceve a Terracina in Via Palermo 16. Scrivici giorno e fascia oraria di tua preferenza insieme a un recapito telefonico: ti confermeremo la disponibilità."
+          class="quick-btn w-full text-left px-3.5 py-2.5 rounded-xl bg-white/90 hover:bg-[#128C7E] hover:text-white border border-gray-200 transition-all text-xs font-medium text-charcoal shadow-xs flex items-center justify-between group"
+        >
+          <span>📅 Fissa un Appuntamento in Studio</span>
+          <span class="text-gray-400 group-hover:text-white text-[11px]">›</span>
+        </button>
+
+        <button 
+          data-text="Informazioni su Aree e Servizi"
+          data-reply="Offriamo tutela specializzata in: Diritto Penale, Separazioni e Famiglia, Sinistri e Risarcimento Danni, Diritto del Lavoro e Recupero Crediti. Su cosa desideri maggiori chiarimenti?"
+          class="quick-btn w-full text-left px-3.5 py-2.5 rounded-xl bg-white/90 hover:bg-[#128C7E] hover:text-white border border-gray-200 transition-all text-xs font-medium text-charcoal shadow-xs flex items-center justify-between group"
+        >
+          <span>📋 Informazioni su Aree e Servizi</span>
+          <span class="text-gray-400 group-hover:text-white text-[11px]">›</span>
+        </button>
+      </div>
+
+      {/* Indicatore "Sta scrivendo..." (nascosto di default) */}
+      <div id="typing-indicator" style="display: none;" class="items-center gap-1.5 bg-white/90 text-gray-500 text-xs px-3 py-1.5 rounded-full w-fit shadow-xs">
+        <span class="w-1.5 h-1.5 rounded-full bg-gray-400 animate-bounce"></span>
+        <span class="w-1.5 h-1.5 rounded-full bg-gray-400 animate-bounce [animation-delay:0.2s]"></span>
+        <span class="w-1.5 h-1.5 rounded-full bg-gray-400 animate-bounce [animation-delay:0.4s]"></span>
+        <span class="text-[11px] ml-1">Studio Fusco sta scrivendo...</span>
+      </div>
+    </div>
+
+    {/* Form Invio Messaggio Interno */}
+    <form id="chat-form" class="p-2.5 bg-white border-t border-gray-200 flex items-center gap-2">
+      <input 
+        id="chat-input"
+        type="text" 
+        placeholder="Scrivi un messaggio qui..." 
+        autocomplete="off"
+        class="flex-1 text-xs px-3.5 py-2.5 bg-gray-100 rounded-full border border-gray-200 focus:outline-none focus:border-[#128C7E] focus:bg-white text-charcoal transition-colors"
+      />
+      <button 
+        type="submit"
+        class="w-9 h-9 bg-[#128C7E] hover:bg-[#075e54] text-white rounded-full flex items-center justify-center shrink-0 transition-colors shadow-sm focus:outline-none"
+        aria-label="Invia messaggio"
+      >
+        <svg class="w-4 h-4 translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+        </svg>
+      </button>
+    </form>
+  </div>
+
+  {/* Pulsante Fluttuante Attivatore (Trigger) */}
+  <button 
+    id="wa-trigger"
+    class="pointer-events-auto relative bg-[#25D366] text-white w-14 h-14 rounded-full shadow-[0_6px_20px_rgba(37,211,102,0.45)] hover:bg-[#1ebe5d] hover:scale-105 transition-all duration-300 flex items-center justify-center focus:outline-none focus:ring-4 focus:ring-[#25D366]/30 group cursor-pointer"
+    aria-label="Apri assistenza online Studio Legale Fusco"
+  >
+    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-whatsapp transition-transform group-hover:scale-110" viewBox="0 0 16 16">
+      <path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232"/>
+    </svg>
+    <div id="wa-badge" class="absolute -top-1 -right-1 w-3.5 h-3.5 bg-red-500 border-2 border-white rounded-full"></div>
+  </button>
+</div>
+
+<script>
+  const waTrigger = document.getElementById('wa-trigger');
+  const waWidget = document.getElementById('wa-widget');
+  const waClose = document.getElementById('close-wa-widget');
+  const waBadge = document.getElementById('wa-badge');
+  const chatStream = document.getElementById('chat-stream');
+  const quickBtns = document.querySelectorAll('.quick-btn');
+  const chatForm = document.getElementById('chat-form');
+  const chatInput = document.getElementById('chat-input') as HTMLInputElement;
+  const typingIndicator = document.getElementById('typing-indicator');
+
+  let isOpen = false;
+
+  function openWidget(prefilledMessage?: string) {
+    if (!waWidget) return;
+    // Chiudi eventuali modali aperti (es. modali servizi)
+    document.querySelectorAll('dialog[open]').forEach(d => (d as HTMLDialogElement).close());
+    document.body.style.overflow = '';
+
+    isOpen = true;
+    waWidget.classList.remove('hidden');
+    waWidget.classList.add('flex');
+    void waWidget.offsetWidth;
+    waWidget.classList.remove('scale-95', 'opacity-0', 'pointer-events-none');
+    waWidget.classList.add('scale-100', 'opacity-100', 'pointer-events-auto');
+    if (waBadge) waBadge.style.display = 'none';
+
+    if (prefilledMessage) {
+      addUserMessage(prefilledMessage);
+      if (typingIndicator) typingIndicator.style.display = 'flex';
+      chatStream?.appendChild(typingIndicator!);
+      chatStream!.scrollTop = chatStream!.scrollHeight;
+
+      setTimeout(() => {
+        if (typingIndicator) typingIndicator.style.display = 'none';
+        addStudioMessage(`Certamente! In merito a <strong>${prefilledMessage}</strong>, descrivici pure la tua esigenza o lasciaci un tuo recapito: ti risponderemo al più presto.`);
+      }, 500);
+    }
+    setTimeout(() => chatInput?.focus(), 250);
+  }
+
+  function closeWidget() {
+    if (!waWidget) return;
+    isOpen = false;
+    waWidget.classList.add('scale-95', 'opacity-0', 'pointer-events-none');
+    waWidget.classList.remove('scale-100', 'opacity-100', 'pointer-events-auto');
+    setTimeout(() => {
+      if (!isOpen) {
+        waWidget.classList.add('hidden');
+        waWidget.classList.remove('flex');
+      }
+    }, 300);
+  }
+
+  function toggleWidget() {
+    if (isOpen) {
+      closeWidget();
+    } else {
+      openWidget();
+    }
+  }
+
+  waTrigger?.addEventListener('click', toggleWidget);
+  waClose?.addEventListener('click', closeWidget);
+
+  // Delega globale per aprire la chat da QUALSIASI CTA del sito
+  document.addEventListener('click', (e) => {
+    const trigger = (e.target as HTMLElement).closest('[data-open-chat]');
+    if (trigger) {
+      e.preventDefault();
+      const customMsg = trigger.getAttribute('data-chat-msg') || undefined;
+      openWidget(customMsg);
+    }
+  });
+
+  // Aggiunge un messaggio utente alla chat
+  function addUserMessage(text: string) {
+    if (!chatStream) return;
+    const msgDiv = document.createElement('div');
+    msgDiv.className = 'flex flex-col items-end space-y-1';
+    msgDiv.innerHTML = `
+      <div class="bg-[#d9fdd3] text-charcoal rounded-2xl rounded-tr-xs p-3 shadow-xs max-w-[85%]">
+        <p class="leading-relaxed font-medium">${text}</p>
+        <span class="text-[9px] text-gray-500 block text-right mt-1">Tu • Adesso</span>
+      </div>
+    `;
+    chatStream.appendChild(msgDiv);
+    chatStream.scrollTop = chatStream.scrollHeight;
+  }
+
+  // Aggiunge risposta dello studio
+  function addStudioMessage(replyHtml: string) {
+    if (!chatStream) return;
+    const msgDiv = document.createElement('div');
+    msgDiv.className = 'flex flex-col items-start space-y-1';
+    msgDiv.innerHTML = `
+      <div class="bg-white text-charcoal rounded-2xl rounded-tl-xs p-3 shadow-xs max-w-[90%] border-l-4 border-[#128C7E]">
+        <div class="leading-relaxed text-xs text-gray-700">${replyHtml}</div>
+        <span class="text-[9px] text-gray-400 block text-right mt-1">Studio Fusco</span>
+      </div>
+    `;
+    chatStream.appendChild(msgDiv);
+    chatStream.scrollTop = chatStream.scrollHeight;
+  }
+
+  // Gestione pulsanti rapidi (SENZA uscire dalla pagina!)
+  quickBtns.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const text = btn.getAttribute('data-text') || '';
+      const reply = btn.getAttribute('data-reply') || '';
+      
+      addUserMessage(text);
+
+      // Mostra indicatore digitazione breve
+      if (typingIndicator) typingIndicator.style.display = 'flex';
+      chatStream?.appendChild(typingIndicator!);
+      chatStream!.scrollTop = chatStream!.scrollHeight;
+
+      setTimeout(() => {
+        if (typingIndicator) typingIndicator.style.display = 'none';
+        addStudioMessage(reply);
+      }, 550);
+    });
+  });
+
+  // Gestione invio modulo interno
+  chatForm?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const userText = chatInput?.value.trim();
+    if (!userText) return;
+
+    addUserMessage(userText);
+    chatInput.value = '';
+
+    if (typingIndicator) typingIndicator.style.display = 'flex';
+    chatStream?.appendChild(typingIndicator!);
+    chatStream!.scrollTop = chatStream!.scrollHeight;
+
+    setTimeout(() => {
+      if (typingIndicator) typingIndicator.style.display = 'none';
+      
+      const whatsappUrl = `https://wa.me/393291246316?text=${encodeURIComponent(userText)}`;
+
+      const responseHtml = `
+        <p>Grazie per il tuo messaggio! Abbiamo registrato la richiesta.</p>
+        <p class="mt-1">Se desideri ricevere risposta immediata direttamente sul tuo WhatsApp con l'Avvocato, clicca qui sotto (si aprirà in una nuova scheda senza chiudere il sito):</p>
+        <a 
+          href="${whatsappUrl}" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          class="mt-2.5 inline-flex items-center gap-2 bg-[#25D366] hover:bg-[#1ebe5d] text-white font-bold text-[11px] px-3.5 py-2 rounded-lg shadow-sm transition-colors"
+        >
+          <span>Invia anche su WhatsApp</span>
+          <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232"/>
+          </svg>
+        </a>
+      `;
+      addStudioMessage(responseHtml);
+    }, 600);
+  });
+</script>
