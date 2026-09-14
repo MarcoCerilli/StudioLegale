@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://avvocatoannafusco.it/sitemap-index.xml
+Sitemap: https://www.avvocatoannafusco.it/sitemap-index.xml

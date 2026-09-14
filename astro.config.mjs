@@ -5,7 +5,7 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://avvocatoannafusco.it',
+  site: 'https://www.avvocatoannafusco.it',
   vite: {
     plugins: [tailwindcss()]
   },
