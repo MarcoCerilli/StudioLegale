@@ -2,7 +2,7 @@ import sharp from 'sharp';
 import { execSync } from 'child_process';
 import fs from 'fs';
 
-const input = 'public/images/logo-fusco.png';
+const input = 'public/logo.png';
 const sizes = [48, 96, 144, 192, 512];
 
 async function run() {
