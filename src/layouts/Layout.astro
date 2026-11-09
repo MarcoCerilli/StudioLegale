@@ -15,35 +15,124 @@ const siteUrl = "https://www.avvocatoannafusco.it";
 const logoUrl = `${siteUrl}/logo.png`;
 const ogImageUrl = `${siteUrl}/og-image.jpg`;
 
-const jsonLd = {
+const attorneyJsonLd = {
   "@context": "https://schema.org",
-  "@type": "LegalService",
-  "name": "Studio Legale Avvocato Anna Fusco",
+  "@type": ["Attorney", "LegalService"],
+  "@id": `${siteUrl}/#attorney`,
+  "name": "Studio Legale Avvocato Anna Fusco - Terracina",
+  "alternateName": "Avvocato Anna Fusco Terracina",
   "description": description,
-  "image": logoUrl, 
+  "image": [ogImageUrl, logoUrl], 
   "telephone": "+39 329 124 6316",
+  "email": "ass.legale@gmail.com",
   "url": siteUrl,
+  "priceRange": "€€",
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "Via Palermo 16",
     "addressLocality": "Terracina",
     "addressRegion": "LT",
     "postalCode": "04019",
-    "addressCountry": "IT",
+    "addressCountry": "IT"
   },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 41.2858, 
+    "longitude": 13.2431
+  },
+  "hasMap": "https://maps.google.com/?q=Via+Palermo+16+04019+Terracina+LT",
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      "opens": "09:00",
+      "closes": "19:30"
+    }
+  ],
   "areaServed": [
     { "@type": "City", "name": "Terracina" },
+    { "@type": "City", "name": "San Felice Circeo" },
+    { "@type": "City", "name": "Sabaudia" },
+    { "@type": "City", "name": "Fondi" },
+    { "@type": "City", "name": "Pontinia" },
     { "@type": "City", "name": "Latina" },
     { "@type": "AdministrativeArea", "name": "Provincia di Latina" },
     { "@type": "City", "name": "Roma" },
     { "@type": "AdministrativeArea", "name": "Lazio" }
   ],
-  "geo": {
-    "@type": "GeoCoordinates",
-    "latitude": 41.2858, 
-    "longitude": 13.2431,
+  "founder": {
+    "@type": "Person",
+    "name": "Anna Fusco",
+    "jobTitle": "Avvocato",
+    "description": "Avvocato iscritta all'Ordine degli Avvocati di Roma (Tessera N. A36343), con studio a Terracina. Oltre 15 anni di esperienza in diritto civile, penale, famiglia e lavoro.",
+    "memberOf": {
+      "@type": "Organization",
+      "name": "Ordine degli Avvocati di Roma",
+      "identifier": "A36343"
+    },
+    "alumniOf": {
+      "@type": "CollegeOrUniversity",
+      "name": "LUMSA Università"
+    }
   },
-  "priceRange": "€€",
+  "knowsAbout": [
+    "Diritto Civile",
+    "Diritto Penale",
+    "Diritto di Famiglia",
+    "Separazioni e Divorzi",
+    "Risarcimento Danni",
+    "Infortunistica Stradale",
+    "Diritto del Lavoro",
+    "Immigrazione e Cittadinanza",
+    "Diritto Amministrativo"
+  ]
+};
+
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Come posso richiedere una prima consulenza con l'Avvocato a Terracina?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "È possibile richiedere un colloquio preliminare contattando direttamente lo Studio Legale Fusco al +39 329 124 6316, tramite chat o WhatsApp, oppure via email. Lo studio riceve su appuntamento in Via Palermo 16 a Terracina."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "In quali materie legali è specializzato lo Studio dell'Avv. Anna Fusco a Terracina?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Lo Studio Legale dell'Avvocato Anna Fusco a Terracina offre assistenza in Diritto Civile e di Famiglia (separazioni, divorzi, successioni), Diritto Penale, Risarcimento Danni e Infortunistica Stradale, Diritto del Lavoro, Immigrazione e Diritto Amministrativo."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Lo Studio Legale di Terracina assiste cause presso i Tribunali di Latina e Roma?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sì, l'Avvocato Anna Fusco è iscritta all'Ordine degli Avvocati di Roma e patrocina regolarmente cause presso il Tribunale di Latina, il Giudice di Pace di Terracina, la Corte d'Appello e i Tribunali di Roma e di tutto il Lazio."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Dove si trova esattamente lo studio legale a Terracina?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Lo studio si trova in pieno centro a Terracina, in Via Palermo 16 (04019 - LT), facilmente accessibile anche per chi proviene da San Felice Circeo, Sabaudia, Fondi e Latina."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Come funziona l'assistenza per risarcimento danni e incidenti stradali a Terracina?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Per i sinistri stradali, infortuni e casi di responsabilità medica, lo studio opera con una valutazione preliminare gratuita del caso e formula a risultato, senza anticipo di spese legali per l'assistito e con il supporto di medici legali convenzionati."
+      }
+    }
+  ]
 };
 ---
 
@@ -69,8 +158,12 @@ const jsonLd = {
     <!-- SEO di base -->
     <title>{title}</title>
     <meta name="description" content={description} />
-    <meta name="keywords" content="avvocato anna fusco, studio legale fusco, avvocato terracina, studio legale terracina, avvocato latina, studio legale latina, avvocato provincia di latina, studio legale roma, avvocato roma, avvocato lazio, studio legale lazio, diritto civile terracina, diritto penale terracina, diritto di famiglia terracina, divorzio terracina, risarcimento danni terracina, infortunistica stradale" />
+    <meta name="keywords" content="avvocato terracina, avvocato a terracina, studio legale terracina, avvocato anna fusco, avvocato penalista terracina, avvocato divorzista terracina, diritto di famiglia terracina, infortunistica stradale terracina, risarcimento danni terracina, avvocato del lavoro terracina, studio legale latina, avvocato latina, avvocato roma" />
     <link rel="canonical" href={siteUrl} />
+    <meta name="geo.region" content="IT-LT" />
+    <meta name="geo.placename" content="Terracina" />
+    <meta name="geo.position" content="41.2858;13.2431" />
+    <meta name="ICBM" content="41.2858, 13.2431" />
     
     <!-- Open Graph / Facebook / WhatsApp -->
     <meta property="og:type" content="website" />
@@ -78,7 +171,7 @@ const jsonLd = {
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={ogImageUrl} />
-    <meta property="og:site_name" content="Studio Legale Fusco" />
+    <meta property="og:site_name" content="Studio Legale Fusco - Avvocato Terracina" />
     <meta property="og:locale" content="it_IT" />
 
     <!-- Twitter -->
@@ -93,8 +186,9 @@ const jsonLd = {
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
     
-    <!-- Dati Strutturati -->
-    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)}></script>
+    <!-- Dati Strutturati Schema.org (Local Business / Attorney + FAQ) -->
+    <script type="application/ld+json" set:html={JSON.stringify(attorneyJsonLd)}></script>
+    <script type="application/ld+json" set:html={JSON.stringify(faqJsonLd)}></script>
   </head>
   <body class="selection:bg-rosewood-light/30 overflow-x-hidden">
     <slot />

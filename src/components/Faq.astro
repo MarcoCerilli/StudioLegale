@@ -1,0 +1,77 @@
+---
+import { HelpCircle, ChevronDown, MessageSquare } from "@lucide/astro";
+
+const faqs = [
+  {
+    q: "Come posso richiedere una prima consulenza con l'Avvocato a Terracina?",
+    a: "È possibile richiedere un appuntamento contattando direttamente lo Studio Legale al numero +39 329 124 6316, oppure scrivendo tramite la nostra chat o WhatsApp. Lo studio riceve nel centro di Terracina, in Via Palermo 16, garantendo la massima riservatezza e una tempestiva valutazione preliminare della questione."
+  },
+  {
+    q: "In quali materie legali opera lo Studio dell'Avv. Anna Fusco a Terracina?",
+    a: "Lo Studio Legale offre patrocinio e assistenza specialistica in Diritto Civile e di Famiglia (separazioni, divorzi consensuali e giudiziali, affidamento minori, successioni ed eredità), Diritto Penale, Risarcimento Danni e Infortunistica Stradale, Diritto del Lavoro, Immigrazione e Titoli di Soggiorno, Diritto Amministrativo e contenzioso condominiale."
+  },
+  {
+    q: "Lo Studio Legale di Terracina patrocina anche cause presso il Tribunale di Latina e Roma?",
+    a: "Sì. L'Avvocato Anna Fusco è iscritta all'Ordine degli Avvocati di Roma (Tessera N. A36343) e opera quotidianamente sia dinanzi al Giudice di Pace di Terracina e al Tribunale di Latina, sia presso gli uffici giudiziari, la Corte d'Appello e i Tribunali di Roma e di tutto il Lazio."
+  },
+  {
+    q: "Dove si trova esattamente lo studio legale e quali aree del litorale pontino serve?",
+    a: "La sede principale dello studio si trova nel cuore di Terracina in Via Palermo 16 (LT). Rappresenta un punto di riferimento per privati e imprese non solo di Terracina, ma anche dei comuni limitrofi quali San Felice Circeo, Sabaudia, Fondi, Monte San Biagio, Pontinia e Latina."
+  },
+  {
+    q: "Come funziona l'assistenza per risarcimento danni e sinistri stradali a Terracina?",
+    a: "Per l'infortunistica stradale, i sinistri sul territorio pontino e i casi di responsabilità medica, lo Studio garantisce la gestione completa della vertenza con anticipo zero spese a carico dell'assistito: il compenso dello studio è legato al raggiungimento del risarcimento effettivo con il supporto di medici legali convenzionati."
+  }
+];
+---
+
+<section id="faq" class="py-16 md:py-24 bg-white border-t border-rosewood-light/20 relative" aria-labelledby="faq-heading">
+  <div class="container mx-auto px-6 max-w-4xl">
+    
+    <div class="text-center mb-12 md:mb-16">
+      <div class="inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.3em] text-rosewood bg-rosewood/10 px-4 py-1.5 rounded-full mb-3">
+        <HelpCircle class="w-3.5 h-3.5" />
+        <span>Domande Frequenti</span>
+      </div>
+      <h2 id="faq-heading" class="text-3xl sm:text-4xl md:text-5xl font-serif text-charcoal tracking-tight mb-4">
+        FAQ — Assistenza Legale a Terracina
+      </h2>
+      <p class="text-charcoal/70 text-sm md:text-base font-light max-w-2xl mx-auto leading-relaxed">
+        Risposte chiare alle domande più comuni sull'assistenza legale, le materie trattate e le modalità di consulenza presso lo Studio Legale Fusco a Terracina.
+      </p>
+    </div>
+
+    <div class="space-y-4">
+      {faqs.map((faq, index) => (
+        <details class="group bg-[#fcfbf9] border border-rosewood-light/25 rounded-2xl p-5 sm:p-6 transition-all duration-300 hover:border-rosewood/50 hover:shadow-sm">
+          <summary class="flex justify-between items-center cursor-pointer list-none select-none font-serif text-base sm:text-lg text-charcoal group-open:text-rosewood font-medium">
+            <span class="pr-4">{faq.q}</span>
+            <span class="shrink-0 w-8 h-8 rounded-full bg-white border border-rosewood-light/30 flex items-center justify-center text-charcoal/70 group-open:rotate-180 group-open:bg-rosewood group-open:text-white transition-transform duration-300">
+              <ChevronDown class="w-4 h-4" />
+            </span>
+          </summary>
+          <div class="mt-4 pt-4 border-t border-rosewood-light/15 text-charcoal/80 text-xs sm:text-sm md:text-[15px] font-light leading-relaxed">
+            <p>{faq.a}</p>
+          </div>
+        </details>
+      ))}
+    </div>
+
+    <div class="mt-10 sm:mt-12 p-6 rounded-2xl bg-cream border border-rosewood-light/30 text-center flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="text-left">
+        <p class="font-serif text-base sm:text-lg text-charcoal font-semibold m-0">Hai un quesito legale specifico da sottoporre?</p>
+        <p class="text-xs sm:text-sm text-charcoal/75 font-light m-0">L'Avvocato Anna Fusco riceve su appuntamento presso la sede di Terracina in Via Palermo 16.</p>
+      </div>
+      <button
+        type="button"
+        data-open-chat
+        data-chat-msg="Salve Avvocato, desidero fissare un appuntamento presso lo studio di Terracina."
+        class="cursor-pointer shrink-0 inline-flex items-center gap-2 bg-rosewood text-white px-5 py-3 rounded-full text-xs font-bold uppercase tracking-wider hover:bg-sepia-dark transition-colors shadow-sm"
+      >
+        <MessageSquare class="w-4 h-4" />
+        <span>Fissa Appuntamento</span>
+      </button>
+    </div>
+
+  </div>
+</section>
